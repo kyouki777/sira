@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://iqim1brxsrq2"]
+
+[ext_resource type="PackedScene" uid="uid://cimgm5jm1wumd" path="res://scenes/player.tscn" id="1_o5qli"]
+
+[node name="Node2D" type="Node2D" unique_id=1126492697]
+
+[node name="Node2D" parent="." unique_id=373575522 instance=ExtResource("1_o5qli")]
+position = Vector2(341, 202)
+
+[node name="TileMap" type="TileMap" parent="." unique_id=2135808893]
+format = 2
