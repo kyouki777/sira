@@ -196,7 +196,8 @@ anim_sprite = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=216753567]
 sprite_frames = SubResource("SpriteFrames_ik31s")
-animation = &"idle_right"
+animation = &"idle_down"
+frame_progress = 0.55082566
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1345408741]
 position = Vector2(-1, 9)
@@ -204,3 +205,4 @@ rotation = 1.5926329
 shape = SubResource("CapsuleShape2D_ik31s")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1547530478]
+zoom = Vector2(2, 2)

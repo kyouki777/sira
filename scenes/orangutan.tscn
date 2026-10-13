@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://b0mtfbxp6pj40"]
+
+[ext_resource type="Script" uid="uid://bg4w6osg4om5x" path="res://scripts/orangutan.gd" id="1_h5av2"]
+[ext_resource type="Texture2D" uid="uid://bpmfkstp0jabb" path="res://asset/animals.png" id="2_3l62l"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ik31s"]
+radius = 25.019993
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ik31s"]
+atlas = ExtResource("2_3l62l")
+region = Rect2(0, 0, 33, 32)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ticvn"]
+radius = 16.0
+
+[node name="orangutan" type="StaticBody2D" unique_id=161613774]
+script = ExtResource("1_h5av2")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2093727405]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=677219085]
+position = Vector2(0, 4)
+shape = SubResource("CircleShape2D_ik31s")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2018925058]
+texture = SubResource("AtlasTexture_ik31s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=326830716]
+position = Vector2(0, 3)
+shape = SubResource("CircleShape2D_ticvn")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
