@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cybv3p7xx5nfj"
+path="res://.godot/imported/Musik Dayak No Copyright.mp3-dc0076e0ee85865016bf7536300444a0.mp3str"
+
+[deps]
+
+source_file="res://asset/sound/Musik Dayak No Copyright.mp3"
+dest_files=["res://.godot/imported/Musik Dayak No Copyright.mp3-dc0076e0ee85865016bf7536300444a0.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

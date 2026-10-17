@@ -1,6 +1,6 @@
 extends Sprite2D
 
-# Drag and drop your image files into this array in the Inspector
+# Drag and drop image files into this array in the Inspector
 @export var images: Array[Texture2D] = []
 
 func _ready() -> void:
