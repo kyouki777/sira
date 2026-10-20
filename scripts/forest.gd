@@ -5,6 +5,7 @@ var current_progress :int = 1
 var has_spawned_animal: bool = false
 var animal_data: Dictionary = {}
 var target_spawn_step: int = 0
+var tutorial_shown : bool = false
 
 @onready var forest_bg = $forest_bg
 @export var animal_scenes: Array[PackedScene] = []
@@ -102,3 +103,5 @@ func trigger_gameover():
 
 func _on_falling_branch_component_dead_by_falling_branch() -> void:
 	trigger_gameover()
+
+	

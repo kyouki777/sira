@@ -19,6 +19,7 @@
 [ext_resource type="Script" uid="uid://c73lv581b0mjq" path="res://scripts/forest_components/day_timer_label.gd" id="16_pyn53"]
 [ext_resource type="Script" uid="uid://858mtq1ve4cc" path="res://scripts/forest_components/hewan_counter.gd" id="16_uwbj1"]
 [ext_resource type="Script" uid="uid://da4dw6gkmy137" path="res://scripts/forest_components/timer_icon.gd" id="18_i1j6r"]
+[ext_resource type="Script" uid="uid://dtxh7blc56467" path="res://scenes/tutorial_layer.gd" id="20_3h1w1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ik31s"]
 shader = ExtResource("6_i1yi8")
@@ -175,5 +176,46 @@ nine_patch_stretch = true
 texture_progress = ExtResource("14_cf55d")
 script = ExtResource("18_i1j6r")
 
+[node name="TutorialLayer" type="CanvasLayer" parent="." unique_id=1662428828]
+process_mode = 3
+script = ExtResource("20_3h1w1")
+
+[node name="click_overlay" type="Button" parent="TutorialLayer" unique_id=428097449]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="movement_label" type="Label" parent="TutorialLayer" unique_id=1816499030]
+offset_left = 144.0
+offset_top = 408.0
+offset_right = 294.0
+offset_bottom = 457.0
+text = "Press W to advance
+Press S to back up"
+
+[node name="click_animal_label" type="Label" parent="TutorialLayer" unique_id=80360435]
+offset_left = 418.0
+offset_top = 249.0
+offset_right = 767.0
+offset_bottom = 298.0
+text = "Click on the animal as soon as you find them!"
+
+[node name="branch_label" type="Label" parent="TutorialLayer" unique_id=1615931195]
+offset_left = 42.0
+offset_top = 121.0
+offset_right = 490.0
+offset_bottom = 170.0
+text = "Becareful of falling branches and click it before it hits you!"
+
+[node name="oxygen_label" type="Label" parent="TutorialLayer" unique_id=1223987816]
+offset_left = 651.0
+offset_top = 338.0
+offset_right = 1050.0
+offset_bottom = 387.0
+text = "Make sure you don't run out of breath in the forest!"
+
 [connection signal="timeout" from="time_limit" to="." method="trigger_gameover"]
 [connection signal="dead_by_falling_branch" from="UILayer/sira/FallingBranchComponent" to="." method="_on_falling_branch_component_dead_by_falling_branch"]
+[connection signal="pressed" from="TutorialLayer/click_overlay" to="TutorialLayer" method="_on_click_overlay_pressed"]

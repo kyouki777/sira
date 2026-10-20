@@ -7,16 +7,26 @@ var last_dir : Vector2
 var last_anim_direction: String = "down"
 @export var anim_sprite : AnimatedSprite2D
 @onready var saved_animal: Sprite2D = %SavedAnimal
+@onready var camera_2d: Camera2D = $Camera2D
+
+var can_move : bool = true
+
+var current_interactable : Interactable = null
 
 func _ready() -> void:
 	$AnimatedSprite2D.play("idle_down")
+	
+	Dialogic.timeline_started.connect(_on_dialogic_timeline_started)
+	Dialogic.timeline_ended.connect(_on_dialogic_timeline_ended)
+	
 	if GameManager.carrying_animal:
 		saved_animal.texture = GameManager.current_carried_texture
 
 func _physics_process(delta: float) -> void:
-	player_movement()
-	player_animation()
-	move_and_slide()
+	if can_move == true:
+		player_movement()
+		player_animation()
+		move_and_slide()
 
 func player_movement():
 
@@ -69,3 +79,33 @@ func update_animation(direction: Vector2):
 		
 func drop_animal():
 	saved_animal.texture = null
+
+func _on_dialogic_timeline_started() -> void:
+	can_move = false
+	print("dialogic playing. player cant move")
+
+func _on_dialogic_timeline_ended() -> void:
+	can_move = true
+	print("dialogic stopped. player can move")
+	
+func player_camera_on():
+	camera_2d.enabled = true
+	
+func player_camera_off():
+	camera_2d.enabled = false
+	
+	#for interacting
+func _unhandled_input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("interact") and current_interactable:
+		current_interactable.interact()
+
+func _on_interaction_area_area_entered(area: Area2D) -> void:
+	print("interaction area entered")
+	if area is Interactable:
+		current_interactable = area
+
+func _on_interaction_area_area_exited(area: Area2D) -> void:
+	print("interaction area exited")
+	if area is Interactable:
+		if current_interactable == area:
+			current_interactable = null

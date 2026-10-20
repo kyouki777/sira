@@ -154,6 +154,7 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "TEXT"
 horizontal_alignment = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="TimerContainer" type="HBoxContainer" parent="CanvasLayer" unique_id=479993856]
 anchors_preset = 1

@@ -24,14 +24,20 @@ Dialogic="*uid://ds2q0uclmolvu"
 
 [dialogic]
 
-directories/dch_directory={}
-directories/dtl_directory={}
+directories/dch_directory={
+"Jitendra": "res://dialogic characters/Jitendra.dch",
+"Sira": "res://dialogic characters/Sira.dch"
+}
+directories/dtl_directory={
+"jitendra1_feedinganimals": "res://dialogues/jitendra1_feedinganimals.dtl",
+"opening_cutscene": "res://dialogues/opening_cutscene.dtl"
+}
 layout/style_directory={}
 variables={}
 glossary/default_case_sensitive=true
 layout/style_list=[]
 layout/default_style="Default"
-text/letter_speed=0.01
+text/letter_speed=0.07
 text/initial_text_reveal_skippable=true
 text/text_reveal_skip_delay=0.1
 text/advance_delay=0.1

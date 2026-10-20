@@ -6,6 +6,7 @@ var carrying_animal : bool = false
 # Tracks what animal the player is currently carrying during a trip
 var current_carried_scene: PackedScene = null
 var current_carried_texture:Texture2D = null
+var tutorial_shown: bool = false
 
 func add_rescued_animal(animal_scene: PackedScene) -> void:
 	if animal_scene:
