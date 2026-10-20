@@ -4,11 +4,14 @@ extends CharacterBody2D
 @export var walk_speed = 100.0
 var input_dir = Vector2.ZERO
 var last_dir : Vector2
-var last_anim_direction: String = "Down"
+var last_anim_direction: String = "down"
 @export var anim_sprite : AnimatedSprite2D
+@onready var saved_animal: Sprite2D = %SavedAnimal
 
 func _ready() -> void:
 	$AnimatedSprite2D.play("idle_down")
+	if GameManager.carrying_animal:
+		saved_animal.texture = GameManager.current_carried_texture
 
 func _physics_process(delta: float) -> void:
 	player_movement()
@@ -51,7 +54,7 @@ func update_animation(direction: Vector2):
 			new_anim_direction = "down" if direction.y > 0 else "up"
 
 		# Walking animation
-		anim_to_play = new_anim_direction
+		anim_to_play = "walk_" + new_anim_direction
 
 		# Remember the direction
 		last_anim_direction = new_anim_direction
@@ -64,3 +67,5 @@ func update_animation(direction: Vector2):
 	if anim_sprite.animation != anim_to_play:
 		anim_sprite.play(anim_to_play)
 		
+func drop_animal():
+	saved_animal.texture = null

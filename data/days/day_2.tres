@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DayData" format=3 uid="uid://uii26ynlinh2"]
+
+[ext_resource type="Script" uid="uid://deq3kg7rk7prj" path="res://data/day_data_script.gd" id="1_lssr8"]
+
+[resource]
+script = ExtResource("1_lssr8")
+day_number = 2
+day_target_animal = 7
+day_oxygen_limit = 20.0
+day_branch_fall_time_range = Array[int]([15, 22])
+metadata/_custom_type_script = "uid://deq3kg7rk7prj"

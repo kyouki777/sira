@@ -9,18 +9,17 @@ var target_spawn_step: int = 0
 @onready var forest_bg = $forest_bg
 @export var animal_scenes: Array[PackedScene] = []
 @onready var time_limit = $time_limit
-@export var label :Label
+@export var world_label :Label
+@onready var hewan_counter: Label = %HewanCounter
+@onready var saved_animal: Sprite2D = %SavedAnimal
 
 func _ready() -> void:
 	GameManager.carrying_animal = false
-	label.text = ""
+	world_label.text = ""
 	target_spawn_step = randi_range(3, 30)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	if time_limit.time_left == 0.0:
-		print("GAMEOVER")
-		
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("up"):
 		if not GameManager.carrying_animal:
 			move_forward()
@@ -35,26 +34,28 @@ func _process(delta: float) -> void:
 
 func move_forward():
 	print("moving forward")
-	forest_bg.show_random_image()
 
 	current_progress += 1
+	#forest_bg.show_random_image()
+	forest_bg.move_deepness(current_progress)
 	print("current progress: ", current_progress)
 	
 	if current_progress == 5:
 		spawn_random_animal()
-		
+
 func move_backwards():
 	print("moving backwards")
-	forest_bg.show_random_image()
 	current_progress -= 1
 	print("current progress: ", current_progress)
+	#forest_bg.show_random_image()
+	forest_bg.move_deepness(current_progress)
 
 #make a function to detect how many animals were found and put it in the main scene. or maybe only save one animal per trip inside the forest
 
 func cant_move_forward():
-	label.text = "I can't go in further. I have to bring back the animal I'm carrying."
+	world_label.text = "I can't go in further. I have to bring back the animal I'm carrying."
 	await get_tree().create_timer(3).timeout
-	label.text = ""
+	world_label.text = ""
 	
 func spawn_random_animal() -> void:
 	if animal_scenes.is_empty():
@@ -83,8 +84,21 @@ func spawn_random_animal() -> void:
 		animal_instance.animal_scene = selected_scene
 	elif animal_instance.has_node("TextureButton") and "animal_scene" in animal_instance.get_node("TextureButton"):
 		animal_instance.get_node("TextureButton").animal_scene = selected_scene
-		
+	if animal_instance.has_signal("saved_animal_texture"):
+		animal_instance.saved_animal_texture.connect(take_animal_on_top)
+
+func take_animal_on_top(texture:Texture2D):
+	saved_animal.texture = texture
+
 # Inside forest/exploration scene script when picking up an animal:
 func pick_up_animal(animal_scene: PackedScene) -> void:
 	GameManager.current_carried_scene = animal_scene
 	GameManager.carrying_animal = true
+
+func trigger_gameover():
+	world_label.text = "GAMEOVER, YOU DIED!"
+	get_tree().paused = true
+	print("GAMEOVER")
+
+func _on_falling_branch_component_dead_by_falling_branch() -> void:
+	trigger_gameover()

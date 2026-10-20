@@ -11,6 +11,14 @@
 [ext_resource type="PackedScene" uid="uid://bf1oo43nimgdh" path="res://scenes/fire_bekantan.tscn" id="5_dabdc"]
 [ext_resource type="Shader" uid="uid://j6akuwd1xb5h" path="res://scripts/forest.gdshader" id="6_i1yi8"]
 [ext_resource type="Script" uid="uid://1vy7oncougy4" path="res://scripts/fog_overlay.gd" id="7_i1yi8"]
+[ext_resource type="PackedScene" uid="uid://cg0a58ncl7l7q" path="res://scenes/falling_branch_component.tscn" id="12_3akcx"]
+[ext_resource type="Texture2D" uid="uid://db6tyro2pm00b" path="res://asset/Placeholder/Bar.png" id="12_dabdc"]
+[ext_resource type="Texture2D" uid="uid://opt8xbkivago" path="res://asset/Placeholder/Isi bar.png" id="13_cf55d"]
+[ext_resource type="Texture2D" uid="uid://04m66hkcm6ii" path="res://icon.svg" id="14_cf55d"]
+[ext_resource type="Script" uid="uid://w6kfno1bifv1" path="res://scripts/forest_components/oxygen_meter.gd" id="14_di0nb"]
+[ext_resource type="Script" uid="uid://c73lv581b0mjq" path="res://scripts/forest_components/day_timer_label.gd" id="16_pyn53"]
+[ext_resource type="Script" uid="uid://858mtq1ve4cc" path="res://scripts/forest_components/hewan_counter.gd" id="16_uwbj1"]
+[ext_resource type="Script" uid="uid://da4dw6gkmy137" path="res://scripts/forest_components/timer_icon.gd" id="18_i1j6r"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ik31s"]
 shader = ExtResource("6_i1yi8")
@@ -25,13 +33,13 @@ shader_parameter/fade_amount = 0.0
 atlas = ExtResource("1_xijx7")
 region = Rect2(0, 97, 30, 31)
 
-[node name="forest" type="Node2D" unique_id=1697064475 node_paths=PackedStringArray("label")]
+[node name="forest" type="Node2D" unique_id=1697064475 node_paths=PackedStringArray("world_label")]
 script = ExtResource("1_yj5dr")
 animal_scenes = Array[PackedScene]([ExtResource("2_0nboi"), ExtResource("3_ercsu"), ExtResource("4_j3csf"), ExtResource("5_dabdc")])
-label = NodePath("CanvasLayer/Label")
+world_label = NodePath("UILayer/WorldLabel")
 
 [node name="forest_bg" type="Sprite2D" parent="." unique_id=1554885587]
-position = Vector2(521, 207)
+centered = false
 script = ExtResource("2_i1yi8")
 images = Array[Texture2D]([ExtResource("4_xr56k"), ExtResource("1_bgcxa")])
 
@@ -40,9 +48,9 @@ wait_time = 30.0
 one_shot = true
 autostart = true
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1526750841]
+[node name="UILayer" type="CanvasLayer" parent="." unique_id=1526750841]
 
-[node name="FogOverlay" type="ColorRect" parent="CanvasLayer" unique_id=841183426]
+[node name="FogOverlay" type="ColorRect" parent="UILayer" unique_id=841183426]
 material = SubResource("ShaderMaterial_ik31s")
 anchors_preset = 15
 anchor_right = 1.0
@@ -52,12 +60,19 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("7_i1yi8")
 
-[node name="sira" type="Sprite2D" parent="CanvasLayer" unique_id=703634631]
+[node name="sira" type="Sprite2D" parent="UILayer" unique_id=703634631]
 position = Vector2(577, 583)
 scale = Vector2(4.275002, 4.2750015)
 texture = SubResource("AtlasTexture_ik31s")
 
-[node name="Label" type="Label" parent="CanvasLayer" unique_id=2102028153]
+[node name="SavedAnimal" type="Sprite2D" parent="UILayer/sira" unique_id=418928207]
+unique_name_in_owner = true
+position = Vector2(0, -16.842102)
+scale = Vector2(0.49999997, 0.5)
+
+[node name="FallingBranchComponent" parent="UILayer/sira" unique_id=16414017 instance=ExtResource("12_3akcx")]
+
+[node name="WorldLabel" type="Label" parent="UILayer" unique_id=2102028153]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -70,3 +85,95 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "TEXT"
+
+[node name="OxygenMeter" type="TextureProgressBar" parent="UILayer" unique_id=1035267854 node_paths=PackedStringArray("timer_node")]
+unique_name_in_owner = true
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -167.0
+offset_top = -348.5
+offset_right = -11.0
+offset_bottom = 348.5
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+pivot_offset_ratio = Vector2(1, 0.5)
+mouse_filter = 2
+max_value = 60.0
+value = 60.0
+fill_mode = 3
+texture_over = ExtResource("12_dabdc")
+texture_progress = ExtResource("13_cf55d")
+texture_progress_offset = Vector2(17.22, 11.21)
+script = ExtResource("14_di0nb")
+timer_node = NodePath("../../time_limit")
+
+[node name="HewanContainer" type="HBoxContainer" parent="UILayer" unique_id=1989117289]
+offset_left = 39.0
+offset_top = 32.0
+offset_right = 244.0
+offset_bottom = 86.0
+mouse_filter = 2
+
+[node name="HewanIcon" type="TextureRect" parent="UILayer/HewanContainer" unique_id=1367965901]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("14_cf55d")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="UILayer/HewanContainer" unique_id=870014871]
+layout_mode = 2
+text = "Animals found:"
+
+[node name="HewanCounter" type="Label" parent="UILayer/HewanContainer" unique_id=872197058]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0/0"
+script = ExtResource("16_uwbj1")
+
+[node name="TimerContainer" type="HBoxContainer" parent="UILayer" unique_id=877359597]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -170.0
+offset_top = 34.0
+offset_right = -21.0
+offset_bottom = 84.0
+grow_horizontal = 0
+mouse_filter = 2
+theme_override_constants/separation = 22
+
+[node name="TimeContainer" type="VBoxContainer" parent="UILayer/TimerContainer" unique_id=1655186411]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="UILayer/TimerContainer/TimeContainer" unique_id=1014740713]
+layout_mode = 2
+text = "TIME LEFT"
+horizontal_alignment = 1
+
+[node name="DayTimerLabel" type="Label" parent="UILayer/TimerContainer/TimeContainer" unique_id=1106861822]
+layout_mode = 2
+text = "30"
+horizontal_alignment = 1
+script = ExtResource("16_pyn53")
+
+[node name="TimerIcon" type="TextureProgressBar" parent="UILayer/TimerContainer" unique_id=888264268]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+mouse_filter = 2
+max_value = 60.0
+value = 50.0
+fill_mode = 4
+nine_patch_stretch = true
+texture_progress = ExtResource("14_cf55d")
+script = ExtResource("18_i1j6r")
+
+[connection signal="timeout" from="time_limit" to="." method="trigger_gameover"]
+[connection signal="dead_by_falling_branch" from="UILayer/sira/FallingBranchComponent" to="." method="_on_falling_branch_component_dead_by_falling_branch"]

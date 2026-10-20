@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://cg0a58ncl7l7q"]
+
+[ext_resource type="Script" uid="uid://du1mkiu5j27f2" path="res://scripts/forest_components/falling_branch_component.gd" id="1_toa8f"]
+[ext_resource type="Texture2D" uid="uid://cco3encpj544i" path="res://asset/Placeholder/warning.png" id="2_pinr1"]
+[ext_resource type="Texture2D" uid="uid://04m66hkcm6ii" path="res://icon.svg" id="3_5vqx2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gkvnd"]
+size = Vector2(30.409332, 30.778381)
+
+[sub_resource type="Animation" id="Animation_3akcx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WarningSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3h1w1"]
+resource_name = "flashing"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WarningSprite:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.4862745), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qavbn"]
+_data = {
+&"RESET": SubResource("Animation_3akcx"),
+&"flashing": SubResource("Animation_3h1w1")
+}
+
+[node name="FallingBranchComponent" type="Node2D" unique_id=16414017]
+script = ExtResource("1_toa8f")
+
+[node name="StartingPos" type="Marker2D" parent="." unique_id=1333181596]
+unique_name_in_owner = true
+position = Vector2(0, -151.99733)
+
+[node name="WarningSprite" type="Sprite2D" parent="." unique_id=156192027]
+unique_name_in_owner = true
+position = Vector2(0, -123.30622)
+scale = Vector2(0.242, 0.242)
+texture = ExtResource("2_pinr1")
+
+[node name="Branch" type="Area2D" parent="." unique_id=1200242182]
+unique_name_in_owner = true
+position = Vector2(0, -151.99733)
+scale = Vector2(0.99999994, 1)
+
+[node name="BranchSprite" type="Sprite2D" parent="Branch" unique_id=701281665]
+scale = Vector2(0.242, 0.24199997)
+texture = ExtResource("3_5vqx2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Branch" unique_id=2001156857]
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_gkvnd")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=375449952]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_qavbn")
+
+[node name="WarningTimer" type="Timer" parent="." unique_id=394506391]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="TillBranchFallTimer" type="Timer" parent="." unique_id=1938088264]
+unique_name_in_owner = true
+one_shot = true
+
+[connection signal="input_event" from="Branch" to="." method="_on_branch_input_event"]

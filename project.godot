@@ -18,6 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameManager="*uid://i1liyqsg641u"
+DayManager="*uid://dhdldyv4fifvf"
+TimeManager="*uid://dya5cvao5wtuy"
 Dialogic="*uid://ds2q0uclmolvu"
 
 [dialogic]
@@ -25,6 +27,42 @@ Dialogic="*uid://ds2q0uclmolvu"
 directories/dch_directory={}
 directories/dtl_directory={}
 layout/style_directory={}
+variables={}
+glossary/default_case_sensitive=true
+layout/style_list=[]
+layout/default_style="Default"
+text/letter_speed=0.01
+text/initial_text_reveal_skippable=true
+text/text_reveal_skip_delay=0.1
+text/advance_delay=0.1
+text/autoadvance_per_character_delay=0.1
+text/autoadvance_ignored_characters_enabled=true
+animations/join_default_length=0.5
+animations/join_default_wait=true
+animations/leave_default_length=0.5
+animations/leave_default_wait=true
+animations/cross_fade_default_length=0.5
+choices/autofocus_first=true
+choices/delay=0.2
+choices/reveal_delay=0
+choices/reveal_by_input=false
+save/autosave_delay=60.0
+save/encryption_on_exports_only=true
+text/autopauses={}
+audio/channel_defaults={
+"": {
+"audio_bus": "",
+"fade_length": 0.0,
+"loop": false,
+"volume": 0.0
+},
+"music": {
+"audio_bus": "",
+"fade_length": 0.0,
+"loop": true,
+"volume": 0.0
+}
+}
 
 [display]
 
@@ -34,6 +72,16 @@ window/stretch/aspect="expand"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/dialogic/plugin.cfg")
+
+[file_customization]
+
+folder_colors={
+"res://addons/": "orange",
+"res://asset/": "green",
+"res://data/": "blue",
+"res://scenes/": "red",
+"res://scripts/": "red"
+}
 
 [input]
 

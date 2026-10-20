@@ -6,6 +6,7 @@ extends Node2D
 # Set these in the Inspector to match the pixel art grid
 @export var tile_size: Vector2 = Vector2(32, 32) # Pixel width/height of your grid tiles
 @export var columns: int = 4
+@export var player_node:CharacterBody2D
 var is_player_inside: bool = false
 
 func _ready() -> void:
@@ -19,6 +20,10 @@ func _process(_delta: float) -> void:
 			print("Animal deposited into sanctuary!")
 			display_rescued_animals()
 			GameManager.carrying_animal = false
+			if player_node.has_method("drop_animal"):
+				player_node.drop_animal()
+			DayManager.current_animals_saved += 1
+			# Check udh semua animal atau belum, kalau udh go to next sequence
 			
 func display_rescued_animals() -> void:
 	if not animal_marker:
