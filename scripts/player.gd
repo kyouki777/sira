@@ -82,6 +82,12 @@ func drop_animal():
 
 func _on_dialogic_timeline_started() -> void:
 	can_move = false
+	velocity = Vector2.ZERO
+	input_dir = Vector2.ZERO
+	
+	if anim_sprite:
+		anim_sprite.play("idle_" + last_anim_direction)
+		
 	print("dialogic playing. player cant move")
 
 func _on_dialogic_timeline_ended() -> void:

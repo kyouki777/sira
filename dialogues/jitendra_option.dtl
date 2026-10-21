@@ -1,0 +1,16 @@
+Jitendra: Hey, Sira. You wanna help me feed the animals?
+- Okay.
+	Jitendra: Cool! Here are their favourite foods. You still remember what each of them like, right?
+	Sira: Yeah, of course I do. You always talk my ear off about them.
+	Jitendra: Haha! Can't help it.
+	Sira: Ugh. What a stupid punishment.
+	Sira: Does my dad really think I'd fall in love with the village by feeding the animals?
+	Sira: The animals can feed themselves already.
+	Jitendra: Who knows honestly.
+	Jitendra: But most of them are a part of our tribe, so they expect us to give them food on the clock or else they'd cause some mischef in the village.
+	Jitendra: I'm sorry I can't help today, Sira.
+	Sira: It's fine. You're still recovering anyways.
+	Jitendra: Let me know when you're done. Thanks a lot!
+	do GameManager.feed_animals_started()
+- Not yet.
+	Jitendra: Alright, let me know when you're ready.

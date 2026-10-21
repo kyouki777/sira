@@ -1,0 +1,7 @@
+"Kucing Merah": kucing merah
+if {feeding_animals} == true:
+	Feed?
+	- Feed Kucing Merah.
+		[signal arg="animal_fed"]
+		*Kucing Merah seems happy*
+	- Later.

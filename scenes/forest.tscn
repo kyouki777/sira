@@ -19,7 +19,7 @@
 [ext_resource type="Script" uid="uid://c73lv581b0mjq" path="res://scripts/forest_components/day_timer_label.gd" id="16_pyn53"]
 [ext_resource type="Script" uid="uid://858mtq1ve4cc" path="res://scripts/forest_components/hewan_counter.gd" id="16_uwbj1"]
 [ext_resource type="Script" uid="uid://da4dw6gkmy137" path="res://scripts/forest_components/timer_icon.gd" id="18_i1j6r"]
-[ext_resource type="Script" uid="uid://dtxh7blc56467" path="res://scenes/tutorial_layer.gd" id="20_3h1w1"]
+[ext_resource type="Script" uid="uid://dtxh7blc56467" path="res://scripts/tutorial_layer.gd" id="20_3h1w1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ik31s"]
 shader = ExtResource("6_i1yi8")

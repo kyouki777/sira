@@ -7,8 +7,18 @@
 [ext_resource type="PackedScene" uid="uid://b0mtfbxp6pj40" path="res://scenes/orangutan.tscn" id="5_gktdk"]
 [ext_resource type="Texture2D" uid="uid://dvjkr1210towd" path="res://asset/sira1.png" id="6_a655f"]
 [ext_resource type="PackedScene" uid="uid://cimgm5jm1wumd" path="res://scenes/player.tscn" id="7_kcivn"]
-[ext_resource type="Script" uid="uid://dsbhnx6jem6nm" path="res://scenes/jitendra.gd" id="8_7sh0f"]
-[ext_resource type="Script" uid="uid://wgutjkja8iq8" path="res://scenes/interactable.gd" id="8_53v4c"]
+[ext_resource type="Script" uid="uid://dsbhnx6jem6nm" path="res://scripts/jitendra.gd" id="8_7sh0f"]
+[ext_resource type="Script" uid="uid://wgutjkja8iq8" path="res://scripts/interactable.gd" id="8_53v4c"]
+[ext_resource type="Script" uid="uid://dsgeabcsjmb1a" path="res://scripts/temenggung.gd" id="9_pa23k"]
+[ext_resource type="Script" uid="uid://dfddabbxswmny" path="res://scripts/balian_bawi.gd" id="10_oiag1"]
+[ext_resource type="Script" uid="uid://bl36us8herxp6" path="res://scripts/kumang.gd" id="11_a655f"]
+[ext_resource type="Script" uid="uid://bd8u6s4bcatvi" path="res://scripts/maran.gd" id="12_kcivn"]
+[ext_resource type="Script" uid="uid://c5oh5fy77f17k" path="res://scripts/ajang.gd" id="13_kcivn"]
+[ext_resource type="Script" uid="uid://bh72og4801xgc" path="res://scripts/guard_1_jalung.gd" id="14_53v4c"]
+[ext_resource type="Script" uid="uid://cfdgounvy53xf" path="res://scripts/guard_2_nyanggau.gd" id="15_ksooq"]
+[ext_resource type="Script" uid="uid://bbxxtsw4hrgsw" path="res://scripts/burung_enggang.gd" id="16_th5xy"]
+[ext_resource type="Script" uid="uid://cwi36hi2ckiju" path="res://scripts/bekantan.gd" id="17_my7oa"]
+[ext_resource type="Script" uid="uid://xo74jejmldey" path="res://scripts/kucing_merah.gd" id="18_63aph"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jak2h"]
 texture = ExtResource("2_7sh0f")
@@ -447,7 +457,7 @@ position = Vector2(1024.5, 496.5)
 texture = SubResource("AtlasTexture_ik31s")
 
 [node name="player" parent="." unique_id=373575522 instance=ExtResource("7_kcivn")]
-position = Vector2(394, 611)
+position = Vector2(282, 626)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2107445724]
 
@@ -479,7 +489,7 @@ metadata/_edit_use_anchors_ = true
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1713040327]
 libraries/ = SubResource("AnimationLibrary_efnqa")
 
-[node name="village_interactable" type="Node" parent="." unique_id=452546455]
+[node name="village_interactable" type="Node2D" parent="." unique_id=1323893231]
 
 [node name="jitendra" type="StaticBody2D" parent="village_interactable" unique_id=190245885]
 position = Vector2(228, 623)
@@ -502,6 +512,7 @@ texture = SubResource("AtlasTexture_xyni6")
 
 [node name="temenggung" type="StaticBody2D" parent="village_interactable" unique_id=1635856424]
 position = Vector2(527, 565)
+script = ExtResource("9_pa23k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="village_interactable/temenggung" unique_id=384784621]
 position = Vector2(-2.9802322e-08, 11)
@@ -520,6 +531,7 @@ texture = SubResource("AtlasTexture_7sh0f")
 
 [node name="balian_bawi" type="StaticBody2D" parent="village_interactable" unique_id=839893887]
 position = Vector2(399, 561)
+script = ExtResource("10_oiag1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="village_interactable/balian_bawi" unique_id=329917229]
 position = Vector2(-2.9802322e-08, 11)
@@ -536,100 +548,106 @@ shape = SubResource("CircleShape2D_ik31s")
 [node name="Sprite2D" type="Sprite2D" parent="village_interactable/balian_bawi" unique_id=1796311308]
 texture = SubResource("AtlasTexture_pa23k")
 
-[node name="villager_1" type="StaticBody2D" parent="village_interactable" unique_id=1927418930]
+[node name="kumang" type="StaticBody2D" parent="village_interactable" unique_id=1927418930]
 position = Vector2(391, 723)
+script = ExtResource("11_a655f")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="village_interactable/villager_1" unique_id=2142196697]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="village_interactable/kumang" unique_id=2142196697]
 position = Vector2(-2.9802322e-08, 11)
 rotation = -1.5427655
 shape = SubResource("CapsuleShape2D_ik31s")
 
-[node name="Area2D" type="Area2D" parent="village_interactable/villager_1" unique_id=1659510023]
+[node name="Area2D" type="Area2D" parent="village_interactable/kumang" unique_id=1659510023]
 script = ExtResource("8_53v4c")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="village_interactable/villager_1/Area2D" unique_id=650228329]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="village_interactable/kumang/Area2D" unique_id=650228329]
 position = Vector2(0, 8)
 shape = SubResource("CircleShape2D_ik31s")
 
-[node name="Sprite2D" type="Sprite2D" parent="village_interactable/villager_1" unique_id=419503031]
+[node name="Sprite2D" type="Sprite2D" parent="village_interactable/kumang" unique_id=419503031]
 texture = SubResource("AtlasTexture_oiag1")
 
-[node name="villager_2" type="StaticBody2D" parent="village_interactable" unique_id=2011742459]
+[node name="maran" type="StaticBody2D" parent="village_interactable" unique_id=2011742459]
 position = Vector2(572, 634)
+script = ExtResource("12_kcivn")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="village_interactable/villager_2" unique_id=1335160577]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="village_interactable/maran" unique_id=1335160577]
 position = Vector2(-2.9802322e-08, 11)
 rotation = -1.5427655
 shape = SubResource("CapsuleShape2D_ik31s")
 
-[node name="Area2D" type="Area2D" parent="village_interactable/villager_2" unique_id=907243466]
+[node name="Area2D" type="Area2D" parent="village_interactable/maran" unique_id=907243466]
 script = ExtResource("8_53v4c")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="village_interactable/villager_2/Area2D" unique_id=1754364825]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="village_interactable/maran/Area2D" unique_id=1754364825]
 position = Vector2(0, 8)
 shape = SubResource("CircleShape2D_ik31s")
 
-[node name="Sprite2D" type="Sprite2D" parent="village_interactable/villager_2" unique_id=1201115836]
+[node name="Sprite2D" type="Sprite2D" parent="village_interactable/maran" unique_id=1201115836]
 texture = SubResource("AtlasTexture_gktdk")
 
-[node name="villager_3" type="StaticBody2D" parent="village_interactable" unique_id=1758559225]
+[node name="ajang" type="StaticBody2D" parent="village_interactable" unique_id=1758559225]
 position = Vector2(127, 588)
+script = ExtResource("13_kcivn")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="village_interactable/villager_3" unique_id=1418281654]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="village_interactable/ajang" unique_id=1418281654]
 position = Vector2(-2.9802322e-08, 11)
 rotation = -1.5427655
 shape = SubResource("CapsuleShape2D_ik31s")
 
-[node name="Area2D" type="Area2D" parent="village_interactable/villager_3" unique_id=1035131365]
+[node name="Area2D" type="Area2D" parent="village_interactable/ajang" unique_id=1035131365]
 script = ExtResource("8_53v4c")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="village_interactable/villager_3/Area2D" unique_id=894329888]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="village_interactable/ajang/Area2D" unique_id=894329888]
 position = Vector2(0, 8)
 shape = SubResource("CircleShape2D_ik31s")
 
-[node name="Sprite2D" type="Sprite2D" parent="village_interactable/villager_3" unique_id=174771134]
+[node name="Sprite2D" type="Sprite2D" parent="village_interactable/ajang" unique_id=174771134]
 texture = SubResource("AtlasTexture_a655f")
 
-[node name="guard_1" type="StaticBody2D" parent="village_interactable" unique_id=641426980]
+[node name="guard_1_jalung" type="StaticBody2D" parent="village_interactable" unique_id=641426980]
 position = Vector2(1150, 497)
+script = ExtResource("14_53v4c")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="village_interactable/guard_1" unique_id=1925297866]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="village_interactable/guard_1_jalung" unique_id=1925297866]
 position = Vector2(-2.9802322e-08, 11)
 rotation = -1.5427655
 shape = SubResource("CapsuleShape2D_ik31s")
 
-[node name="Area2D" type="Area2D" parent="village_interactable/guard_1" unique_id=173946937]
+[node name="Area2D" type="Area2D" parent="village_interactable/guard_1_jalung" unique_id=173946937]
 script = ExtResource("8_53v4c")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="village_interactable/guard_1/Area2D" unique_id=1596922848]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="village_interactable/guard_1_jalung/Area2D" unique_id=1596922848]
 position = Vector2(0, 8)
 shape = SubResource("CircleShape2D_ik31s")
 
-[node name="Sprite2D" type="Sprite2D" parent="village_interactable/guard_1" unique_id=1196107230]
+[node name="Sprite2D" type="Sprite2D" parent="village_interactable/guard_1_jalung" unique_id=1196107230]
 texture = SubResource("AtlasTexture_kcivn")
 
-[node name="guard_2" type="StaticBody2D" parent="village_interactable" unique_id=252535365]
+[node name="guard_2_nyanggau" type="StaticBody2D" parent="village_interactable" unique_id=252535365]
 position = Vector2(1150, 568)
+script = ExtResource("15_ksooq")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="village_interactable/guard_2" unique_id=1078705404]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="village_interactable/guard_2_nyanggau" unique_id=1078705404]
 position = Vector2(-2.9802322e-08, 11)
 rotation = -1.5427655
 shape = SubResource("CapsuleShape2D_ik31s")
 
-[node name="Area2D" type="Area2D" parent="village_interactable/guard_2" unique_id=58562074]
+[node name="Area2D" type="Area2D" parent="village_interactable/guard_2_nyanggau" unique_id=58562074]
 script = ExtResource("8_53v4c")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="village_interactable/guard_2/Area2D" unique_id=638815909]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="village_interactable/guard_2_nyanggau/Area2D" unique_id=638815909]
 position = Vector2(0, 8)
 shape = SubResource("CircleShape2D_ik31s")
 
-[node name="Sprite2D" type="Sprite2D" parent="village_interactable/guard_2" unique_id=1716030227]
+[node name="Sprite2D" type="Sprite2D" parent="village_interactable/guard_2_nyanggau" unique_id=1716030227]
 texture = SubResource("AtlasTexture_53v4c")
 
 [node name="animals_interactable" type="Node" parent="." unique_id=130118289]
 
 [node name="burung_enggan" type="StaticBody2D" parent="animals_interactable" unique_id=318324569]
 position = Vector2(946, 334)
+script = ExtResource("16_th5xy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="animals_interactable/burung_enggan" unique_id=1965885207]
 position = Vector2(-2.9802322e-08, 11)
@@ -648,6 +666,7 @@ texture = SubResource("AtlasTexture_ksooq")
 
 [node name="bekantan" type="StaticBody2D" parent="animals_interactable" unique_id=97541432]
 position = Vector2(1089, 853)
+script = ExtResource("17_my7oa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="animals_interactable/bekantan" unique_id=109923368]
 position = Vector2(-2.9802322e-08, 11)
@@ -666,6 +685,7 @@ texture = SubResource("AtlasTexture_th5xy")
 
 [node name="kucing_merah" type="StaticBody2D" parent="animals_interactable" unique_id=1952659433]
 position = Vector2(163, 359)
+script = ExtResource("18_63aph")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="animals_interactable/kucing_merah" unique_id=1730456297]
 position = Vector2(-2.9802322e-08, 11)
