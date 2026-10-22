@@ -4,6 +4,7 @@ signal dead_by_falling_branch
 
 @export var warning_time:float = 2.0
 @export var branch_fall_time:float = 3.0
+@export var forest: Node2D
 @onready var warning_sprite: Sprite2D = %WarningSprite
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 @onready var warning_timer: Timer = %WarningTimer
@@ -28,6 +29,7 @@ func start_warning_sequence():
 	warning_sprite.show()
 	animation_player.play("flashing")
 	warning_timer.start()
+	forest.set_process_input(false)
 
 func start_branch_fall_sequence():
 	warning_sprite.hide()
@@ -46,3 +48,4 @@ func _on_branch_input_event(_viewport: Node, event: InputEvent, _shape_idx: int)
 	if event is InputEventMouseButton and Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		# Add branch destroyed sprite here as sibling but keep this component die
 		queue_free()
+		forest.set_process_input(false)

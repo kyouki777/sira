@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://d104rnjpk4s4t" path="res://asset/forest_BG5.png" id="11_bjond"]
 [ext_resource type="PackedScene" uid="uid://cg0a58ncl7l7q" path="res://scenes/falling_branch_component.tscn" id="12_3akcx"]
 [ext_resource type="Texture2D" uid="uid://0vfdt0p737y8" path="res://asset/forest_BG6.png" id="12_g34gq"]
+[ext_resource type="Script" uid="uid://b16ib0qf27cj2" path="res://scripts/forest_components/animal_container.gd" id="13_g34gq"]
 [ext_resource type="Script" uid="uid://w6kfno1bifv1" path="res://scripts/forest_components/oxygen_meter.gd" id="14_di0nb"]
 [ext_resource type="Script" uid="uid://c73lv581b0mjq" path="res://scripts/forest_components/day_timer_label.gd" id="16_pyn53"]
 [ext_resource type="Script" uid="uid://858mtq1ve4cc" path="res://scripts/forest_components/hewan_counter.gd" id="16_uwbj1"]
@@ -49,11 +50,11 @@ load_path = "res://.godot/imported/animals.png-fbec924d455bb8875dd453d61d7bf51c.
 atlas = SubResource("CompressedTexture2D_37aet")
 region = Rect2(0, 0, 33, 32)
 
-[node name="forest" type="Node2D" unique_id=1697064475 node_paths=PackedStringArray("world_label", "depth_label")]
+[node name="forest" type="Node2D" unique_id=1697064475 node_paths=PackedStringArray("world_label", "depth_label", "animal_container")]
 script = ExtResource("1_yj5dr")
-animal_scenes = Array[PackedScene]([ExtResource("2_0nboi"), ExtResource("3_ercsu"), ExtResource("4_j3csf"), ExtResource("5_dabdc")])
 world_label = NodePath("UILayer/WorldLabel")
 depth_label = NodePath("UILayer/DepthLabel")
+animal_container = NodePath("AnimalContainer")
 
 [node name="forest_bg" type="Sprite2D" parent="." unique_id=1554885587]
 scale = Vector2(0.3, 0.3)
@@ -66,9 +67,15 @@ wait_time = 30.0
 one_shot = true
 autostart = true
 
+[node name="AnimalContainer" type="Node2D" parent="." unique_id=839560710]
+script = ExtResource("13_g34gq")
+animal_scenes = Array[PackedScene]([ExtResource("2_0nboi"), ExtResource("3_ercsu"), ExtResource("4_j3csf"), ExtResource("5_dabdc")])
+screen_margin = 175.0
+
 [node name="UILayer" type="CanvasLayer" parent="." unique_id=1526750841]
 
 [node name="FogOverlay" type="ColorRect" parent="UILayer" unique_id=841183426]
+visible = false
 material = SubResource("ShaderMaterial_ik31s")
 anchors_preset = 15
 anchor_right = 1.0
@@ -88,7 +95,8 @@ unique_name_in_owner = true
 position = Vector2(0, -16.842102)
 scale = Vector2(0.49999997, 0.5)
 
-[node name="FallingBranchComponent" parent="UILayer/sira" unique_id=16414017 instance=ExtResource("12_3akcx")]
+[node name="FallingBranchComponent" parent="UILayer/sira" unique_id=16414017 node_paths=PackedStringArray("forest") instance=ExtResource("12_3akcx")]
+forest = NodePath("../../..")
 
 [node name="WorldLabel" type="Label" parent="UILayer" unique_id=2102028153]
 anchors_preset = 8
