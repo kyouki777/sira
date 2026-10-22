@@ -12,7 +12,7 @@ var day_oxygen_limit:float = 30.0
 var day_branch_fall_time_range:Array[int] = []
 
 func _ready() -> void:
-	current_day = 2
+	current_day = 1
 	if data_days.is_empty():
 		push_error("Data day belum masuk!")
 		return

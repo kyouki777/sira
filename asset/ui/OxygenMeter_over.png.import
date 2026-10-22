@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://opt8xbkivago"
-path="res://.godot/imported/Isi bar.png-2ce6237daf1323d62b913d74f6ec5617.ctex"
+uid="uid://dfpqaehcb0snk"
+path="res://.godot/imported/OxygenMeter_over.png-422f96d58939573362475b9451b70d8d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/Placeholder/Isi bar.png"
-dest_files=["res://.godot/imported/Isi bar.png-2ce6237daf1323d62b913d74f6ec5617.ctex"]
+source_file="res://asset/ui/OxygenMeter_over.png"
+dest_files=["res://.godot/imported/OxygenMeter_over.png-422f96d58939573362475b9451b70d8d.ctex"]
 
 [params]
 

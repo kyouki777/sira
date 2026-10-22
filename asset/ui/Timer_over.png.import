@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cco3encpj544i"
-path="res://.godot/imported/warning.png-382c1628d4a2a9f84936d1217141d762.ctex"
+uid="uid://luxdmu17ajua"
+path="res://.godot/imported/Timer_over.png-d9129fb3c1019b62017c444a14b04160.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/Placeholder/warning.png"
-dest_files=["res://.godot/imported/warning.png-382c1628d4a2a9f84936d1217141d762.ctex"]
+source_file="res://asset/ui/Timer_over.png"
+dest_files=["res://.godot/imported/Timer_over.png-d9129fb3c1019b62017c444a14b04160.ctex"]
 
 [params]
 

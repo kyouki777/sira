@@ -1,8 +1,12 @@
 [gd_scene format=3 uid="uid://cg0a58ncl7l7q"]
 
 [ext_resource type="Script" uid="uid://du1mkiu5j27f2" path="res://scripts/forest_components/falling_branch_component.gd" id="1_toa8f"]
-[ext_resource type="Texture2D" uid="uid://cco3encpj544i" path="res://asset/Placeholder/warning.png" id="2_pinr1"]
-[ext_resource type="Texture2D" uid="uid://04m66hkcm6ii" path="res://icon.svg" id="3_5vqx2"]
+[ext_resource type="Texture2D" uid="uid://b4k62f01hntoe" path="res://asset/ui/Warning.png" id="2_toa8f"]
+[ext_resource type="Texture2D" uid="uid://sb3dahesf6n5" path="res://asset/rumah lamin.png" id="3_toa8f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jbj1t"]
+atlas = ExtResource("3_toa8f")
+region = Rect2(-0.90503883, 255.85194, 32.18639, 32.91597)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gkvnd"]
 size = Vector2(30.409332, 30.778381)
@@ -56,7 +60,7 @@ position = Vector2(0, -151.99733)
 unique_name_in_owner = true
 position = Vector2(0, -123.30622)
 scale = Vector2(0.242, 0.242)
-texture = ExtResource("2_pinr1")
+texture = ExtResource("2_toa8f")
 
 [node name="Branch" type="Area2D" parent="." unique_id=1200242182]
 unique_name_in_owner = true
@@ -64,8 +68,7 @@ position = Vector2(0, -151.99733)
 scale = Vector2(0.99999994, 1)
 
 [node name="BranchSprite" type="Sprite2D" parent="Branch" unique_id=701281665]
-scale = Vector2(0.242, 0.24199997)
-texture = ExtResource("3_5vqx2")
+texture = SubResource("AtlasTexture_jbj1t")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Branch" unique_id=2001156857]
 scale = Vector2(0.99999994, 0.99999994)
