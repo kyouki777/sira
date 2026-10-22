@@ -75,7 +75,6 @@ screen_margin = 175.0
 [node name="UILayer" type="CanvasLayer" parent="." unique_id=1526750841]
 
 [node name="FogOverlay" type="ColorRect" parent="UILayer" unique_id=841183426]
-visible = false
 material = SubResource("ShaderMaterial_ik31s")
 anchors_preset = 15
 anchor_right = 1.0

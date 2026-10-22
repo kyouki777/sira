@@ -14,11 +14,15 @@ func move_towards_room(progress_number:int) -> void:
 		current_animal_in_room.hide()
 	if animal_room_list.has(progress_number):
 		current_animal_in_room = animal_room_list.get(progress_number)
-		if not is_animal_picked_up:
+		if not is_animal_picked_up and current_animal_in_room:
 			current_animal_in_room.show()
 		return
 	# Probability checking here
-	spawn_random_animal(progress_number)
+	var spawn_chance:float = lerp(0.0, 1.0, progress_number / 10.0)
+	if randf() < spawn_chance:
+		spawn_random_animal(progress_number)
+	else:
+		animal_room_list.set(progress_number, null)
 
 func spawn_random_animal(progress_number:int = 5) -> void:
 	if animal_scenes.is_empty():
