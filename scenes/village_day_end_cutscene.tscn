@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://p3hb25iujjx3"]
+
+[ext_resource type="Script" uid="uid://dyk84d2kds0ef" path="res://scripts/village_day_end_cutscene.gd" id="1_642bv"]
+[ext_resource type="Texture2D" uid="uid://5vt8iehp56w" path="res://asset/forest_on_fire.png" id="1_tel3b"]
+
+[node name="village_day_end_cutscene" type="Node2D" unique_id=422175515]
+script = ExtResource("1_642bv")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1223925943]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=1181510907]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_tel3b")

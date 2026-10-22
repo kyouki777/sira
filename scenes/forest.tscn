@@ -56,7 +56,7 @@ region = Rect2(0, 0, 33, 32)
 shader = ExtResource("29_soql2")
 shader_parameter/color = Color(0, 0, 0, 0.7372549)
 shader_parameter/ellipse_width = 0.42000001925148
-shader_parameter/ellipse_height = 1.2000000563014799
+shader_parameter/ellipse_height = 1.20000005630148
 shader_parameter/edge_smoothing = 0.2800000133
 shader_parameter/progress = 0.0
 

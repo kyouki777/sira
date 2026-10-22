@@ -193,7 +193,7 @@ height = 7.998092
 [sub_resource type="CircleShape2D" id="CircleShape2D_ik31s"]
 radius = 11.045361
 
-[node name="player" type="CharacterBody2D" unique_id=373575522 node_paths=PackedStringArray("anim_sprite")]
+[node name="player" type="CharacterBody2D" unique_id=373575522 node_paths=PackedStringArray("anim_sprite") groups=["player"]]
 script = ExtResource("1_g2els")
 anim_sprite = NodePath("AnimatedSprite2D")
 
@@ -216,6 +216,8 @@ position = Vector2(0, -16.842098)
 scale = Vector2(0.7, 0.7)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=880753098 groups=["player"]]
+collision_layer = 0
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=967107047]
 position = Vector2(-1, 8)

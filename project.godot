@@ -47,24 +47,31 @@ directories/dtl_directory={
 "feed_burung_enggang": "res://dialogues/feed_burung_enggang.dtl",
 "feed_kucingmerah": "res://dialogues/feed_kucingmerah.dtl",
 "feed_orangutan": "res://dialogues/feed_orangutan.dtl",
+"have_to_get_in_forest": "res://dialogues/have_to_get_in_forest.dtl",
 "havent_talked_to_jitendra": "res://dialogues/havent_talked_to_jitendra.dtl",
 "jalung": "res://dialogues/jalung.dtl",
 "jitendra1_village": "res://dialogues/jitendra1_village.dtl",
 "jitendra2_village": "res://dialogues/jitendra2_village.dtl",
+"jitendra_day_end": "res://dialogues/jitendra_day_end.dtl",
 "jitendra_option": "res://dialogues/jitendra_option.dtl",
 "kumang": "res://dialogues/kumang.dtl",
+"manajah_antang": "res://dialogues/manajah_antang.dtl",
 "maran": "res://dialogues/maran.dtl",
 "nyanggau": "res://dialogues/nyanggau.dtl",
 "opening_cutscene": "res://dialogues/opening_cutscene.dtl",
-"temenggung_village1": "res://dialogues/temenggung_village1.dtl"
+"temenggung_village1": "res://dialogues/temenggung_village1.dtl",
+"village_day_end_cutscene": "res://dialogues/village_day_end_cutscene.dtl"
 }
-layout/style_directory={}
+layout/style_directory={
+"": "res://default.tres",
+"default": "res://default.tres"
+}
 variables={
 "feeding_animals": false
 }
 glossary/default_case_sensitive=true
-layout/style_list=[]
-layout/default_style="Default"
+layout/style_list=["res://default.tres"]
+layout/default_style="res://default.tres"
 text/letter_speed=0.07
 text/initial_text_reveal_skippable=true
 text/text_reveal_skip_delay=0.1
@@ -157,6 +164,11 @@ dialogic_default_action={
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":0,"pressure":0.0,"pressed":false,"script":null)
 ]
 }
+
+[layer_names]
+
+2d_physics/layer_1="world"
+2d_physics/layer_2="interactables"
 
 [physics]
 

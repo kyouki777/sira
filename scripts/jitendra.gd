@@ -1,6 +1,6 @@
 extends StaticBody2D
 
-var talked_to_jitendra: bool = false
+
 
 var current_dialogue_index: int = 0
 
@@ -16,14 +16,21 @@ func _ready() -> void:
 	interactable.interacted.connect(_on_interacted)
 
 func _on_interacted() -> void:
+	
+	if GameManager.day_end == true:
+		print("player day end")
+		Dialogic.start("jitendra_day_end")
+		return 
+		
 	if ordered_timelines.is_empty():
 		return
 		
-	var chosen_timeline: String = ordered_timelines[current_dialogue_index]
 	
+	var chosen_timeline: String = ordered_timelines[current_dialogue_index]
 	Dialogic.start(chosen_timeline)
+	
 	if current_dialogue_index == 2:
-		talked_to_jitendra = true
+		GameManager.talked_to_jitendra = true
 		print("jitendra all dialogue option finished")
 	
 	if current_dialogue_index < ordered_timelines.size() - 1:

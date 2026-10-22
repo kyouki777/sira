@@ -10,7 +10,13 @@ var tutorial_shown: bool = false
 
 # village stuff
 var player_in_village = true
-var feeding_animals :bool = true
+
+var talked_to_jitendra: bool = false
+var feeding_animals :bool = false
+var day_end : bool = false
+var has_village_day_end_cutscene :bool = false
+var opening_cutscene_played :bool = false
+var can_go_to_main_forest : bool = false
 
 func add_rescued_animal(animal_scene: PackedScene) -> void:
 	if animal_scene:
