@@ -24,7 +24,7 @@
 [ext_resource type="Script" uid="uid://da4dw6gkmy137" path="res://scripts/forest_components/timer_icon.gd" id="18_i1j6r"]
 [ext_resource type="Texture2D" uid="uid://dfpqaehcb0snk" path="res://asset/ui/OxygenMeter_over.png" id="18_lhlip"]
 [ext_resource type="Texture2D" uid="uid://dech4jvn5v0su" path="res://asset/ui/OxygenMeter_progress.png" id="19_37aet"]
-[ext_resource type="Script" uid="uid://dtxh7blc56467" path="res://scenes/tutorial_layer.gd" id="20_3h1w1"]
+[ext_resource type="Script" uid="uid://dtxh7blc56467" path="res://scripts/tutorial_layer.gd" id="20_3h1w1"]
 [ext_resource type="Texture2D" uid="uid://5s50cpmn7c6f" path="res://asset/ui/Timer_under.png" id="24_bjond"]
 [ext_resource type="Texture2D" uid="uid://luxdmu17ajua" path="res://asset/ui/Timer_over.png" id="25_g34gq"]
 [ext_resource type="Texture2D" uid="uid://jim4fhhjfgub" path="res://asset/ui/Timer_progress.png" id="26_soql2"]
