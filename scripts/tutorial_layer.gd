@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-@export var min_display_time: float = 3
+@export var min_display_time: float = 0.0
 @onready var click_overlay: Button = $click_overlay
 @onready var tutorial_layer: CanvasLayer = $"."
 

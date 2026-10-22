@@ -1,25 +1,33 @@
 [gd_scene format=3 uid="uid://djsik0vi5b8k2"]
 
-[ext_resource type="Texture2D" uid="uid://bg5rpsxyvfm76" path="res://asset/fire_image.jpg" id="1_bgcxa"]
 [ext_resource type="Texture2D" uid="uid://dvjkr1210towd" path="res://asset/sira1.png" id="1_xijx7"]
 [ext_resource type="Script" uid="uid://duw3x0lg4m75a" path="res://scripts/forest.gd" id="1_yj5dr"]
 [ext_resource type="PackedScene" uid="uid://dioapn5gqqt8m" path="res://scenes/fire_orangutan.tscn" id="2_0nboi"]
 [ext_resource type="Script" uid="uid://cgenyu5bf5vbb" path="res://scripts/forest_background.gd" id="2_i1yi8"]
 [ext_resource type="PackedScene" uid="uid://bnwh0q1175jdr" path="res://scenes/fire_kucing_merah.tscn" id="3_ercsu"]
 [ext_resource type="PackedScene" uid="uid://cbqfuxbj3glhw" path="res://scenes/fire_enggan.tscn" id="4_j3csf"]
-[ext_resource type="Texture2D" uid="uid://bfqedvwpukbm0" path="res://asset/fire_image2.jpg" id="4_xr56k"]
 [ext_resource type="PackedScene" uid="uid://bf1oo43nimgdh" path="res://scenes/fire_bekantan.tscn" id="5_dabdc"]
 [ext_resource type="Shader" uid="uid://j6akuwd1xb5h" path="res://scripts/forest.gdshader" id="6_i1yi8"]
+[ext_resource type="Texture2D" uid="uid://b2xvsnvxgh5ve" path="res://asset/forest_BG1.png" id="7_di3lw"]
 [ext_resource type="Script" uid="uid://1vy7oncougy4" path="res://scripts/fog_overlay.gd" id="7_i1yi8"]
+[ext_resource type="Texture2D" uid="uid://c8xfu3roiqrhp" path="res://asset/forest_BG2.png" id="8_8wf4g"]
+[ext_resource type="Texture2D" uid="uid://caqlhpu5fubyy" path="res://asset/forest_BG3.png" id="9_lhlip"]
+[ext_resource type="Texture2D" uid="uid://cohkein5y2cph" path="res://asset/forest_BG4.png" id="10_37aet"]
+[ext_resource type="Texture2D" uid="uid://d104rnjpk4s4t" path="res://asset/forest_BG5.png" id="11_bjond"]
 [ext_resource type="PackedScene" uid="uid://cg0a58ncl7l7q" path="res://scenes/falling_branch_component.tscn" id="12_3akcx"]
-[ext_resource type="Texture2D" uid="uid://db6tyro2pm00b" path="res://asset/Placeholder/Bar.png" id="12_dabdc"]
-[ext_resource type="Texture2D" uid="uid://opt8xbkivago" path="res://asset/Placeholder/Isi bar.png" id="13_cf55d"]
-[ext_resource type="Texture2D" uid="uid://04m66hkcm6ii" path="res://icon.svg" id="14_cf55d"]
+[ext_resource type="Texture2D" uid="uid://0vfdt0p737y8" path="res://asset/forest_BG6.png" id="12_g34gq"]
 [ext_resource type="Script" uid="uid://w6kfno1bifv1" path="res://scripts/forest_components/oxygen_meter.gd" id="14_di0nb"]
 [ext_resource type="Script" uid="uid://c73lv581b0mjq" path="res://scripts/forest_components/day_timer_label.gd" id="16_pyn53"]
 [ext_resource type="Script" uid="uid://858mtq1ve4cc" path="res://scripts/forest_components/hewan_counter.gd" id="16_uwbj1"]
+[ext_resource type="Texture2D" uid="uid://dfqxo7qjxxfxh" path="res://asset/ui/OxygenMeter_under.png" id="17_8wf4g"]
+[ext_resource type="FontFile" uid="uid://d15d33cepqxf8" path="res://asset/font/PixelCode.ttf" id="17_bjond"]
 [ext_resource type="Script" uid="uid://da4dw6gkmy137" path="res://scripts/forest_components/timer_icon.gd" id="18_i1j6r"]
+[ext_resource type="Texture2D" uid="uid://dfpqaehcb0snk" path="res://asset/ui/OxygenMeter_over.png" id="18_lhlip"]
+[ext_resource type="Texture2D" uid="uid://dech4jvn5v0su" path="res://asset/ui/OxygenMeter_progress.png" id="19_37aet"]
 [ext_resource type="Script" uid="uid://dtxh7blc56467" path="res://scripts/tutorial_layer.gd" id="20_3h1w1"]
+[ext_resource type="Texture2D" uid="uid://5s50cpmn7c6f" path="res://asset/ui/Timer_under.png" id="24_bjond"]
+[ext_resource type="Texture2D" uid="uid://luxdmu17ajua" path="res://asset/ui/Timer_over.png" id="25_g34gq"]
+[ext_resource type="Texture2D" uid="uid://jim4fhhjfgub" path="res://asset/ui/Timer_progress.png" id="26_soql2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ik31s"]
 shader = ExtResource("6_i1yi8")
@@ -34,15 +42,24 @@ shader_parameter/fade_amount = 0.0
 atlas = ExtResource("1_xijx7")
 region = Rect2(0, 97, 30, 31)
 
-[node name="forest" type="Node2D" unique_id=1697064475 node_paths=PackedStringArray("world_label")]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_37aet"]
+load_path = "res://.godot/imported/animals.png-fbec924d455bb8875dd453d61d7bf51c.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bjond"]
+atlas = SubResource("CompressedTexture2D_37aet")
+region = Rect2(0, 0, 33, 32)
+
+[node name="forest" type="Node2D" unique_id=1697064475 node_paths=PackedStringArray("world_label", "depth_label")]
 script = ExtResource("1_yj5dr")
 animal_scenes = Array[PackedScene]([ExtResource("2_0nboi"), ExtResource("3_ercsu"), ExtResource("4_j3csf"), ExtResource("5_dabdc")])
 world_label = NodePath("UILayer/WorldLabel")
+depth_label = NodePath("UILayer/DepthLabel")
 
 [node name="forest_bg" type="Sprite2D" parent="." unique_id=1554885587]
+scale = Vector2(0.3, 0.3)
 centered = false
 script = ExtResource("2_i1yi8")
-images = Array[Texture2D]([ExtResource("4_xr56k"), ExtResource("1_bgcxa")])
+images = Array[Texture2D]([ExtResource("7_di3lw"), ExtResource("8_8wf4g"), ExtResource("9_lhlip"), ExtResource("10_37aet"), ExtResource("11_bjond"), ExtResource("12_g34gq")])
 
 [node name="time_limit" type="Timer" parent="." unique_id=1439140832]
 wait_time = 30.0
@@ -85,6 +102,8 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("17_bjond")
+theme_override_font_sizes/font_size = 20
 text = "TEXT"
 
 [node name="OxygenMeter" type="TextureProgressBar" parent="UILayer" unique_id=1035267854 node_paths=PackedStringArray("timer_node")]
@@ -94,56 +113,87 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -167.0
-offset_top = -348.5
-offset_right = -11.0
-offset_bottom = 348.5
+offset_left = -96.0
+offset_top = -172.0
+offset_bottom = 212.0
 grow_horizontal = 0
 grow_vertical = 2
-scale = Vector2(0.6, 0.6)
+scale = Vector2(1.1, 1.1)
 pivot_offset_ratio = Vector2(1, 0.5)
 mouse_filter = 2
 max_value = 60.0
-value = 60.0
+value = 40.0
 fill_mode = 3
-texture_over = ExtResource("12_dabdc")
-texture_progress = ExtResource("13_cf55d")
-texture_progress_offset = Vector2(17.22, 11.21)
+texture_under = ExtResource("17_8wf4g")
+texture_over = ExtResource("18_lhlip")
+texture_progress = ExtResource("19_37aet")
 script = ExtResource("14_di0nb")
 timer_node = NodePath("../../time_limit")
 
+[node name="MovementLabel" type="Label" parent="UILayer" unique_id=1816499030]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 29.0
+offset_top = -86.0
+offset_right = 296.0
+offset_bottom = -27.0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("17_bjond")
+theme_override_font_sizes/font_size = 20
+text = "Press W to go deeper
+Press S to back out"
+
+[node name="DepthLabel" type="Label" parent="UILayer" unique_id=1817173675]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 29.0
+offset_top = -126.0
+offset_right = 282.0
+offset_bottom = -98.0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("17_bjond")
+theme_override_font_sizes/font_size = 20
+text = "Forest depth: 100 m"
+
 [node name="HewanContainer" type="HBoxContainer" parent="UILayer" unique_id=1989117289]
-offset_left = 39.0
+offset_left = 40.0
 offset_top = 32.0
-offset_right = 244.0
-offset_bottom = 86.0
+offset_right = 286.0
+offset_bottom = 128.0
 mouse_filter = 2
 
 [node name="HewanIcon" type="TextureRect" parent="UILayer/HewanContainer" unique_id=1367965901]
+custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
 mouse_filter = 2
-texture = ExtResource("14_cf55d")
+texture = SubResource("AtlasTexture_bjond")
 expand_mode = 2
 stretch_mode = 4
 
 [node name="Label" type="Label" parent="UILayer/HewanContainer" unique_id=870014871]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("17_bjond")
+theme_override_font_sizes/font_size = 20
 text = "Animals found:"
 
 [node name="HewanCounter" type="Label" parent="UILayer/HewanContainer" unique_id=872197058]
 unique_name_in_owner = true
 layout_mode = 2
-text = "0/0"
+theme_override_fonts/font = ExtResource("17_bjond")
+theme_override_font_sizes/font_size = 20
+text = "6 / 7"
 script = ExtResource("16_uwbj1")
 
 [node name="TimerContainer" type="HBoxContainer" parent="UILayer" unique_id=877359597]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -170.0
-offset_top = 34.0
-offset_right = -21.0
-offset_bottom = 84.0
+offset_left = -199.0
+offset_top = 32.0
+offset_right = -4.0
+offset_bottom = 128.0
 grow_horizontal = 0
 mouse_filter = 2
 theme_override_constants/separation = 22
@@ -151,33 +201,42 @@ theme_override_constants/separation = 22
 [node name="TimeContainer" type="VBoxContainer" parent="UILayer/TimerContainer" unique_id=1655186411]
 layout_mode = 2
 mouse_filter = 2
+alignment = 1
 
 [node name="Label" type="Label" parent="UILayer/TimerContainer/TimeContainer" unique_id=1014740713]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("17_bjond")
+theme_override_font_sizes/font_size = 20
 text = "TIME LEFT"
 horizontal_alignment = 1
 
 [node name="DayTimerLabel" type="Label" parent="UILayer/TimerContainer/TimeContainer" unique_id=1106861822]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("17_bjond")
+theme_override_font_sizes/font_size = 20
 text = "30"
 horizontal_alignment = 1
 script = ExtResource("16_pyn53")
 
 [node name="TimerIcon" type="TextureProgressBar" parent="UILayer/TimerContainer" unique_id=888264268]
-custom_minimum_size = Vector2(64, 64)
+custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 mouse_filter = 2
 max_value = 60.0
-value = 50.0
+value = 45.0
 fill_mode = 4
+radial_center_offset = Vector2(0, 9.6)
 nine_patch_stretch = true
-texture_progress = ExtResource("14_cf55d")
+texture_under = ExtResource("24_bjond")
+texture_over = ExtResource("25_g34gq")
+texture_progress = ExtResource("26_soql2")
 script = ExtResource("18_i1j6r")
 
 [node name="TutorialLayer" type="CanvasLayer" parent="." unique_id=1662428828]
 process_mode = 3
+visible = false
 script = ExtResource("20_3h1w1")
 
 [node name="click_overlay" type="Button" parent="TutorialLayer" unique_id=428097449]
@@ -187,19 +246,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="movement_label" type="Label" parent="TutorialLayer" unique_id=1816499030]
-offset_left = 144.0
-offset_top = 408.0
-offset_right = 294.0
-offset_bottom = 457.0
-text = "Press W to advance
-Press S to back up"
-
 [node name="click_animal_label" type="Label" parent="TutorialLayer" unique_id=80360435]
 offset_left = 418.0
 offset_top = 249.0
 offset_right = 767.0
 offset_bottom = 298.0
+theme_override_fonts/font = ExtResource("17_bjond")
+theme_override_font_sizes/font_size = 20
 text = "Click on the animal as soon as you find them!"
 
 [node name="branch_label" type="Label" parent="TutorialLayer" unique_id=1615931195]
@@ -207,6 +260,8 @@ offset_left = 42.0
 offset_top = 121.0
 offset_right = 490.0
 offset_bottom = 170.0
+theme_override_fonts/font = ExtResource("17_bjond")
+theme_override_font_sizes/font_size = 20
 text = "Becareful of falling branches and click it before it hits you!"
 
 [node name="oxygen_label" type="Label" parent="TutorialLayer" unique_id=1223987816]
@@ -214,6 +269,8 @@ offset_left = 651.0
 offset_top = 338.0
 offset_right = 1050.0
 offset_bottom = 387.0
+theme_override_fonts/font = ExtResource("17_bjond")
+theme_override_font_sizes/font_size = 20
 text = "Make sure you don't run out of breath in the forest!"
 
 [connection signal="timeout" from="time_limit" to="." method="trigger_gameover"]

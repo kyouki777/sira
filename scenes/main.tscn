@@ -7,8 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://b0mtfbxp6pj40" path="res://scenes/orangutan.tscn" id="5_tbgi4"]
 [ext_resource type="Script" uid="uid://bqsabmco7cmt2" path="res://scripts/animal_sanctuary.gd" id="6_tefeu"]
 [ext_resource type="Script" uid="uid://c73lv581b0mjq" path="res://scripts/forest_components/day_timer_label.gd" id="7_o6xl0"]
-[ext_resource type="Texture2D" uid="uid://04m66hkcm6ii" path="res://icon.svg" id="8_tipki"]
+[ext_resource type="FontFile" uid="uid://d15d33cepqxf8" path="res://asset/font/PixelCode.ttf" id="7_trceg"]
 [ext_resource type="Script" uid="uid://da4dw6gkmy137" path="res://scripts/forest_components/timer_icon.gd" id="9_85g3d"]
+[ext_resource type="Texture2D" uid="uid://5s50cpmn7c6f" path="res://asset/ui/Timer_under.png" id="9_eb6dy"]
+[ext_resource type="Script" uid="uid://858mtq1ve4cc" path="res://scripts/forest_components/hewan_counter.gd" id="10_choun"]
+[ext_resource type="Texture2D" uid="uid://luxdmu17ajua" path="res://asset/ui/Timer_over.png" id="10_trceg"]
+[ext_resource type="Texture2D" uid="uid://jim4fhhjfgub" path="res://asset/ui/Timer_progress.png" id="11_a8y0u"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sugp2"]
 texture = ExtResource("1_0wfyh")
@@ -102,6 +106,13 @@ size = Vector2(100, 26)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ticvn"]
 size = Vector2(182, 138)
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_37aet"]
+load_path = "res://.godot/imported/animals.png-fbec924d455bb8875dd453d61d7bf51c.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jkv2x"]
+atlas = SubResource("CompressedTexture2D_37aet")
+region = Rect2(0, 0, 33, 32)
+
 [node name="main" type="Node2D" unique_id=1126492697]
 script = ExtResource("1_tbgi4")
 
@@ -152,45 +163,87 @@ offset_right = 20.0
 offset_bottom = -51.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_trceg")
+theme_override_font_sizes/font_size = 20
 text = "TEXT"
 horizontal_alignment = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="TimerContainer" type="HBoxContainer" parent="CanvasLayer" unique_id=479993856]
+[node name="HewanContainer" type="HBoxContainer" parent="CanvasLayer" unique_id=166996263]
+offset_left = 40.0
+offset_top = 32.0
+offset_right = 286.0
+offset_bottom = 128.0
+mouse_filter = 2
+
+[node name="HewanIcon" type="TextureRect" parent="CanvasLayer/HewanContainer" unique_id=1259860702]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_jkv2x")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="CanvasLayer/HewanContainer" unique_id=1154718226]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_trceg")
+theme_override_font_sizes/font_size = 20
+text = "Animals found:"
+
+[node name="HewanCounter" type="Label" parent="CanvasLayer/HewanContainer" unique_id=1389448913]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_trceg")
+theme_override_font_sizes/font_size = 20
+text = "6 / 7"
+script = ExtResource("10_choun")
+
+[node name="TimerContainer" type="HBoxContainer" parent="CanvasLayer" unique_id=1338535744]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -170.0
-offset_top = 34.0
-offset_right = -21.0
-offset_bottom = 84.0
+offset_left = -199.0
+offset_top = 32.0
+offset_right = -4.0
+offset_bottom = 128.0
 grow_horizontal = 0
+mouse_filter = 2
 theme_override_constants/separation = 22
 
-[node name="TimeContainer" type="VBoxContainer" parent="CanvasLayer/TimerContainer" unique_id=527818852]
+[node name="TimeContainer" type="VBoxContainer" parent="CanvasLayer/TimerContainer" unique_id=1615263045]
 layout_mode = 2
+mouse_filter = 2
+alignment = 1
 
-[node name="Label" type="Label" parent="CanvasLayer/TimerContainer/TimeContainer" unique_id=414262428]
+[node name="Label" type="Label" parent="CanvasLayer/TimerContainer/TimeContainer" unique_id=329596296]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("7_trceg")
+theme_override_font_sizes/font_size = 20
 text = "TIME LEFT"
 horizontal_alignment = 1
 
-[node name="DayTimerLabel" type="Label" parent="CanvasLayer/TimerContainer/TimeContainer" unique_id=1621615188]
+[node name="DayTimerLabel" type="Label" parent="CanvasLayer/TimerContainer/TimeContainer" unique_id=1717743674]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("7_trceg")
+theme_override_font_sizes/font_size = 20
 text = "30"
 horizontal_alignment = 1
 script = ExtResource("7_o6xl0")
 
-[node name="TimerIcon" type="TextureProgressBar" parent="CanvasLayer/TimerContainer" unique_id=296636794]
-custom_minimum_size = Vector2(64, 64)
+[node name="TimerIcon" type="TextureProgressBar" parent="CanvasLayer/TimerContainer" unique_id=2044924761]
+custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
+mouse_filter = 2
 max_value = 60.0
-value = 50.0
+value = 45.0
 fill_mode = 4
+radial_center_offset = Vector2(0, 9.6)
 nine_patch_stretch = true
-texture_progress = ExtResource("8_tipki")
+texture_under = ExtResource("9_eb6dy")
+texture_over = ExtResource("10_trceg")
+texture_progress = ExtResource("11_a8y0u")
 script = ExtResource("9_85g3d")
 
 [connection signal="body_entered" from="forest_area" to="." method="_on_forest_area_body_entered"]

@@ -11,6 +11,7 @@ var tutorial_shown : bool = false
 @export var animal_scenes: Array[PackedScene] = []
 @onready var time_limit = $time_limit
 @export var world_label :Label
+@export var depth_label:Label
 @onready var hewan_counter: Label = %HewanCounter
 @onready var saved_animal: Sprite2D = %SavedAnimal
 
@@ -34,20 +35,19 @@ func _process(_delta: float) -> void:
 		get_tree().change_scene_to_file("res://scenes/main.tscn")
 
 func move_forward():
-	print("moving forward")
-
 	current_progress += 1
 	#forest_bg.show_random_image()
 	forest_bg.move_deepness(current_progress)
-	print("current progress: ", current_progress)
+	if depth_label:
+		depth_label.text = "Forest depth: %d m" % [current_progress * 100]
 	
 	if current_progress == 5:
 		spawn_random_animal()
 
 func move_backwards():
-	print("moving backwards")
 	current_progress -= 1
-	print("current progress: ", current_progress)
+	if depth_label:
+		depth_label.text = "Forest depth: %d m" % [current_progress * 100]
 	#forest_bg.show_random_image()
 	forest_bg.move_deepness(current_progress)
 
