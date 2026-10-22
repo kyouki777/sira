@@ -1,0 +1,6 @@
+"Orang Utan": orangutan
+if {feeding_animals} == true:
+	- Feed Orang Utan.
+		[signal arg="animal_fed"]
+		*Orang Utan grabs Sira's hand while eating to show his appreciation.*
+	- Later.

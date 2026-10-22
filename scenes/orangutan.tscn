@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bg4w6osg4om5x" path="res://scripts/orangutan.gd" id="1_h5av2"]
 [ext_resource type="Texture2D" uid="uid://bpmfkstp0jabb" path="res://asset/animals.png" id="2_3l62l"]
+[ext_resource type="Script" uid="uid://wgutjkja8iq8" path="res://scripts/interactable.gd" id="2_6mv6m"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ik31s"]
 radius = 25.019993
@@ -17,6 +18,7 @@ radius = 16.0
 script = ExtResource("1_h5av2")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=2093727405]
+script = ExtResource("2_6mv6m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=677219085]
 position = Vector2(0, 4)

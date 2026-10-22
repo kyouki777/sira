@@ -25,15 +25,43 @@ Dialogic="*uid://ds2q0uclmolvu"
 [dialogic]
 
 directories/dch_directory={
+"Ajang": "res://dialogic characters/Ajang.dch",
+"Balian Bawi": "res://dialogic characters/Balian Bawi.dch",
+"Bekantan": "res://dialogic characters/Bekantan.dch",
+"Burung Enggang": "res://dialogic characters/Burung Enggang.dch",
+"Dad": "res://dialogic characters/Dad.dch",
+"Jalung": "res://dialogic characters/Jalung.dch",
 "Jitendra": "res://dialogic characters/Jitendra.dch",
+"Kucing Merah": "res://dialogic characters/Kucing Merah.dch",
+"Kumang": "res://dialogic characters/Kumang.dch",
+"Maran": "res://dialogic characters/Maran.dch",
+"Nyanggau": "res://dialogic characters/Nyanggau.dch",
+"Orang Utan": "res://dialogic characters/Orang Utan.dch",
 "Sira": "res://dialogic characters/Sira.dch"
 }
 directories/dtl_directory={
-"jitendra1_feedinganimals": "res://dialogues/jitendra1_feedinganimals.dtl",
-"opening_cutscene": "res://dialogues/opening_cutscene.dtl"
+"ajang": "res://dialogues/ajang.dtl",
+"balian_village": "res://dialogues/balian_village.dtl",
+"cant_go_in_there": "res://dialogues/cant_go_in_there.dtl",
+"feed_bekantan": "res://dialogues/feed_bekantan.dtl",
+"feed_burung_enggang": "res://dialogues/feed_burung_enggang.dtl",
+"feed_kucingmerah": "res://dialogues/feed_kucingmerah.dtl",
+"feed_orangutan": "res://dialogues/feed_orangutan.dtl",
+"havent_talked_to_jitendra": "res://dialogues/havent_talked_to_jitendra.dtl",
+"jalung": "res://dialogues/jalung.dtl",
+"jitendra1_village": "res://dialogues/jitendra1_village.dtl",
+"jitendra2_village": "res://dialogues/jitendra2_village.dtl",
+"jitendra_option": "res://dialogues/jitendra_option.dtl",
+"kumang": "res://dialogues/kumang.dtl",
+"maran": "res://dialogues/maran.dtl",
+"nyanggau": "res://dialogues/nyanggau.dtl",
+"opening_cutscene": "res://dialogues/opening_cutscene.dtl",
+"temenggung_village1": "res://dialogues/temenggung_village1.dtl"
 }
 layout/style_directory={}
-variables={}
+variables={
+"feeding_animals": false
+}
 glossary/default_case_sensitive=true
 layout/style_list=[]
 layout/default_style="Default"
@@ -88,6 +116,10 @@ folder_colors={
 "res://scenes/": "red",
 "res://scripts/": "red"
 }
+
+[global_group]
+
+player=""
 
 [input]
 

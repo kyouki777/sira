@@ -1,15 +1,14 @@
 extends StaticBody2D
 
+@onready var jitendra: StaticBody2D = $"../../village_interactable/jitendra"
+@onready var interactable : Interactable = $Area2D
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	interactable.interacted.connect(_on_interacted)
 
+func _on_interacted():
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	print("orangutan")
+	if jitendra.talked_to_jitendra and GameManager.player_in_village == true:
+		Dialogic.start("feed_orangutan")
+	else:
+		Dialogic.start("havent_talked_to_jitendra")

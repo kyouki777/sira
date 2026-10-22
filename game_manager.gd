@@ -8,9 +8,18 @@ var current_carried_scene: PackedScene = null
 var current_carried_texture:Texture2D = null
 var tutorial_shown: bool = false
 
+# village stuff
+var player_in_village = true
+var feeding_animals :bool = true
+
 func add_rescued_animal(animal_scene: PackedScene) -> void:
 	if animal_scene:
 		rescued_animals.append(animal_scene)
 		current_carried_scene = null
 		current_carried_texture = null
 		print(rescued_animals)
+
+func feed_animals_started():
+	feeding_animals = true
+	Dialogic.VAR.feeding_animals = true
+	print("feeding animals started")

@@ -1,0 +1,6 @@
+Bekantan: bekantan
+if {feeding_animals} == true:
+	- Feed Bekantan.
+		[signal arg="animal_fed"]
+		*Bekantan jumps happily*
+	- Later.

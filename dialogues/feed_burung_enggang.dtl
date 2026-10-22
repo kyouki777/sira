@@ -1,0 +1,6 @@
+"Burung Enggang": *squawk*!
+if {feeding_animals} == true:
+	- Feed Burung Enggang.
+		[signal arg="animal_fed"]
+		Burung Enggang seems to enjoy the food.
+	- Later.
