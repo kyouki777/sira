@@ -23,6 +23,7 @@ func _process(_delta: float) -> void:
 			if player_node.has_method("drop_animal"):
 				player_node.drop_animal()
 			DayManager.current_animals_saved += 1
+			world_label.text = ""
 			# Check udh semua animal atau belum, kalau udh go to next sequence
 			
 func display_rescued_animals() -> void:

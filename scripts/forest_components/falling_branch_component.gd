@@ -3,7 +3,10 @@ extends Node2D
 signal dead_by_falling_branch
 
 @export var warning_time:float = 2.0
-@export var branch_fall_time:float = 3.0
+@export var branch_fall_time:float = 2.0
+@export var forest: Node2D
+@export var oxygen_timer: Timer
+@export var drama_overlay: ColorRect
 @onready var warning_sprite: Sprite2D = %WarningSprite
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 @onready var warning_timer: Timer = %WarningTimer
@@ -25,13 +28,17 @@ func _ready() -> void:
 	warning_timer.timeout.connect(start_branch_fall_sequence)
 
 func start_warning_sequence():
+	drama_overlay.start_effect()
 	warning_sprite.show()
 	animation_player.play("flashing")
 	warning_timer.start()
+	forest.set_process_input(false)
+	oxygen_timer.paused = true
+	TimeManager.stop_day_timer()
 
 func start_branch_fall_sequence():
 	warning_sprite.hide()
-	var tween:Tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
+	var tween:Tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
 	tween.tween_property(branch, "position", Vector2.ZERO, branch_fall_time)
 	tween.tween_callback(branch_fallen_on_player)
 
@@ -45,4 +52,8 @@ func branch_fallen_on_player():
 func _on_branch_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton and Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		# Add branch destroyed sprite here as sibling but keep this component die
+		forest.set_process_input(true)
+		oxygen_timer.paused = false
+		TimeManager.start_day_timer(false)
+		drama_overlay.end_effect()
 		queue_free()

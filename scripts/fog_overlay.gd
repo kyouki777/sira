@@ -4,7 +4,7 @@ extends ColorRect
 
 func _ready() -> void:
 	fade_timer.one_shot = true # Ensures the timer doesn't restart automatically
-	fade_out_view()
+	#fade_out_view()
 
 func _process(_delta: float) -> void:
 	var screen_size = get_viewport_rect().size

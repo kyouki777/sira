@@ -8,12 +8,11 @@ var target_spawn_step: int = 0
 var tutorial_shown : bool = false
 
 @onready var forest_bg = $forest_bg
-@export var animal_scenes: Array[PackedScene] = []
 @onready var time_limit = $time_limit
 @export var world_label :Label
 @export var depth_label:Label
 @onready var hewan_counter: Label = %HewanCounter
-@onready var saved_animal: Sprite2D = %SavedAnimal
+@export var animal_container: Node2D
 
 func _ready() -> void:
 	GameManager.carrying_animal = false
@@ -22,6 +21,10 @@ func _ready() -> void:
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
+	if current_progress == 0:
+		get_tree().change_scene_to_file("res://scenes/main.tscn")
+
+func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("up"):
 		if not GameManager.carrying_animal:
 			move_forward()
@@ -30,9 +33,6 @@ func _process(_delta: float) -> void:
 
 	if Input.is_action_just_pressed("down"):
 		move_backwards()
-	
-	if current_progress == 0:
-		get_tree().change_scene_to_file("res://scenes/main.tscn")
 
 func move_forward():
 	current_progress += 1
@@ -40,9 +40,7 @@ func move_forward():
 	forest_bg.move_deepness(current_progress)
 	if depth_label:
 		depth_label.text = "Forest depth: %d m" % [current_progress * 100]
-	
-	if current_progress == 5:
-		spawn_random_animal()
+	animal_container.move_towards_room(current_progress)
 
 func move_backwards():
 	current_progress -= 1
@@ -50,6 +48,7 @@ func move_backwards():
 		depth_label.text = "Forest depth: %d m" % [current_progress * 100]
 	#forest_bg.show_random_image()
 	forest_bg.move_deepness(current_progress)
+	animal_container.move_towards_room(current_progress)
 
 #make a function to detect how many animals were found and put it in the main scene. or maybe only save one animal per trip inside the forest
 
@@ -57,39 +56,6 @@ func cant_move_forward():
 	world_label.text = "I can't go in further. I have to bring back the animal I'm carrying."
 	await get_tree().create_timer(3).timeout
 	world_label.text = ""
-	
-func spawn_random_animal() -> void:
-	if animal_scenes.is_empty():
-		push_warning("No animal scenes assigned in animal_scenes array!")
-		return
-
-	var selected_scene: PackedScene = animal_scenes.pick_random()
-
-	var screen_size = get_viewport_rect().size
-	var margin: float = 50.0
-	var random_x = randf_range(margin, screen_size.x - margin)
-	var random_y = randf_range(margin, screen_size.y - margin)
-
-# Scale up for the forest screen view (e.g., 3x or 4x size)
-
-	var animal_instance = selected_scene.instantiate()
-	animal_instance.global_position = Vector2(random_x, random_y)
-	animal_instance.scale = Vector2(3.0, 3.0)
-	
-	# Add child FIRST so owner can be assigned
-	add_child(animal_instance)
-	animal_instance.owner = self
-	
-	# If  animal script or button has an export var for animal_scene:
-	if "animal_scene" in animal_instance:
-		animal_instance.animal_scene = selected_scene
-	elif animal_instance.has_node("TextureButton") and "animal_scene" in animal_instance.get_node("TextureButton"):
-		animal_instance.get_node("TextureButton").animal_scene = selected_scene
-	if animal_instance.has_signal("saved_animal_texture"):
-		animal_instance.saved_animal_texture.connect(take_animal_on_top)
-
-func take_animal_on_top(texture:Texture2D):
-	saved_animal.texture = texture
 
 # Inside forest/exploration scene script when picking up an animal:
 func pick_up_animal(animal_scene: PackedScene) -> void:
@@ -103,5 +69,3 @@ func trigger_gameover():
 
 func _on_falling_branch_component_dead_by_falling_branch() -> void:
 	trigger_gameover()
-
-	

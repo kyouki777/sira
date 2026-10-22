@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://d104rnjpk4s4t" path="res://asset/forest_BG5.png" id="11_bjond"]
 [ext_resource type="PackedScene" uid="uid://cg0a58ncl7l7q" path="res://scenes/falling_branch_component.tscn" id="12_3akcx"]
 [ext_resource type="Texture2D" uid="uid://0vfdt0p737y8" path="res://asset/forest_BG6.png" id="12_g34gq"]
+[ext_resource type="Script" uid="uid://b16ib0qf27cj2" path="res://scripts/forest_components/animal_container.gd" id="13_g34gq"]
 [ext_resource type="Script" uid="uid://w6kfno1bifv1" path="res://scripts/forest_components/oxygen_meter.gd" id="14_di0nb"]
 [ext_resource type="Script" uid="uid://c73lv581b0mjq" path="res://scripts/forest_components/day_timer_label.gd" id="16_pyn53"]
 [ext_resource type="Script" uid="uid://858mtq1ve4cc" path="res://scripts/forest_components/hewan_counter.gd" id="16_uwbj1"]
@@ -28,6 +29,8 @@
 [ext_resource type="Texture2D" uid="uid://5s50cpmn7c6f" path="res://asset/ui/Timer_under.png" id="24_bjond"]
 [ext_resource type="Texture2D" uid="uid://luxdmu17ajua" path="res://asset/ui/Timer_over.png" id="25_g34gq"]
 [ext_resource type="Texture2D" uid="uid://jim4fhhjfgub" path="res://asset/ui/Timer_progress.png" id="26_soql2"]
+[ext_resource type="Shader" uid="uid://cqra6hfc5m0uw" path="res://scripts/branch_fall.gdshader" id="29_soql2"]
+[ext_resource type="Script" uid="uid://c35u1muqb3lsl" path="res://scripts/forest_components/drama_overlay.gd" id="30_u01n2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ik31s"]
 shader = ExtResource("6_i1yi8")
@@ -49,11 +52,19 @@ load_path = "res://.godot/imported/animals.png-fbec924d455bb8875dd453d61d7bf51c.
 atlas = SubResource("CompressedTexture2D_37aet")
 region = Rect2(0, 0, 33, 32)
 
-[node name="forest" type="Node2D" unique_id=1697064475 node_paths=PackedStringArray("world_label", "depth_label")]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g34gq"]
+shader = ExtResource("29_soql2")
+shader_parameter/color = Color(0, 0, 0, 0.7372549)
+shader_parameter/ellipse_width = 0.42000001925148
+shader_parameter/ellipse_height = 1.2000000563014799
+shader_parameter/edge_smoothing = 0.2800000133
+shader_parameter/progress = 0.0
+
+[node name="forest" type="Node2D" unique_id=1697064475 node_paths=PackedStringArray("world_label", "depth_label", "animal_container")]
 script = ExtResource("1_yj5dr")
-animal_scenes = Array[PackedScene]([ExtResource("2_0nboi"), ExtResource("3_ercsu"), ExtResource("4_j3csf"), ExtResource("5_dabdc")])
 world_label = NodePath("UILayer/WorldLabel")
 depth_label = NodePath("UILayer/DepthLabel")
+animal_container = NodePath("AnimalContainer")
 
 [node name="forest_bg" type="Sprite2D" parent="." unique_id=1554885587]
 scale = Vector2(0.3, 0.3)
@@ -65,6 +76,11 @@ images = Array[Texture2D]([ExtResource("7_di3lw"), ExtResource("8_8wf4g"), ExtRe
 wait_time = 30.0
 one_shot = true
 autostart = true
+
+[node name="AnimalContainer" type="Node2D" parent="." unique_id=839560710]
+script = ExtResource("13_g34gq")
+animal_scenes = Array[PackedScene]([ExtResource("2_0nboi"), ExtResource("3_ercsu"), ExtResource("4_j3csf"), ExtResource("5_dabdc")])
+screen_margin = 175.0
 
 [node name="UILayer" type="CanvasLayer" parent="." unique_id=1526750841]
 
@@ -88,7 +104,10 @@ unique_name_in_owner = true
 position = Vector2(0, -16.842102)
 scale = Vector2(0.49999997, 0.5)
 
-[node name="FallingBranchComponent" parent="UILayer/sira" unique_id=16414017 instance=ExtResource("12_3akcx")]
+[node name="FallingBranchComponent" parent="UILayer/sira" unique_id=16414017 node_paths=PackedStringArray("forest", "oxygen_timer", "drama_overlay") instance=ExtResource("12_3akcx")]
+forest = NodePath("../../..")
+oxygen_timer = NodePath("../../../time_limit")
+drama_overlay = NodePath("../../DramaOverlay")
 
 [node name="WorldLabel" type="Label" parent="UILayer" unique_id=2102028153]
 anchors_preset = 8
@@ -163,6 +182,7 @@ offset_top = 32.0
 offset_right = 286.0
 offset_bottom = 128.0
 mouse_filter = 2
+theme_override_constants/separation = 20
 
 [node name="HewanIcon" type="TextureRect" parent="UILayer/HewanContainer" unique_id=1367965901]
 custom_minimum_size = Vector2(96, 96)
@@ -172,13 +192,16 @@ texture = SubResource("AtlasTexture_bjond")
 expand_mode = 2
 stretch_mode = 4
 
-[node name="Label" type="Label" parent="UILayer/HewanContainer" unique_id=870014871]
+[node name="HBoxContainer" type="HBoxContainer" parent="UILayer/HewanContainer" unique_id=2048065888]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UILayer/HewanContainer/HBoxContainer" unique_id=870014871]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("17_bjond")
 theme_override_font_sizes/font_size = 20
 text = "Animals found:"
 
-[node name="HewanCounter" type="Label" parent="UILayer/HewanContainer" unique_id=872197058]
+[node name="HewanCounter" type="Label" parent="UILayer/HewanContainer/HBoxContainer" unique_id=872197058]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("17_bjond")
@@ -233,6 +256,16 @@ texture_under = ExtResource("24_bjond")
 texture_over = ExtResource("25_g34gq")
 texture_progress = ExtResource("26_soql2")
 script = ExtResource("18_i1j6r")
+
+[node name="DramaOverlay" type="ColorRect" parent="UILayer" unique_id=1753537358]
+material = SubResource("ShaderMaterial_g34gq")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("30_u01n2")
 
 [node name="TutorialLayer" type="CanvasLayer" parent="." unique_id=1662428828]
 process_mode = 3
