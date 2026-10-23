@@ -1,0 +1,14 @@
+extends Control
+func _ready():
+	# Ensure menu is hidden at start
+	hide()
+	process_mode = Node.PROCESS_MODE_PAUSABLE # Or Node.PROCESS_MODE_ALWAYS
+
+func _on_resume_button_pressed():
+	hide()
+	get_tree().paused = false
+
+func _on_quit_button_pressed():
+	hide()
+	get_tree().paused = false
+	get_tree().quit()   
