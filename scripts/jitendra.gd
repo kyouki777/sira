@@ -3,6 +3,7 @@ extends StaticBody2D
 
 
 var current_dialogue_index: int = 0
+var jitendra_manuk_pansuh_played : bool = false
 
 @onready var interactable: Interactable = $Area2D
 
@@ -21,6 +22,11 @@ func _on_interacted() -> void:
 		print("player day end")
 		Dialogic.start("jitendra_day_end")
 		return 
+		
+	if GameManager.manuk_pansuh_acquired == true and jitendra_manuk_pansuh_played == false:
+		Dialogic.start("jitendra_manuk_pansuh")
+		print("jitendra manuk pansuh dialogue playing")
+		jitendra_manuk_pansuh_played = true
 		
 	if ordered_timelines.is_empty():
 		return

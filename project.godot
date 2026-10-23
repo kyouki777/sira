@@ -54,6 +54,7 @@ directories/dtl_directory={
 "jitendra1_village": "res://dialogues/jitendra1_village.dtl",
 "jitendra2_village": "res://dialogues/jitendra2_village.dtl",
 "jitendra_day_end": "res://dialogues/jitendra_day_end.dtl",
+"jitendra_manuk_pansuh": "res://jitendra_manuk_pansuh.dtl",
 "jitendra_option": "res://dialogues/jitendra_option.dtl",
 "kumang": "res://dialogues/kumang.dtl",
 "manajah_antang": "res://dialogues/manajah_antang.dtl",

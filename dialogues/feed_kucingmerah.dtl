@@ -1,7 +1,15 @@
-"Kucing Merah": kucing merah
+"Kucing Merah": Meow.
+Sira: (This is... a newcomer. Jitendra likes to call her kucing merah or Kume.)
 if {feeding_animals} == true:
-	Feed?
-	- Feed Kucing Merah.
+	Sira: (Kume came in waltzing into the village one day and stole our fishes.)
+	Sira: (We've never really seen a species like her.)
+	Sira: (She very fiesty, but comes around skittishly for food anyway.)
+	Sira: (I hope more of Kume's family visits us so me and Jitendra can learn about them.)
+	Sira: (Maybe now I can pet her...)
+	"Kucing Merah": *HIIISSSSS*!
+	Sira: (Nevermind.)
+	- Feed Kume.
 		[signal arg="animal_fed"]
-		*Kucing Merah seems happy*
+		*Kume chomps on the fish then bolts away*
 	- Later.
+		Sira: I'll feed her later.

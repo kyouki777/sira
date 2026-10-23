@@ -17,6 +17,7 @@ var day_end : bool = false
 var has_village_day_end_cutscene :bool = false
 var opening_cutscene_played :bool = false
 var can_go_to_main_forest : bool = false
+var manuk_pansuh_acquired : bool = false
 
 func add_rescued_animal(animal_scene: PackedScene) -> void:
 	if animal_scene:

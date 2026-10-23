@@ -1,8 +1,13 @@
-Bekantan: bekantan
+Bekantan: *looks at Sira expectingly*
+Sira: (This is Melati. She's a bekantan.)
 if {feeding_animals} == true:
+	Sira: (Melati loves to swim with Jitendra.)
+	Sira: (She's a great swimmer and would often pull us from the river to avoid crocodiles despite her shy nature.)
+	Sira: (She sometimes strays into our long house and panics whenever she can't get out again.)
+	Sira: (I wonder if she was trying to find Jitendra in there.)
 	- Feed Bekantan.
 		[signal arg="animal_fed"]
-		*Bekantan jumps happily*
-		*it pushes its nose to the side while eating*
+		*Melati jumps happily*
+		*She pushes its her nose to the side while eating the unriped food*
 	- Later.
-		Sira: <Empty Text Event>
+		Sira: I'll feed her later.

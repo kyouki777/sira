@@ -117,10 +117,14 @@ func _on_dialogic_signal_event(argument:String) -> void:
 		hewan_fed_counter.text = "%s / %s" % [animal_fed_count, total_animal_need_food]
 	
 	if argument == "day_end":
-		player.can_move = false
+		player.can_move = false #animation not playing yet
 		animation_player.play("cutscene_fadeout")
 		await animation_player.animation_finished
 		get_tree().change_scene_to_file("res://scenes/village_day_end_cutscene.tscn")
+	
+	if argument == "manuk_pansuh":
+		GameManager.manuk_pansuh_acquired = true
+		print("manuk pansuh acquired")
 	
 func after_village_day_end_cutscene():
 	await Dialogic.timeline_ended

@@ -9,6 +9,6 @@ if {feeding_animals} == true:
 	Sira: (Sometimes I see Mr. Pisang voluntarily bringing injured animals to Jitendra so he could help them.)
 	- Feed Orang Utan.
 		[signal arg="animal_fed"]
-		*Mr. Pisang grabs Sira's hand while eating to show his appreciation.*
+		*Mr. Pisang grabs Sira's hand while eating the fruit to show his appreciation.*
 	- Later.
 		Sira: (I'll feed him later.)
