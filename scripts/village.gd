@@ -20,10 +20,7 @@ extends Node2D
 @onready var enter_game_area: Area2D = $enter_game_area
 
 
-#@export var player_scene: PackedScene = preload("res://scenes/player.tscn")
-
-
-var animal_fed_count: int = 0
+var animal_fed_count: int = 4
 var total_animal_need_food : int = 4
 
 
@@ -36,17 +33,18 @@ func _ready() -> void:
 	village_interactable.visible = false
 	player.player_camera_off()
 	cutscene_black.visible = true
+	#skip_opening_cutscene()
 	#PROBLEM HERE IDKKKKKKKKKK
-	#if GameManager.has_village_day_end_cutscene == true:
-		##after_village_day_end_cutscene()
-		#print("ready after village cutscene")
+	if GameManager.has_village_day_end_cutscene == true:
+		after_village_day_end_cutscene()
+		print("ready after village cutscene")
 		#
-	if GameManager.opening_cutscene_played == false:
+	elif GameManager.opening_cutscene_played == false:
 		play_opening_cutscene()
 		print("ready opening cutscene")
-	#else:
-		#skip_opening_cutscene()
-		#print("ready skip")
+	else:
+		skip_opening_cutscene()
+		print("ready skip")
 func _process(delta: float) -> void:
 	if animal_fed_count == 4:
 		GameManager.day_end = true
@@ -72,7 +70,7 @@ func skip_opening_cutscene():
 	
 func play_opening_cutscene(): #doing it the hard way yuh pls dont change
 	GameManager.opening_cutscene_played = true
-	#enter_game_area.monitoring = false
+	enter_game_area.monitoring = false
 	player.can_move = false
 	animation_player.play("cutscene_fadein")
 	await animation_player.animation_finished
@@ -96,39 +94,43 @@ func play_opening_cutscene(): #doing it the hard way yuh pls dont change
 	animation_player.play("cutscene_fadein")
 	await animation_player.animation_finished
 	player.can_move = true
-	#enter_game_area.monitoring = true
+	enter_game_area.monitoring = true
 	
 #FIX THE DETECTION
-#func _on_enter_game_area_body_entered(body: Node2D) -> void:
-	#print("player in go to forest area")
-	#if not player.can_move:
-		#return
-	#var distance = global_position.distance_to(body.global_position)
-	#print("Player triggered area at distance: ", distance)
-	#if body.is_in_group("player"):
-		#print("player group detected")
-		#if GameManager.can_go_to_main_forest == true:
-			#GameManager.player_in_village = false
-			#get_tree().change_scene_to_file("res://scenes/main.tscn")
-		#else:
-			#Dialogic.start("cant_go_in_there")
+func _on_enter_game_area_body_entered(body: Node2D) -> void:
+	print("player in go to forest area")
+	if not player.can_move:
+		return
+	var distance = global_position.distance_to(body.global_position)
+	print("Player triggered area at distance: ", distance)
+	if body.is_in_group("player"):
+		print("player group detected")
+		if GameManager.can_go_to_main_forest == true:
+			GameManager.player_in_village = false
+			get_tree().change_scene_to_file("res://scenes/main.tscn")
+		else:
+			Dialogic.start("cant_go_in_there")
 		
 func _on_dialogic_signal_event(argument:String) -> void:
 	if argument == "animal_fed":
 		animal_fed_count += 1
 		hewan_fed_counter.text = "%s / %s" % [animal_fed_count, total_animal_need_food]
 	
-	#if argument == "day_end":
-		#get_tree().change_scene_to_file("res://scenes/village_day_end_cutscene.tscn")
-	#
-#func after_village_day_end_cutscene():
-	#skip_opening_cutscene()
-	#GameManager.has_village_day_end_cutscene = true
-	#village_interactable.queue_free()
-	#animals_interactable.queue_free()
-	#canvas_modulate.visible = true
-	#GameManager.can_go_to_main_forest = true
-	#Dialogic.start("have_to_get_in_forest")
-	#print("after village day end cutscene")
+	if argument == "day_end":
+		player.can_move = false
+		animation_player.play("cutscene_fadeout")
+		await animation_player.animation_finished
+		get_tree().change_scene_to_file("res://scenes/village_day_end_cutscene.tscn")
+	
+func after_village_day_end_cutscene():
+	await Dialogic.timeline_ended
+	skip_opening_cutscene()
+	player.can_move = true
+	village_interactable.queue_free()
+	animals_interactable.queue_free()
+	canvas_modulate.visible = true
+	GameManager.can_go_to_main_forest = true
+	Dialogic.start("have_to_get_in_forest")
+	print("after village day end cutscene")
 	
 	

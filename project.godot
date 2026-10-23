@@ -40,6 +40,7 @@ directories/dch_directory={
 "Sira": "res://dialogic characters/Sira.dch"
 }
 directories/dtl_directory={
+"after_village_day_end_cutscene": "res://after_village_day_end_cutscene.dtl",
 "ajang": "res://dialogues/ajang.dtl",
 "balian_village": "res://dialogues/balian_village.dtl",
 "cant_go_in_there": "res://dialogues/cant_go_in_there.dtl",

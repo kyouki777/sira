@@ -3,4 +3,6 @@ if {feeding_animals} == true:
 	- Feed Bekantan.
 		[signal arg="animal_fed"]
 		*Bekantan jumps happily*
+		*it pushes its nose to the side while eating*
 	- Later.
+		Sira: <Empty Text Event>

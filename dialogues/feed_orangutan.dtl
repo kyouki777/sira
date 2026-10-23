@@ -1,6 +1,14 @@
-"Orang Utan": orangutan
+"Orang Utan": ...
+Sira: (This is Mr. Pisang. He's an orangutan.)
 if {feeding_animals} == true:
+	Sira: (Jitendra found him alone in the forest without a mother.)
+	Sira: (Usually, young orang utans depend on their mothers until they reach around 7-8 years of age.)
+	Sira: (He's all grown up now, but Jitendra basically raised him like his own child.)
+	Sira: (Mr. Pisang doesn't seem to care about everyone else except for Jitendra.)
+	Sira: (Sometimes the people here think orang utans can speak and understand human language, but they chose not to.)
+	Sira: (Sometimes I see Mr. Pisang voluntarily bringing injured animals to Jitendra so he could help them.)
 	- Feed Orang Utan.
 		[signal arg="animal_fed"]
-		*Orang Utan grabs Sira's hand while eating to show his appreciation.*
+		*Mr. Pisang grabs Sira's hand while eating to show his appreciation.*
 	- Later.
+		Sira: (I'll feed him later.)
