@@ -31,10 +31,6 @@ scene = ExtResource("5_a3w1p")
 [sub_resource type="Resource" id="Resource_2gcds"]
 script = ExtResource("2_64s0f")
 scene = ExtResource("6_av0bt")
-overrides = {
-"name_label_font": "\"res://asset/font/PixelCode.ttf\"",
-"normal_font": "\"res://asset/font/PixelCode.ttf\""
-}
 
 [sub_resource type="Resource" id="Resource_h5iqa"]
 script = ExtResource("2_64s0f")

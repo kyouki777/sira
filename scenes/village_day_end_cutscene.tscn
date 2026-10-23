@@ -2,9 +2,11 @@
 
 [ext_resource type="Script" uid="uid://dyk84d2kds0ef" path="res://scripts/village_day_end_cutscene.gd" id="1_642bv"]
 [ext_resource type="Texture2D" uid="uid://5vt8iehp56w" path="res://asset/forest_on_fire.png" id="1_tel3b"]
+[ext_resource type="PackedScene" uid="uid://dsn1b0r7xuxgx" path="res://scenes/village.tscn" id="2_nno26"]
 
 [node name="village_day_end_cutscene" type="Node2D" unique_id=422175515]
 script = ExtResource("1_642bv")
+village_scene = ExtResource("2_nno26")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1223925943]
 

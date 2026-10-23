@@ -59,8 +59,7 @@ directories/dtl_directory={
 "maran": "res://dialogues/maran.dtl",
 "nyanggau": "res://dialogues/nyanggau.dtl",
 "opening_cutscene": "res://dialogues/opening_cutscene.dtl",
-"temenggung_village1": "res://dialogues/temenggung_village1.dtl",
-"village_day_end_cutscene": "res://dialogues/village_day_end_cutscene.dtl"
+"temenggung_village1": "res://dialogues/temenggung_village1.dtl"
 }
 layout/style_directory={
 "": "res://default.tres",

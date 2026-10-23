@@ -1,22 +1,15 @@
-extends Node2D
+extends StaticBody2D
+
+@onready var jitendra: StaticBody2D = $"../../village_interactable/jitendra"
+@onready var interactable : Interactable = $Area2D
 
 func _ready() -> void:
-	
-	if Dialogic.current_timeline:
-		Dialogic.end_timeline()
-	
-	
-	await get_tree().process_frame
-	await get_tree().process_frame
-	
-	
-	Dialogic.timeline_ended.connect(_on_dialogic_timeline_ended)
-	Dialogic.start("village_day_end_cutscene")
+	interactable.interacted.connect(_on_interacted)
 
-func _on_dialogic_timeline_ended() -> void:
-	if Dialogic.timeline_ended.is_connected(_on_dialogic_timeline_ended):
-		Dialogic.timeline_ended.disconnect(_on_dialogic_timeline_ended)
-	
-	GameManager.has_village_day_end_cutscene = true
-	GameManager.opening_cutscene_played = true
-	get_tree().change_scene_to_file("res://scenes/village.tscn")
+func _on_interacted():
+
+	if GameManager.talked_to_jitendra and GameManager.player_in_village == true:
+		Dialogic.start("maran")
+		
+	else:
+		Dialogic.start("havent_talked_to_jitendra")
