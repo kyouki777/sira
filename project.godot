@@ -68,7 +68,8 @@ layout/style_directory={
 "default": "res://default.tres"
 }
 variables={
-"feeding_animals": false
+"feeding_animals": false,
+"manuk_pansuh": false
 }
 glossary/default_case_sensitive=true
 layout/style_list=["res://default.tres"]
