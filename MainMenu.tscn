@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://cfd3sut7dfigr"]
+
+[ext_resource type="Script" uid="uid://bw30mhhyggx2a" path="res://MainMenu.gd" id="1_i26rj"]
+
+[node name="MainMenu" type="Control" unique_id=1214874973]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i26rj")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=140430405]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.48235294, 0.5921569, 0.16078432, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=2010384515]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1156070105]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="PlayButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1277223646]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/PlayButton" unique_id=2106455741]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 16
+text = "Play"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SettingsButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=337937512]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/SettingsButton" unique_id=221136732]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 16
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=180437659]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/QuitButton" unique_id=1301822589]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 16
+text = "Quit"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

@@ -194,6 +194,7 @@ height = 7.998092
 radius = 11.045361
 
 [node name="player" type="CharacterBody2D" unique_id=373575522 node_paths=PackedStringArray("anim_sprite") groups=["player"]]
+y_sort_enabled = true
 script = ExtResource("1_g2els")
 anim_sprite = NodePath("AnimatedSprite2D")
 
@@ -201,9 +202,9 @@ anim_sprite = NodePath("AnimatedSprite2D")
 sprite_frames = SubResource("SpriteFrames_ik31s")
 animation = &"idle_down"
 frame_progress = 0.55082566
+offset = Vector2(0, -13)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1345408741]
-position = Vector2(-1, 9)
 rotation = 1.5926329
 shape = SubResource("CapsuleShape2D_ik31s")
 
@@ -220,7 +221,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=967107047]
-position = Vector2(-1, 8)
+position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_ik31s")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_interaction_area_area_entered"]

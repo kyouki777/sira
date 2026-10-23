@@ -33,18 +33,17 @@ func _ready() -> void:
 	village_interactable.visible = false
 	player.player_camera_off()
 	cutscene_black.visible = true
-	#skip_opening_cutscene()
-	#PROBLEM HERE IDKKKKKKKKKK
-	if GameManager.has_village_day_end_cutscene == true:
-		after_village_day_end_cutscene()
-		print("ready after village cutscene")
-		#
-	elif GameManager.opening_cutscene_played == false:
-		play_opening_cutscene()
-		print("ready opening cutscene")
-	else:
-		skip_opening_cutscene()
-		print("ready skip")
+	skip_opening_cutscene()
+	#if GameManager.has_village_day_end_cutscene == true:
+		#after_village_day_end_cutscene()
+		#print("ready after village cutscene")
+		##
+	#elif GameManager.opening_cutscene_played == false:
+		#play_opening_cutscene()
+		#print("ready opening cutscene")
+	#else:
+		#skip_opening_cutscene()
+		#print("ready skip")
 func _process(delta: float) -> void:
 	if animal_fed_count == 4:
 		GameManager.day_end = true
