@@ -20,7 +20,7 @@ extends Node2D
 @onready var enter_game_area: Area2D = $enter_game_area
 
 
-var animal_fed_count: int = 4
+var animal_fed_count: int = 0
 var total_animal_need_food : int = 4
 
 
@@ -34,16 +34,16 @@ func _ready() -> void:
 	player.player_camera_off()
 	cutscene_black.visible = true
 	skip_opening_cutscene()
-	#if GameManager.has_village_day_end_cutscene == true:
-		#after_village_day_end_cutscene()
-		#print("ready after village cutscene")
-		##
-	#elif GameManager.opening_cutscene_played == false:
-		#play_opening_cutscene()
-		#print("ready opening cutscene")
-	#else:
-		#skip_opening_cutscene()
-		#print("ready skip")
+	if GameManager.has_village_day_end_cutscene == true:
+		after_village_day_end_cutscene()
+		print("ready after village cutscene")
+		#
+	elif GameManager.opening_cutscene_played == false:
+		play_opening_cutscene()
+		print("ready opening cutscene")
+	else:
+		skip_opening_cutscene()
+		print("ready skip")
 func _process(delta: float) -> void:
 	if animal_fed_count == 4:
 		GameManager.day_end = true
@@ -118,6 +118,7 @@ func _on_dialogic_signal_event(argument:String) -> void:
 	if argument == "day_end":
 		player.can_move = false #animation not playing yet
 		animation_player.play("cutscene_fadeout")
+		print("cutscene fadeout day end")
 		await animation_player.animation_finished
 		get_tree().change_scene_to_file("res://scenes/village_day_end_cutscene.tscn")
 	

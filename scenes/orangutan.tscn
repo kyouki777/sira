@@ -17,7 +17,7 @@ atlas = ExtResource("2_3l62l")
 region = Rect2(0, 0, 33, 32)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ticvn"]
-radius = 16.0
+radius = 8.0
 
 [node name="orangutan" type="StaticBody2D" unique_id=161613774]
 script = ExtResource("1_h5av2")
@@ -39,7 +39,7 @@ texture = SubResource("AtlasTexture_rvtvs")
 texture = SubResource("AtlasTexture_ik31s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=326830716]
-position = Vector2(0, 3)
+position = Vector2(0, 8)
 shape = SubResource("CircleShape2D_ticvn")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

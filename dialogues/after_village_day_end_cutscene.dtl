@@ -1,0 +1,53 @@
+Sira: (Me and Jitendra head back to the long house earlier than usual after completing our daily tasks.)
+Sira: (I lay down on my bed with a sigh and stare at the wooden ceiling.)
+Sira: (Today's events fills my mind like a pesut circling around.)
+Sira: (From the moment when the sun barely peeked over the horizon while I sneaked into the Sacred Forest.)
+Sira: (When my father found me and scolded me for hours.)
+Sira: (When I couldn't stand the stares coming from everyone before the Manajah Antang ceremony started and I left to be somewhere alone.)
+Sira: (When Jitendra encouraged me to talk to everyone, and-)
+Sira: (They didn't really hate me.)
+Sira: (Except, maybe, my father's usual cold demeanor.)
+Sira: (But after talking to each of them, I realised that perhaps I was a bit too harsh of myself.)
+Sira: (I was too harsh to this village.)
+Sira: (My dad, Balian Bawi, my friends, and even the wild animals that accidentally became part of our family.)
+Sira: (A warm feeling filled my chest to the brim like it was going to pour out from the glass.)
+Sira: (One day, I'm going to explore the outside world and learn what's out there.)
+Sira: (Or maybe even find a new place to stay so I can be independent.)
+Sira: (But for now.)
+Sira: (This is my home.)
+Jitendra: What are you smiling like an idiot for?
+Sira: Thinking of how to make you fall from the tree again for being nosy.
+Jitendra: Ouch, I don't have enough legs left to break. Have some mercy,[pause=1] please?
+*Sira tilts her head to the side and looks at Jitendra in the dim sunset light*
+*a soft expression spreads over his face like a blanket upon meeting her gaze*
+Sira: Shut up. I'm trying to sleep.
+Jitendra: Sira.
+Sira: What?
+Jitendra: ...
+Jitendra: Nevermind.
+Jitendra: Let's go to sleep, yeah? There's a lot we need to do tomorrow.
+Sira: Alright.
+Sira: *yawns*
+*Sira turns her back on him and falls asleep almost immediately*
+*the rest of the village pours into the house one by one to end their day*
+*moonlight shines over the quiet village*
+*and critters of the forest start to begin their nocturnal activities*
+*but far in the distance*
+*was something spreading rapidly and consuming everything on its path*
+*the disaster that weighed on Sira's heart throughout the day*
+[wait time="5.0"]
+Sira!
+Sira wake up!
+Jitendra: Sira!!!
+*Sira blinks her eyes open groggily*
+Sira: Jiji? What's wrong?
+Jitendra: The forest is on fire!
+Sira: What?
+[signal arg="fade_out"]
+audio "res://asset/sound/forest_fire.mp3"
+Sira: !!!
+Jitendra: The others are already heading out to grab water, but the animals!
+Jitendra: They're caught up in the fire!
+*Sira jumps out of her bed and runs outside*
+[background arg="#000000ff" fade="3.0" wait="true"]
+[signal arg="village_day_end_cutscene_end"]
