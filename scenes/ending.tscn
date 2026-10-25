@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://kg0bbawwp78u"]
+
+[ext_resource type="Script" uid="uid://dgaidykxekf2r" path="res://scripts/ending.gd" id="1_mqjok"]
+
+[node name="ending" type="Node2D" unique_id=449698210]
+script = ExtResource("1_mqjok")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=918215145]
