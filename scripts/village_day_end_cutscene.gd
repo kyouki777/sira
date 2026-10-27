@@ -1,9 +1,10 @@
 extends Node2D
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var color_rect: ColorRect = $CanvasLayer/ColorRect
 
 func _ready() -> void:
-
+	color_rect.visible = true
 	#Dialogic.timeline_ended.connect(_on_dialogic_timeline_ended)
 	Dialogic.signal_event.connect(_on_dialogic_signal_event)
 

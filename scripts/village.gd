@@ -19,21 +19,25 @@ extends Node2D
 @onready var world_village_label: Label = $CanvasLayer/world_village_label
 @onready var enter_game_area: Area2D = $enter_game_area
 
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 var animal_fed_count: int = 0
-var total_animal_need_food : int = 4
-
+var total_animal_need_food : int = 5
+var day_end_triggered: bool = false
 
 func _ready() -> void:
 	#print("opening cutscene off")
 	hewan_fed_counter_container.visible = false
 	world_village_label.text = ""
 	Dialogic.signal_event.connect(_on_dialogic_signal_event)
+	world_camera.enabled = true
 	
 	village_interactable.visible = false
 	player.player_camera_off()
 	cutscene_black.visible = true
-	skip_opening_cutscene()
+	
+	#skip_opening_cutscene() #dont forget to comment this
+	
 	if GameManager.has_village_day_end_cutscene == true:
 		after_village_day_end_cutscene()
 		print("ready after village cutscene")
@@ -44,8 +48,15 @@ func _ready() -> void:
 	else:
 		skip_opening_cutscene()
 		print("ready skip")
+		
+		
 func _process(delta: float) -> void:
-	if animal_fed_count == 4:
+	if animal_fed_count == total_animal_need_food and not day_end_triggered:
+		day_end_triggered = true
+		print("day ending")
+		Dialogic.start("report_to_jitendra")
+		await Dialogic.timeline_ended
+		
 		GameManager.day_end = true
 		GameManager.feeding_animals = false
 		
@@ -55,8 +66,8 @@ func _process(delta: float) -> void:
 	else:
 		hewan_fed_counter_container.visible = false
 
-		
 func skip_opening_cutscene():
+	print("skip opening func")
 	cutscene_black.visible = false
 	player.player_camera_on()
 	village_interactable.visible = true
@@ -67,22 +78,44 @@ func skip_opening_cutscene():
 	sira_cutscene.visible = false
 	player.can_move = true
 	
+	
+# Tween helper functions for screen fades
+func fade_out(duration: float = 1.0) -> void:
+	cutscene_black.visible = true
+	cutscene_black.modulate.a = 0.0
+	var tween = create_tween()
+	tween.tween_property(cutscene_black, "modulate:a", 1.0, duration)
+	await tween.finished
+
+func fade_in(duration: float = 1.0) -> void:
+	cutscene_black.visible = true
+	cutscene_black.modulate.a = 1.0
+	var tween = create_tween()
+	tween.tween_property(cutscene_black, "modulate:a", 0.0, duration)
+	await tween.finished
+	cutscene_black.visible = false
+
+
 func play_opening_cutscene(): #doing it the hard way yuh pls dont change
 	GameManager.opening_cutscene_played = true
 	enter_game_area.monitoring = false
 	player.can_move = false
-	animation_player.play("cutscene_fadein")
+	
+	animation_player.play("cutscene_fadeincamera")
 	await animation_player.animation_finished
+	print("fade in finished")
+	
+	# Freeze animation state so camera stays at the dragged position without snapping back
+	animation_player.stop(true)
 	cutscene_black.visible = false
-	animation_player.stop()
 	
-	#Dialogic.start("opening_cutscene")
-	#await Dialogic.timeline_ended
-	player.can_move = false
+	Dialogic.start("opening_cutscene")
+	await Dialogic.timeline_ended
+	player.can_move = false # cancels out player's after dialogic can move func
 	
-	cutscene_black.visible = true
-	animation_player.play("cutscene_fadeout")
-	await animation_player.animation_finished
+	# Fade Out to black 
+	await fade_out(1.0)
+	
 	village_interactable.visible = true
 	world_camera.enabled = false
 	jitendra_cutscene.visible = false
@@ -90,10 +123,13 @@ func play_opening_cutscene(): #doing it the hard way yuh pls dont change
 	sira_cutscene.visible = false
 	
 	player.player_camera_on()
-	animation_player.play("cutscene_fadein")
-	await animation_player.animation_finished
+	
+	# Fade In to gameplay
+	await fade_in(1.0)
+	
 	player.can_move = true
 	enter_game_area.monitoring = true
+	
 	
 #FIX THE DETECTION
 func _on_enter_game_area_body_entered(body: Node2D) -> void:
@@ -128,6 +164,7 @@ func _on_dialogic_signal_event(argument:String) -> void:
 	
 func after_village_day_end_cutscene():
 	await Dialogic.timeline_ended
+	audio_stream_player.stop()
 	skip_opening_cutscene()
 	player.can_move = true
 	village_interactable.queue_free()

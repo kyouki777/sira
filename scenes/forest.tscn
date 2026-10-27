@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://0vfdt0p737y8" path="res://asset/forest_BG6.png" id="12_g34gq"]
 [ext_resource type="Script" uid="uid://b16ib0qf27cj2" path="res://scripts/forest_components/animal_container.gd" id="13_g34gq"]
 [ext_resource type="Script" uid="uid://w6kfno1bifv1" path="res://scripts/forest_components/oxygen_meter.gd" id="14_di0nb"]
+[ext_resource type="PackedScene" uid="uid://ddgblpue81b50" path="res://scenes/fire_macandahan.tscn" id="14_qu0hn"]
 [ext_resource type="Script" uid="uid://c73lv581b0mjq" path="res://scripts/forest_components/day_timer_label.gd" id="16_pyn53"]
 [ext_resource type="Script" uid="uid://858mtq1ve4cc" path="res://scripts/forest_components/hewan_counter.gd" id="16_uwbj1"]
 [ext_resource type="Texture2D" uid="uid://dfqxo7qjxxfxh" path="res://asset/ui/OxygenMeter_under.png" id="17_8wf4g"]
@@ -79,7 +80,7 @@ autostart = true
 
 [node name="AnimalContainer" type="Node2D" parent="." unique_id=839560710]
 script = ExtResource("13_g34gq")
-animal_scenes = Array[PackedScene]([ExtResource("2_0nboi"), ExtResource("3_ercsu"), ExtResource("4_j3csf"), ExtResource("5_dabdc")])
+animal_scenes = Array[PackedScene]([ExtResource("2_0nboi"), ExtResource("3_ercsu"), ExtResource("4_j3csf"), ExtResource("5_dabdc"), ExtResource("14_qu0hn")])
 screen_margin = 175.0
 
 [node name="UILayer" type="CanvasLayer" parent="." unique_id=1526750841]

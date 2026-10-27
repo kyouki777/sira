@@ -1,6 +1,5 @@
 extends StaticBody2D
 
-@onready var jitendra: StaticBody2D = $"../../village_interactable/jitendra"
 @onready var interactable : Interactable = $Area2D
 
 func _ready() -> void:

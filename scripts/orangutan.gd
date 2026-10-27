@@ -8,6 +8,9 @@ func _ready() -> void:
 
 func _on_interacted():
 
+	if GameManager.player_in_village == false:
+		Dialogic.start("main_orangutan")
+		
 	if GameManager.talked_to_jitendra and GameManager.player_in_village == true:
 		Dialogic.start("feed_orangutan")
 	else:
