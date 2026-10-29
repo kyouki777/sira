@@ -99,6 +99,7 @@ func _on_dialogic_timeline_started() -> void:
 	velocity = Vector2.ZERO
 	input_dir = Vector2.ZERO
 	footstep_timer = 0.0
+	set_process_unhandled_input(false)
 	
 	if anim_sprite:
 		anim_sprite.play("idle_" + last_anim_direction)
@@ -107,6 +108,7 @@ func _on_dialogic_timeline_started() -> void:
 
 func _on_dialogic_timeline_ended() -> void:
 	can_move = true
+	set_process_unhandled_input(true)
 	print("dialogic stopped. player can move")
 
 func player_camera_on():
@@ -117,7 +119,7 @@ func player_camera_off():
 	camera_2d.enabled = false
 	print("players camera off")
 
-func _unhandled_input(event: InputEvent) -> void:
+func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("interact") and current_interactable:
 		current_interactable.interact()
 

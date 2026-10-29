@@ -252,6 +252,17 @@ region = Rect2(0, 34, 31, 29)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ik31s"]
 size = Vector2(36, 116)
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6chju"]
+normal = Vector2(0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_gkvnd"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jhek2"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lvn8r"]
+normal = Vector2(-1, 0)
+
 [node name="village" type="Node2D" unique_id=852394268]
 y_sort_enabled = true
 script = ExtResource("1_5m02y")
@@ -880,6 +891,32 @@ position = Vector2(1194, 505)
 y_sort_enabled = true
 position = Vector2(1, 48)
 shape = SubResource("RectangleShape2D_ik31s")
+
+[node name="WorldBorders" type="Node2D" parent="." unique_id=591177744]
+
+[node name="UpperBorder" type="StaticBody2D" parent="WorldBorders" unique_id=1109430871]
+position = Vector2(0, 176)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBorders/UpperBorder" unique_id=723466454]
+shape = SubResource("WorldBoundaryShape2D_6chju")
+
+[node name="DownBorder" type="StaticBody2D" parent="WorldBorders" unique_id=1317674862]
+position = Vector2(0, 992)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBorders/DownBorder" unique_id=1691552255]
+shape = SubResource("WorldBoundaryShape2D_gkvnd")
+
+[node name="LeftBorder" type="StaticBody2D" parent="WorldBorders" unique_id=495449076]
+position = Vector2(-80, 176)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBorders/LeftBorder" unique_id=226812801]
+shape = SubResource("WorldBoundaryShape2D_jhek2")
+
+[node name="RightBorder" type="StaticBody2D" parent="WorldBorders" unique_id=521029709]
+position = Vector2(1232, 176)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBorders/RightBorder" unique_id=1896138584]
+shape = SubResource("WorldBoundaryShape2D_lvn8r")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=431706799]
 visible = false

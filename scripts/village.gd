@@ -20,10 +20,12 @@ extends Node2D
 @onready var enter_game_area: Area2D = $enter_game_area
 
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+@onready var world_borders: Node2D = $WorldBorders
 
 var animal_fed_count: int = 0
 var total_animal_need_food : int = 5
 var day_end_triggered: bool = false
+var player_camera:Camera2D
 
 func _ready() -> void:
 	#print("opening cutscene off")
@@ -34,7 +36,9 @@ func _ready() -> void:
 	
 	village_interactable.visible = false
 	player.player_camera_off()
+	player_camera = player.camera_2d as Camera2D
 	cutscene_black.visible = true
+	setup_camera_limits()
 	
 	#skip_opening_cutscene() #dont forget to comment this
 	
@@ -142,7 +146,9 @@ func _on_enter_game_area_body_entered(body: Node2D) -> void:
 		print("player group detected")
 		if GameManager.can_go_to_main_forest == true:
 			GameManager.player_in_village = false
+			await get_tree().process_frame
 			get_tree().change_scene_to_file("res://scenes/main.tscn")
+			TimeManager.start_day_timer()
 		else:
 			Dialogic.start("cant_go_in_there")
 		
@@ -173,5 +179,22 @@ func after_village_day_end_cutscene():
 	GameManager.can_go_to_main_forest = true
 	Dialogic.start("have_to_get_in_forest")
 	print("after village day end cutscene")
-	
-	
+
+func setup_camera_limits() -> void:
+	if not world_borders or not player_camera:
+		push_warning("LevelLimits parent or Camera2D is not assigned in LevelManager.")
+		return
+
+	for child in world_borders.get_children():
+		var shape:CollisionShape2D = child.get_node_or_null("CollisionShape2D") as CollisionShape2D
+		var pos: Vector2 = shape.global_position if shape else child.global_position
+		var col_shape:WorldBoundaryShape2D = shape.shape as WorldBoundaryShape2D
+		var normal_direction:Vector2 = col_shape.normal
+		if normal_direction == Vector2.RIGHT:
+			player_camera.limit_left = int(pos.x)
+		elif normal_direction == Vector2.LEFT:
+			player_camera.limit_right = int(pos.x)
+		elif normal_direction == Vector2.DOWN:
+			player_camera.limit_top = int(pos.y)
+		elif normal_direction == Vector2.UP:
+			player_camera.limit_bottom = int(pos.y)

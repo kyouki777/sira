@@ -224,7 +224,7 @@ zoom = Vector2(3, 3)
 
 [node name="SavedAnimal" type="Sprite2D" parent="." unique_id=1076993429]
 unique_name_in_owner = true
-position = Vector2(0, -16.842098)
+position = Vector2(0, -29.999998)
 scale = Vector2(0.7, 0.7)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=880753098 groups=["player"]]
