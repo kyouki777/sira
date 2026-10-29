@@ -1,8 +1,10 @@
 extends Node2D
 
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var color_rect: ColorRect = $CanvasLayer/ColorRect
 
 func _ready() -> void:
-
+	color_rect.visible = true
 	#Dialogic.timeline_ended.connect(_on_dialogic_timeline_ended)
 	Dialogic.signal_event.connect(_on_dialogic_signal_event)
 
@@ -16,7 +18,12 @@ func _ready() -> void:
 	#get_tree().change_scene_to_file("res://scenes/village.tscn")
 	
 func _on_dialogic_signal_event(argument:String) -> void:
+	if argument == "fade_out":
+		animation_player.play("fade_out")
+		print("playing fade out")
+		
 	if argument == "village_day_end_cutscene_end":
 		GameManager.has_village_day_end_cutscene = true
 		get_tree().change_scene_to_file("res://scenes/village.tscn")
+	
 		

@@ -18,7 +18,15 @@ func _ready() -> void:
 
 func _on_interacted() -> void:
 	
-	if GameManager.day_end == true:
+	if DayManager.current_day == 1 and GameManager.player_in_village == false:
+		print("jitendra day 1 dialogue")
+		Dialogic.start("jitendra_day_end_1")
+		
+	elif DayManager.current_day == 2 and GameManager.player_in_village == false:
+		print("jitendra day 2 dialogue")
+		Dialogic.start("jitendra_day_end_2")
+		
+	if GameManager.day_end and GameManager.player_in_village == true:
 		print("player day end")
 		Dialogic.start("jitendra_day_end")
 		return 

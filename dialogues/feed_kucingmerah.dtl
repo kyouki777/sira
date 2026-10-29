@@ -6,6 +6,7 @@ if {feeding_animals} == true:
 	Sira: (She very fiesty, but comes around skittishly for food anyway.)
 	Sira: (I hope more of Kume's family visits us so me and Jitendra can learn about them.)
 	Sira: (Maybe now I can pet her...)
+	audio "res://asset/sound/cat_hiss.mp3"
 	"Kucing Merah": *HIIISSSSS*!
 	Sira: (Nevermind.)
 	- Feed Kume.

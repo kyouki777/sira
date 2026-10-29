@@ -8,8 +8,8 @@ var current_day_time: float = 0.0
 var is_total_timer_running: bool = false
 var is_day_timer_running: bool = false
 
-func _ready() -> void:
-	start_day_timer()
+#func _ready() -> void:
+	#start_day_timer()
 
 func _process(delta: float) -> void:
 	if is_total_timer_running:

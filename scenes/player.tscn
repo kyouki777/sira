@@ -2,6 +2,10 @@
 
 [ext_resource type="Script" uid="uid://esny7i6vtiur" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://dvjkr1210towd" path="res://asset/sira1.png" id="2_qhqgy"]
+[ext_resource type="AudioStream" uid="uid://b0alciq81oi7j" path="res://asset/sound/walk-on-grass-1.mp3" id="3_qhqgy"]
+[ext_resource type="AudioStream" uid="uid://bih7kbk2gvvua" path="res://asset/sound/walk-on-grass-2.mp3" id="4_qlg0r"]
+[ext_resource type="AudioStream" uid="uid://cxttuan218tg6" path="res://asset/sound/walk-on-grass-3.mp3" id="5_tuyoq"]
+[ext_resource type="PackedScene" uid="uid://dskrjcyi04ium" path="res://scenes/pause_menu.tscn" id="6_tuyoq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i3pqv"]
 atlas = ExtResource("2_qhqgy")
@@ -193,6 +197,14 @@ height = 7.998092
 [sub_resource type="CircleShape2D" id="CircleShape2D_ik31s"]
 radius = 11.045361
 
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_qhqgy"]
+shuffle = true
+fade_time = 1.0
+stream_count = 3
+stream_0 = ExtResource("3_qhqgy")
+stream_1 = ExtResource("4_qlg0r")
+stream_2 = ExtResource("5_tuyoq")
+
 [node name="player" type="CharacterBody2D" unique_id=373575522 node_paths=PackedStringArray("anim_sprite") groups=["player"]]
 y_sort_enabled = true
 script = ExtResource("1_g2els")
@@ -213,7 +225,7 @@ zoom = Vector2(3, 3)
 
 [node name="SavedAnimal" type="Sprite2D" parent="." unique_id=1076993429]
 unique_name_in_owner = true
-position = Vector2(0, -16.842098)
+position = Vector2(0, -29.999998)
 scale = Vector2(0.7, 0.7)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=880753098 groups=["player"]]
@@ -223,6 +235,14 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=967107047]
 position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_ik31s")
+
+[node name="FootstepSFX" type="AudioStreamPlayer2D" parent="." unique_id=1641121046]
+stream = SubResource("AudioStreamPlaylist_qhqgy")
+volume_db = -9.975
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1811857065]
+
+[node name="PauseMenu" parent="CanvasLayer" unique_id=1635824782 instance=ExtResource("6_tuyoq")]
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_interaction_area_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_interaction_area_area_exited"]

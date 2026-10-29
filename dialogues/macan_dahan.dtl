@@ -1,0 +1,21 @@
+"Macan Dahan": Mrrp?
+Sira: (This is Oyen. He's a macan dahan.)
+if {feeding_animals} == true:
+	"Macan Dahan": Mrreeow.
+	- Pet Oyen.
+		audio "res://asset/sound/cat_purr.mp3"
+		"Macan Dahan": *rubs head against Sira's hand*
+		Sira: Good kitty.
+		Sira: (Oyen usually only wakes up when the sun is down. He's probably hungry.)
+		Sira: (Jitendra kept trying to keep Oyen away from Melati because bekantans are one of their main dishes.)
+		Sira: (Oyen's species is supposed to be solitary by nature, but he's unusually very clingy to Jitendra and the other villagers.)
+		Sira: (Sometimes Oyen would leave dead animals in front of our house as a gift.)
+		Sira: (He's an exceptional hunter that hunts from trees.)
+		Sira: (Maybe Jitendra fell down the tree because he was trying to learn how to navigate the trees like Oyen.)
+		Sira: (It's easier to get the prey from above after all.)
+		- Feed Oyen.
+			[signal arg="animal_fed"]
+			*Oyen purrs loudly while eating the meat*
+			*his purrs' vibrations could almost be felt in Sira's chest*
+		- Not yet.
+			Sira: (I'll feed him later.)

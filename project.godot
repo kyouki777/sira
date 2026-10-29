@@ -34,14 +34,19 @@ directories/dch_directory={
 "Jitendra": "res://dialogic characters/Jitendra.dch",
 "Kucing Merah": "res://dialogic characters/Kucing Merah.dch",
 "Kumang": "res://dialogic characters/Kumang.dch",
+"Macan Dahan": "res://dialogic characters/Macan Dahan.dch",
 "Maran": "res://dialogic characters/Maran.dch",
 "Nyanggau": "res://dialogic characters/Nyanggau.dch",
 "Orang Utan": "res://dialogic characters/Orang Utan.dch",
 "Sira": "res://dialogic characters/Sira.dch"
 }
 directories/dtl_directory={
-"after_village_day_end_cutscene": "res://after_village_day_end_cutscene.dtl",
+"after_feeding_animals": "res://dialogues/after_feeding_animals.dtl",
+"after_village_day_end_cutscene": "res://dialogues/after_village_day_end_cutscene.dtl",
 "ajang": "res://dialogues/ajang.dtl",
+"balian_day_end_1": "res://dialogues/balian_day_end_1.dtl",
+"balian_day_end_2": "res://dialogues/balian_day_end_2.dtl",
+"balian_day_end_3": "res://dialogues/balian_day_end_3.dtl",
 "balian_village": "res://dialogues/balian_village.dtl",
 "cant_go_in_there": "res://dialogues/cant_go_in_there.dtl",
 "feed_bekantan": "res://dialogues/feed_bekantan.dtl",
@@ -54,13 +59,25 @@ directories/dtl_directory={
 "jitendra1_village": "res://dialogues/jitendra1_village.dtl",
 "jitendra2_village": "res://dialogues/jitendra2_village.dtl",
 "jitendra_day_end": "res://dialogues/jitendra_day_end.dtl",
-"jitendra_manuk_pansuh": "res://jitendra_manuk_pansuh.dtl",
+"jitendra_day_end_1": "res://dialogues/jitendra_day_end_1.dtl",
+"jitendra_day_end_2": "res://dialogues/jitendra_day_end_2.dtl",
+"jitendra_headband": "res://dialogues/jitendra_headband.dtl",
+"jitendra_manuk_pansuh": "res://dialogues/jitendra_manuk_pansuh.dtl",
 "jitendra_option": "res://dialogues/jitendra_option.dtl",
+"jitendra_sanctuary": "res://dialogues/jitendra_sanctuary.dtl",
 "kumang": "res://dialogues/kumang.dtl",
+"macan_dahan": "res://dialogues/macan_dahan.dtl",
+"main_orangutan": "res://dialogues/main_orangutan.dtl",
 "manajah_antang": "res://dialogues/manajah_antang.dtl",
+"mandau": "res://dialogues/mandau.dtl",
 "maran": "res://dialogues/maran.dtl",
 "nyanggau": "res://dialogues/nyanggau.dtl",
 "opening_cutscene": "res://dialogues/opening_cutscene.dtl",
+"report_to_jitendra": "res://dialogues/report_to_jitendra.dtl",
+"sape": "res://dialogues/sape.dtl",
+"temenggung_day_end_1": "res://dialogues/temenggung_day_end_1.dtl",
+"temenggung_day_end_2": "res://dialogues/temenggung_day_end_2.dtl",
+"temenggung_day_end_3": "res://dialogues/temenggung_day_end_3.dtl",
 "temenggung_village1": "res://dialogues/temenggung_village1.dtl"
 }
 layout/style_directory={
@@ -68,7 +85,8 @@ layout/style_directory={
 "default": "res://default.tres"
 }
 variables={
-"feeding_animals": false
+"feeding_animals": false,
+"manuk_pansuh": false
 }
 glossary/default_case_sensitive=true
 layout/style_list=["res://default.tres"]
@@ -105,6 +123,7 @@ audio/channel_defaults={
 "volume": 0.0
 }
 }
+glossary/glossary_files=[]
 
 [display]
 

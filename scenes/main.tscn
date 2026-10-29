@@ -4,10 +4,12 @@
 [ext_resource type="Script" uid="uid://d1olu3yrumunc" path="res://scripts/main.gd" id="1_tbgi4"]
 [ext_resource type="TileSet" uid="uid://dyly3074q0ha1" path="res://gametileset.tres" id="2_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://b0mtfbxp6pj40" path="res://scenes/orangutan.tscn" id="5_tbgi4"]
+[ext_resource type="Script" uid="uid://dsbhnx6jem6nm" path="res://scripts/jitendra.gd" id="6_jbj1t"]
 [ext_resource type="Script" uid="uid://bqsabmco7cmt2" path="res://scripts/animal_sanctuary.gd" id="6_tefeu"]
-[ext_resource type="Script" uid="uid://cf8ua5h4gyt3y" path="res://scripts/pause_menu.gd" id="7_a8y0u"]
+[ext_resource type="Script" uid="uid://wgutjkja8iq8" path="res://scripts/interactable.gd" id="7_muem4"]
 [ext_resource type="Script" uid="uid://c73lv581b0mjq" path="res://scripts/forest_components/day_timer_label.gd" id="7_o6xl0"]
 [ext_resource type="FontFile" uid="uid://d15d33cepqxf8" path="res://asset/font/PixelCode.ttf" id="7_trceg"]
+[ext_resource type="Texture2D" uid="uid://sb3dahesf6n5" path="res://asset/rumah lamin.png" id="8_dp3eg"]
 [ext_resource type="Script" uid="uid://da4dw6gkmy137" path="res://scripts/forest_components/timer_icon.gd" id="9_85g3d"]
 [ext_resource type="Texture2D" uid="uid://5s50cpmn7c6f" path="res://asset/ui/Timer_under.png" id="9_eb6dy"]
 [ext_resource type="Script" uid="uid://858mtq1ve4cc" path="res://scripts/forest_components/hewan_counter.gd" id="10_choun"]
@@ -19,6 +21,32 @@ size = Vector2(100, 26)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ticvn"]
 size = Vector2(182, 138)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_trceg"]
+normal = Vector2(0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_a8y0u"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jkv2x"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jbj1t"]
+normal = Vector2(-1, 0)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0ld40"]
+radius = 4.026456
+height = 15.993714
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gqmmt"]
+radius = 18.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yc10j"]
+atlas = ExtResource("8_dp3eg")
+region = Rect2(51, 200, 25, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jscy8"]
+atlas = ExtResource("8_dp3eg")
+region = Rect2(49, 208, 29, 31)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_37aet"]
 load_path = "res://.godot/imported/animals.png-fbec924d455bb8875dd453d61d7bf51c.ctex"
@@ -80,6 +108,65 @@ shape = SubResource("RectangleShape2D_ticvn")
 y_sort_enabled = true
 position = Vector2(670, 268)
 
+[node name="WorldBorders" type="Node2D" parent="." unique_id=139159867]
+
+[node name="UpperBorder" type="StaticBody2D" parent="WorldBorders" unique_id=1467238919]
+position = Vector2(0, 122)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBorders/UpperBorder" unique_id=892680334]
+shape = SubResource("WorldBoundaryShape2D_trceg")
+
+[node name="DownBorder" type="StaticBody2D" parent="WorldBorders" unique_id=509978]
+position = Vector2(0, 640)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBorders/DownBorder" unique_id=1705551793]
+shape = SubResource("WorldBoundaryShape2D_a8y0u")
+
+[node name="LeftBorder" type="StaticBody2D" parent="WorldBorders" unique_id=1138796808]
+position = Vector2(-64, 176)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBorders/LeftBorder" unique_id=764784736]
+shape = SubResource("WorldBoundaryShape2D_jkv2x")
+
+[node name="RightBorder" type="StaticBody2D" parent="WorldBorders" unique_id=1159334492]
+position = Vector2(1232, 176)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBorders/RightBorder" unique_id=812953618]
+shape = SubResource("WorldBoundaryShape2D_jbj1t")
+
+[node name="jitendra" type="StaticBody2D" parent="." unique_id=1796490653]
+y_sort_enabled = true
+position = Vector2(664, 205)
+script = ExtResource("6_jbj1t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="jitendra" unique_id=1762750198]
+y_sort_enabled = true
+position = Vector2(-2.9802322e-08, 11)
+rotation = -1.5427655
+shape = SubResource("CapsuleShape2D_0ld40")
+
+[node name="Area2D" type="Area2D" parent="jitendra" unique_id=2129296790]
+y_sort_enabled = true
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("7_muem4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="jitendra/Area2D" unique_id=658951952]
+y_sort_enabled = true
+position = Vector2(0, 8)
+shape = SubResource("CircleShape2D_gqmmt")
+
+[node name="shadow" type="Sprite2D" parent="jitendra" unique_id=1300381534]
+y_sort_enabled = true
+position = Vector2(0, 13)
+texture = SubResource("AtlasTexture_yc10j")
+
+[node name="Sprite2D" type="Sprite2D" parent="jitendra" unique_id=1976273160]
+y_sort_enabled = true
+position = Vector2(0, 13)
+texture = SubResource("AtlasTexture_jscy8")
+offset = Vector2(0, -13)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=40695139]
 
 [node name="world_label" type="Label" parent="CanvasLayer" unique_id=594664579]
@@ -99,80 +186,6 @@ theme_override_font_sizes/font_size = 20
 text = "MINIGAME"
 horizontal_alignment = 2
 metadata/_edit_use_anchors_ = true
-
-[node name="PauseMenu" type="Control" parent="CanvasLayer" unique_id=1168897588]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("7_a8y0u")
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/PauseMenu" unique_id=764036970]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.43529412)
-
-[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/PauseMenu" unique_id=1765744068]
-custom_minimum_size = Vector2(200, 40)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PauseMenu/CenterContainer" unique_id=1871005801]
-custom_minimum_size = Vector2(200, 40)
-layout_mode = 2
-theme_override_constants/separation = 16
-
-[node name="PlayButton" type="Button" parent="CanvasLayer/PauseMenu/CenterContainer/VBoxContainer" unique_id=279708511]
-custom_minimum_size = Vector2(200, 40)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="CanvasLayer/PauseMenu/CenterContainer/VBoxContainer/PlayButton" unique_id=255645417]
-custom_minimum_size = Vector2(200, 40)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-theme_override_font_sizes/font_size = 16
-text = "Play"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="SettingsButton" type="Button" parent="CanvasLayer/PauseMenu/CenterContainer/VBoxContainer" unique_id=469699127]
-custom_minimum_size = Vector2(200, 40)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="CanvasLayer/PauseMenu/CenterContainer/VBoxContainer/SettingsButton" unique_id=1572078696]
-custom_minimum_size = Vector2(200, 40)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-theme_override_font_sizes/font_size = 16
-text = "Settings"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="QuitButton" type="Button" parent="CanvasLayer/PauseMenu/CenterContainer/VBoxContainer" unique_id=1914304098]
-custom_minimum_size = Vector2(200, 40)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="CanvasLayer/PauseMenu/CenterContainer/VBoxContainer/QuitButton" unique_id=98003043]
-custom_minimum_size = Vector2(200, 40)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-theme_override_font_sizes/font_size = 16
-text = "Quit"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="HewanContainer" type="HBoxContainer" parent="CanvasLayer" unique_id=166996263]
 offset_left = 40.0

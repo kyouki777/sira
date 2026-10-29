@@ -1,4 +1,8 @@
-Jitendra: Come on, Sira. It's getting late so we should head back.
+Sira: Hey, I'm done.
+Jitendra: Thanks a lot, Sira.
+Jitendra: It's getting late so we should head back.
+Jitendra: Do you wanna call it a day?
 - Okay.
 	[signal arg="day_end"]
 - Not.yet.
+	Jitendra: Alright. I'll be right here if you need me.

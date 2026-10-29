@@ -1,7 +1,44 @@
 [gd_scene format=3 uid="uid://p3hb25iujjx3"]
 
 [ext_resource type="Script" uid="uid://dyk84d2kds0ef" path="res://scripts/village_day_end_cutscene.gd" id="1_642bv"]
-[ext_resource type="Texture2D" uid="uid://5vt8iehp56w" path="res://asset/forest_on_fire.png" id="1_tel3b"]
+[ext_resource type="Texture2D" uid="uid://d4deuicv74f6x" path="res://asset/forest_fire_BG.png" id="2_642bv"]
+
+[sub_resource type="Animation" id="Animation_642bv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_nno26"]
+resource_name = "fade_out"
+length = 3.0000000000000004
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.9666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tjckl"]
+_data = {
+&"RESET": SubResource("Animation_642bv"),
+&"fade_out": SubResource("Animation_nno26")
+}
 
 [node name="village_day_end_cutscene" type="Node2D" unique_id=422175515]
 script = ExtResource("1_642bv")
@@ -12,6 +49,24 @@ script = ExtResource("1_642bv")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -23.0
+offset_top = -110.999985
+offset_right = 4297.0
+offset_bottom = 2889.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_tel3b")
+scale = Vector2(0.22, 0.22)
+texture = ExtResource("2_642bv")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=327914083]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=146693639]
+libraries/ = SubResource("AnimationLibrary_tjckl")
