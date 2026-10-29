@@ -1,5 +1,7 @@
 extends Control
 
+const SETTINGS_MENU = preload("res://scenes/settings_menu.tscn")
+
 func _ready() -> void:
 	$CenterContainer/VBoxContainer/PlayButton.grab_focus()
 
@@ -9,6 +11,6 @@ func _on_play_button_pressed() -> void:
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()
 
-
 func _on_settings_button_pressed() -> void:
-	pass # Replace with function body.
+	var setting_menu = SETTINGS_MENU.instantiate()
+	add_child(setting_menu)

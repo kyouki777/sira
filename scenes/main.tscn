@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://b0mtfbxp6pj40" path="res://scenes/orangutan.tscn" id="5_tbgi4"]
 [ext_resource type="Script" uid="uid://dsbhnx6jem6nm" path="res://scripts/jitendra.gd" id="6_jbj1t"]
 [ext_resource type="Script" uid="uid://bqsabmco7cmt2" path="res://scripts/animal_sanctuary.gd" id="6_tefeu"]
-[ext_resource type="Script" uid="uid://cf8ua5h4gyt3y" path="res://scripts/pause_menu.gd" id="7_a8y0u"]
 [ext_resource type="Script" uid="uid://wgutjkja8iq8" path="res://scripts/interactable.gd" id="7_muem4"]
 [ext_resource type="Script" uid="uid://c73lv581b0mjq" path="res://scripts/forest_components/day_timer_label.gd" id="7_o6xl0"]
 [ext_resource type="FontFile" uid="uid://d15d33cepqxf8" path="res://asset/font/PixelCode.ttf" id="7_trceg"]
@@ -187,81 +186,6 @@ theme_override_font_sizes/font_size = 20
 text = "MINIGAME"
 horizontal_alignment = 2
 metadata/_edit_use_anchors_ = true
-
-[node name="PauseMenu" type="Control" parent="CanvasLayer" unique_id=1168897588]
-visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("7_a8y0u")
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/PauseMenu" unique_id=764036970]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.43529412)
-
-[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/PauseMenu" unique_id=1765744068]
-custom_minimum_size = Vector2(200, 40)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PauseMenu/CenterContainer" unique_id=1871005801]
-custom_minimum_size = Vector2(200, 40)
-layout_mode = 2
-theme_override_constants/separation = 16
-
-[node name="PlayButton" type="Button" parent="CanvasLayer/PauseMenu/CenterContainer/VBoxContainer" unique_id=279708511]
-custom_minimum_size = Vector2(200, 40)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="CanvasLayer/PauseMenu/CenterContainer/VBoxContainer/PlayButton" unique_id=255645417]
-custom_minimum_size = Vector2(200, 40)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-theme_override_font_sizes/font_size = 16
-text = "Play"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="SettingsButton" type="Button" parent="CanvasLayer/PauseMenu/CenterContainer/VBoxContainer" unique_id=469699127]
-custom_minimum_size = Vector2(200, 40)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="CanvasLayer/PauseMenu/CenterContainer/VBoxContainer/SettingsButton" unique_id=1572078696]
-custom_minimum_size = Vector2(200, 40)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-theme_override_font_sizes/font_size = 16
-text = "Settings"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="QuitButton" type="Button" parent="CanvasLayer/PauseMenu/CenterContainer/VBoxContainer" unique_id=1914304098]
-custom_minimum_size = Vector2(200, 40)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="CanvasLayer/PauseMenu/CenterContainer/VBoxContainer/QuitButton" unique_id=98003043]
-custom_minimum_size = Vector2(200, 40)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-theme_override_font_sizes/font_size = 16
-text = "Quit"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="HewanContainer" type="HBoxContainer" parent="CanvasLayer" unique_id=166996263]
 offset_left = 40.0

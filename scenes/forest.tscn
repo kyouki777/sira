@@ -4,18 +4,19 @@
 [ext_resource type="Script" uid="uid://duw3x0lg4m75a" path="res://scripts/forest.gd" id="1_yj5dr"]
 [ext_resource type="PackedScene" uid="uid://dioapn5gqqt8m" path="res://scenes/fire_orangutan.tscn" id="2_0nboi"]
 [ext_resource type="Script" uid="uid://cgenyu5bf5vbb" path="res://scripts/forest_background.gd" id="2_i1yi8"]
+[ext_resource type="Texture2D" uid="uid://don4o6i5rsb5w" path="res://asset/forest/Forest_BG1.png" id="3_0fv5i"]
 [ext_resource type="PackedScene" uid="uid://bnwh0q1175jdr" path="res://scenes/fire_kucing_merah.tscn" id="3_ercsu"]
+[ext_resource type="Texture2D" uid="uid://qs8lu0pm8giu" path="res://asset/forest/Forest_BG2.png" id="4_4uh7g"]
 [ext_resource type="PackedScene" uid="uid://cbqfuxbj3glhw" path="res://scenes/fire_enggan.tscn" id="4_j3csf"]
 [ext_resource type="PackedScene" uid="uid://bf1oo43nimgdh" path="res://scenes/fire_bekantan.tscn" id="5_dabdc"]
+[ext_resource type="Texture2D" uid="uid://ss18j4y1cqt6" path="res://asset/forest/Forest_BG3.png" id="5_len2l"]
+[ext_resource type="Texture2D" uid="uid://b1g5w3ql5isjg" path="res://asset/forest/Forest_BG4.png" id="6_fcatt"]
 [ext_resource type="Shader" uid="uid://j6akuwd1xb5h" path="res://scripts/forest.gdshader" id="6_i1yi8"]
-[ext_resource type="Texture2D" uid="uid://b2xvsnvxgh5ve" path="res://asset/forest_BG1.png" id="7_di3lw"]
+[ext_resource type="Texture2D" uid="uid://usr20opeowy2" path="res://asset/forest/Forest_BG5.png" id="7_7q4h0"]
 [ext_resource type="Script" uid="uid://1vy7oncougy4" path="res://scripts/fog_overlay.gd" id="7_i1yi8"]
-[ext_resource type="Texture2D" uid="uid://c8xfu3roiqrhp" path="res://asset/forest_BG2.png" id="8_8wf4g"]
-[ext_resource type="Texture2D" uid="uid://caqlhpu5fubyy" path="res://asset/forest_BG3.png" id="9_lhlip"]
-[ext_resource type="Texture2D" uid="uid://cohkein5y2cph" path="res://asset/forest_BG4.png" id="10_37aet"]
-[ext_resource type="Texture2D" uid="uid://d104rnjpk4s4t" path="res://asset/forest_BG5.png" id="11_bjond"]
+[ext_resource type="Texture2D" uid="uid://dmbk7nk4363ix" path="res://asset/forest/Forest_BG6.png" id="8_lr7uy"]
+[ext_resource type="Texture2D" uid="uid://k8vgo2ebas5p" path="res://asset/forest/Forest_BG7.png" id="9_igjew"]
 [ext_resource type="PackedScene" uid="uid://cg0a58ncl7l7q" path="res://scenes/falling_branch_component.tscn" id="12_3akcx"]
-[ext_resource type="Texture2D" uid="uid://0vfdt0p737y8" path="res://asset/forest_BG6.png" id="12_g34gq"]
 [ext_resource type="Script" uid="uid://b16ib0qf27cj2" path="res://scripts/forest_components/animal_container.gd" id="13_g34gq"]
 [ext_resource type="Script" uid="uid://w6kfno1bifv1" path="res://scripts/forest_components/oxygen_meter.gd" id="14_di0nb"]
 [ext_resource type="PackedScene" uid="uid://ddgblpue81b50" path="res://scenes/fire_macandahan.tscn" id="14_qu0hn"]
@@ -32,6 +33,8 @@
 [ext_resource type="Texture2D" uid="uid://jim4fhhjfgub" path="res://asset/ui/Timer_progress.png" id="26_soql2"]
 [ext_resource type="Shader" uid="uid://cqra6hfc5m0uw" path="res://scripts/branch_fall.gdshader" id="29_soql2"]
 [ext_resource type="Script" uid="uid://c35u1muqb3lsl" path="res://scripts/forest_components/drama_overlay.gd" id="30_u01n2"]
+[ext_resource type="PackedScene" uid="uid://dskrjcyi04ium" path="res://scenes/pause_menu.tscn" id="33_len2l"]
+[ext_resource type="Texture2D" uid="uid://cd3ms0if40x7q" path="res://asset/Placeholder/Group 4.png" id="34_4uh7g"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ik31s"]
 shader = ExtResource("6_i1yi8")
@@ -61,6 +64,8 @@ shader_parameter/ellipse_height = 1.20000005630148
 shader_parameter/edge_smoothing = 0.2800000133
 shader_parameter/progress = 0.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gkvnd"]
+
 [node name="forest" type="Node2D" unique_id=1697064475 node_paths=PackedStringArray("world_label", "depth_label", "animal_container")]
 script = ExtResource("1_yj5dr")
 world_label = NodePath("UILayer/WorldLabel")
@@ -68,10 +73,9 @@ depth_label = NodePath("UILayer/DepthLabel")
 animal_container = NodePath("AnimalContainer")
 
 [node name="forest_bg" type="Sprite2D" parent="." unique_id=1554885587]
-scale = Vector2(0.3, 0.3)
 centered = false
 script = ExtResource("2_i1yi8")
-images = Array[Texture2D]([ExtResource("7_di3lw"), ExtResource("8_8wf4g"), ExtResource("9_lhlip"), ExtResource("10_37aet"), ExtResource("11_bjond"), ExtResource("12_g34gq")])
+images = Array[Texture2D]([ExtResource("3_0fv5i"), ExtResource("4_4uh7g"), ExtResource("5_len2l"), ExtResource("6_fcatt"), ExtResource("7_7q4h0"), ExtResource("8_lr7uy"), ExtResource("9_igjew")])
 
 [node name="time_limit" type="Timer" parent="." unique_id=1439140832]
 wait_time = 30.0
@@ -268,44 +272,63 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("30_u01n2")
 
+[node name="PauseLayer" type="CanvasLayer" parent="." unique_id=954676525]
+layer = 5
+
+[node name="PauseMenu" parent="PauseLayer" unique_id=1635824782 instance=ExtResource("33_len2l")]
+
 [node name="TutorialLayer" type="CanvasLayer" parent="." unique_id=1662428828]
 process_mode = 3
-visible = false
 script = ExtResource("20_3h1w1")
 
 [node name="click_overlay" type="Button" parent="TutorialLayer" unique_id=428097449]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 8.0
+offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="click_animal_label" type="Label" parent="TutorialLayer" unique_id=80360435]
-offset_left = 418.0
-offset_top = 249.0
-offset_right = 767.0
-offset_bottom = 298.0
-theme_override_fonts/font = ExtResource("17_bjond")
-theme_override_font_sizes/font_size = 20
-text = "Click on the animal as soon as you find them!"
+[node name="Container" type="VBoxContainer" parent="TutorialLayer" unique_id=300833923]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -230.0
+offset_right = 300.0
+offset_bottom = 202.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
-[node name="branch_label" type="Label" parent="TutorialLayer" unique_id=1615931195]
-offset_left = 42.0
-offset_top = 121.0
-offset_right = 490.0
-offset_bottom = 170.0
-theme_override_fonts/font = ExtResource("17_bjond")
-theme_override_font_sizes/font_size = 20
-text = "Becareful of falling branches and click it before it hits you!"
+[node name="TutorialPanel" type="PanelContainer" parent="TutorialLayer/Container" unique_id=1210692711]
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_gkvnd")
 
-[node name="oxygen_label" type="Label" parent="TutorialLayer" unique_id=1223987816]
-offset_left = 651.0
-offset_top = 338.0
-offset_right = 1050.0
-offset_bottom = 387.0
+[node name="CenterContainer" type="CenterContainer" parent="TutorialLayer/Container/TutorialPanel" unique_id=971348406]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="TutorialImage" type="TextureRect" parent="TutorialLayer/Container/TutorialPanel/CenterContainer" unique_id=1654274321]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(600, 400)
+custom_maximum_size = Vector2(800, 550)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("34_4uh7g")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="tutorial_label" type="Label" parent="TutorialLayer/Container" unique_id=1223987816]
+layout_mode = 2
 theme_override_fonts/font = ExtResource("17_bjond")
 theme_override_font_sizes/font_size = 20
-text = "Make sure you don't run out of breath in the forest!"
+text = "Click to continue!"
+horizontal_alignment = 1
 
 [connection signal="timeout" from="time_limit" to="." method="trigger_gameover"]
 [connection signal="dead_by_falling_branch" from="UILayer/sira/FallingBranchComponent" to="." method="_on_falling_branch_component_dead_by_falling_branch"]

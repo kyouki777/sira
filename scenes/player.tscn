@@ -5,6 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://b0alciq81oi7j" path="res://asset/sound/walk-on-grass-1.mp3" id="3_qhqgy"]
 [ext_resource type="AudioStream" uid="uid://bih7kbk2gvvua" path="res://asset/sound/walk-on-grass-2.mp3" id="4_qlg0r"]
 [ext_resource type="AudioStream" uid="uid://cxttuan218tg6" path="res://asset/sound/walk-on-grass-3.mp3" id="5_tuyoq"]
+[ext_resource type="PackedScene" uid="uid://dskrjcyi04ium" path="res://scenes/pause_menu.tscn" id="6_tuyoq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i3pqv"]
 atlas = ExtResource("2_qhqgy")
@@ -238,6 +239,10 @@ shape = SubResource("CircleShape2D_ik31s")
 [node name="FootstepSFX" type="AudioStreamPlayer2D" parent="." unique_id=1641121046]
 stream = SubResource("AudioStreamPlaylist_qhqgy")
 volume_db = -9.975
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1811857065]
+
+[node name="PauseMenu" parent="CanvasLayer" unique_id=1635824782 instance=ExtResource("6_tuyoq")]
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_interaction_area_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_interaction_area_area_exited"]
