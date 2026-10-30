@@ -1,6 +1,11 @@
 [gd_scene format=3 uid="uid://cfd3sut7dfigr"]
 
 [ext_resource type="Script" uid="uid://bw30mhhyggx2a" path="res://MainMenu.gd" id="1_i26rj"]
+[ext_resource type="Texture2D" uid="uid://behoamlvrlfjc" path="res://asset/sira main menu art.png" id="2_h7a2f"]
+[ext_resource type="FontFile" uid="uid://d15d33cepqxf8" path="res://asset/font/PixelCode.ttf" id="3_qoqlk"]
+[ext_resource type="AudioStream" uid="uid://ckkjgk8nkg6bu" path="res://asset/sound/main_menu_bgm.mp3" id="4_qoqlk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qoqlk"]
 
 [node name="MainMenu" type="Control" unique_id=1214874973]
 layout_mode = 3
@@ -18,15 +23,44 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0.48235294, 0.5921569, 0.16078432, 1)
 
-[node name="CenterContainer" type="CenterContainer" parent="." unique_id=2010384515]
-custom_minimum_size = Vector2(200, 40)
+[node name="TextureRect" type="TextureRect" parent="." unique_id=786818384]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_h7a2f")
+expand_mode = 3
+
+[node name="Label2" type="Label" parent="." unique_id=198391656]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 150.0
+offset_top = -159.0
+offset_right = 417.0
+offset_bottom = -24.0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_qoqlk")
+theme_override_font_sizes/font_size = 100
+text = "Sira"
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=2010384515]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 180.0
+offset_top = 6.0
+offset_right = 380.0
+offset_bottom = 158.0
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1156070105]
@@ -37,12 +71,17 @@ theme_override_constants/separation = 16
 [node name="PlayButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1277223646]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(0.4351923, 0.43519226, 0.43519226, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qoqlk")
+flat = true
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer/PlayButton" unique_id=2106455741]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("3_qoqlk")
 theme_override_font_sizes/font_size = 16
 text = "Play"
 horizontal_alignment = 1
@@ -51,12 +90,16 @@ vertical_alignment = 1
 [node name="SettingsButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=337937512]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(0.4351923, 0.43519226, 0.43519226, 1)
+flat = true
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer/SettingsButton" unique_id=221136732]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("3_qoqlk")
 theme_override_font_sizes/font_size = 16
 text = "Settings"
 horizontal_alignment = 1
@@ -65,16 +108,24 @@ vertical_alignment = 1
 [node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=180437659]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(0.4351923, 0.43519226, 0.43519226, 1)
+flat = true
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer/QuitButton" unique_id=1301822589]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("3_qoqlk")
 theme_override_font_sizes/font_size = 16
 text = "Quit"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1826404251]
+stream = ExtResource("4_qoqlk")
+volume_db = -3.887
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]

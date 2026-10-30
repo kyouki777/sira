@@ -15,7 +15,9 @@ if {feeding_animals} == true:
 		Sira: (It's easier to get the prey from above after all.)
 		- Feed Oyen.
 			[signal arg="animal_fed"]
+			audio "res://asset/sound/crunch.mp3"
 			*Oyen purrs loudly while eating the meat*
+			audio "res://asset/sound/cat_purr.mp3"
 			*his purrs' vibrations could almost be felt in Sira's chest*
 		- Not yet.
 			Sira: (I'll feed him later.)

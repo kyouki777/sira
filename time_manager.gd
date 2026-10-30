@@ -45,3 +45,9 @@ func start_total_timer() -> void:
 
 func stop_total_timer() -> void:
 	is_total_timer_running = false
+	
+func reset_game() -> void:
+	total_playtime = 0.0
+	current_day_time = 0.0
+	is_day_timer_running = false
+	is_total_timer_running = false

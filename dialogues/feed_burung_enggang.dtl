@@ -10,6 +10,7 @@ if {feeding_animals} == true:
 	Sira: (I think, according to Jitendra, Senggang and his mate are also in mating season.)
 	- Feed Burung Enggang.
 		[signal arg="animal_fed"]
+		audio "res://asset/sound/crunch.mp3"
 		*Senggang seems to enjoy the rambutan*
 		*Sira offers him another set of food full of dead critters*
 		Sira: (Jitendra said, he might need these for his mate.)

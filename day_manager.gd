@@ -43,3 +43,11 @@ func get_random_branch_falltime() -> int:
 		return -1
 	else:
 		return randi_range(day_branch_fall_time_range[0], day_branch_fall_time_range[1])
+		
+func reset_game() -> void:
+	current_day = 1
+	current_animals_saved = 0
+	
+	if not data_days.is_empty():
+		current_day_data = data_days[0]
+		load_variable_from_days()

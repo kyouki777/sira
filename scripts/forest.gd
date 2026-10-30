@@ -63,9 +63,10 @@ func pick_up_animal(animal_scene: PackedScene) -> void:
 	GameManager.carrying_animal = true
 
 func trigger_gameover():
-	world_label.text = "GAMEOVER, YOU DIED!"
+	#world_label.text = "GAMEOVER, YOU DIED!"
 	get_tree().paused = true
 	print("GAMEOVER")
-
+	get_tree().change_scene_to_file("res://scenes/game_over.tscn")
+	
 func _on_falling_branch_component_dead_by_falling_branch() -> void:
 	trigger_gameover()
