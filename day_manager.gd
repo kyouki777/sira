@@ -17,8 +17,10 @@ func _ready() -> void:
 		push_error("Data day belum masuk!")
 		return
 	current_day_data = data_days[current_day - 1]
-	load_variable_from_days()
+	await load_variable_from_days()
+	TimeManager.stop_day_timer()
 
+# Panggil pas ganti hari
 func go_to_next_day():
 	current_day += 1
 	if not data_days[current_day - 1]:
@@ -36,7 +38,7 @@ func load_variable_from_days():
 	day_target_animal = current_day_data.day_target_animal
 	day_oxygen_limit = current_day_data.day_oxygen_limit
 	day_branch_fall_time_range = current_day_data.day_branch_fall_time_range
-	TimeManager.reset_day_timer()
+	TimeManager.start_day_timer()
 
 func get_random_branch_falltime() -> int:
 	if day_branch_fall_time_range.is_empty():

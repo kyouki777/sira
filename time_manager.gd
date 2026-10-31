@@ -27,6 +27,7 @@ func _process(delta: float) -> void:
 func time_penalty(penalty_time:float = 3.0):
 	current_day_time += penalty_time
 
+# Panggil pas timer day harus mulai (if true timer reset baru jalan)
 func start_day_timer(reset: bool = true) -> void:
 	if reset:
 		current_day_time = 0.0
