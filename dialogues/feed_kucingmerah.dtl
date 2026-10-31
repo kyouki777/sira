@@ -11,6 +11,7 @@ if {feeding_animals} == true:
 	Sira: (Nevermind.)
 	- Feed Kume.
 		[signal arg="animal_fed"]
+		audio "res://asset/sound/crunch.mp3"
 		*Kume chomps on the fish then bolts away*
 	- Later.
 		Sira: I'll feed her later.

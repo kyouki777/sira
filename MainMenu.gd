@@ -1,9 +1,10 @@
 extends Control
 
 const SETTINGS_MENU = preload("res://scenes/settings_menu.tscn")
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 func _ready() -> void:
-	$CenterContainer/VBoxContainer/PlayButton.grab_focus()
+	audio_stream_player.play()
 
 func _on_play_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/village.tscn")

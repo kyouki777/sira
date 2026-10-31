@@ -8,6 +8,7 @@ if {feeding_animals} == true:
 	- Feed Bekantan.
 		[signal arg="animal_fed"]
 		*Melati jumps happily*
+		audio "res://asset/sound/crunch.mp3"
 		*She pushes its her nose to the side while eating the unriped food*
 	- Later.
 		Sira: I'll feed her later.

@@ -9,6 +9,7 @@ if {feeding_animals} == true:
 	Sira: (Sometimes I see Mr. Pisang voluntarily bringing injured animals to Jitendra so he could help them.)
 	- Feed Orang Utan.
 		[signal arg="animal_fed"]
+		audio "res://asset/sound/crunch.mp3"
 		*Mr. Pisang grabs Sira's hand while eating the fruit to show his appreciation.*
 	- Later.
 		Sira: (I'll feed him later.)

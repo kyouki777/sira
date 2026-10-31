@@ -11,9 +11,14 @@ func _ready() -> void:
 	world_label.text = ""
 	player_camera = player.camera_2d
 	setup_camera_limits()
+	if GameManager.player_entered_forest == true:
+		$Player.global_position = Vector2(560, 220)
+	
+func _on_forest_area_body_entered(body: Node2D) -> void:
+	if not body.is_in_group("player"):
+		return
 
-func _on_forest_area_body_entered(_body: Node2D) -> void:
-	if GameManager.carrying_animal == false and not DayManager.has_all_animals_saved():
+	if not GameManager.carrying_animal and not DayManager.has_all_animals_saved():
 		go_to_forest()
 	elif DayManager.has_all_animals_saved():
 		world_label.text = "All animals have been saved today."
@@ -23,6 +28,7 @@ func _on_forest_area_body_entered(_body: Node2D) -> void:
 func go_to_forest():
 	await get_tree().process_frame
 	get_tree().change_scene_to_file("res://scenes/forest.tscn")
+	GameManager.player_entered_forest = true
 
 func _on_forest_area_body_exited(_body: Node2D) -> void:
 	world_label.text = ""

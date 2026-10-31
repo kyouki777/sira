@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://btf2tsk2vaxyh"]
+
+[ext_resource type="Script" uid="uid://s7v6gi746jgd" path="res://scripts/splash_screen.gd" id="1_l2g8s"]
+[ext_resource type="Texture2D" uid="uid://cyl3whwsisu78" path="res://asset/iminashi studio logo screen size (1).png" id="2_rc2kg"]
+
+[node name="SplashScreen" type="Control" unique_id=1709980753]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l2g8s")
+logo = ExtResource("2_rc2kg")
+main_menu_scene = "uid://cfd3sut7dfigr"
+fade_duration = 2.0
+display_duration = 3.0
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1515828783]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="LogoTexture" type="TextureRect" parent="." unique_id=1557227828]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 3
