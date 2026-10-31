@@ -34,14 +34,18 @@
 [ext_resource type="Shader" uid="uid://cqra6hfc5m0uw" path="res://scripts/branch_fall.gdshader" id="29_soql2"]
 [ext_resource type="Script" uid="uid://c35u1muqb3lsl" path="res://scripts/forest_components/drama_overlay.gd" id="30_u01n2"]
 [ext_resource type="PackedScene" uid="uid://dskrjcyi04ium" path="res://scenes/pause_menu.tscn" id="33_len2l"]
-[ext_resource type="Texture2D" uid="uid://cd3ms0if40x7q" path="res://asset/Placeholder/Group 4.png" id="34_4uh7g"]
+[ext_resource type="Texture2D" uid="uid://cbamfxd36q8as" path="res://asset/Tutorial/tut_1.png" id="35_7q4h0"]
+[ext_resource type="Texture2D" uid="uid://cjcnwifc12ky7" path="res://asset/Tutorial/tut_2.png" id="36_lr7uy"]
+[ext_resource type="Texture2D" uid="uid://cu46wy2s1mqhe" path="res://asset/Tutorial/tut_3.png" id="37_igjew"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ik31s"]
 shader = ExtResource("6_i1yi8")
 shader_parameter/mouse_position = Vector2(0, 0)
-shader_parameter/circle_size = 0.14200000604648
+shader_parameter/circle_size = 0.17200000747148
 shader_parameter/softness = 0.1270000060325
 shader_parameter/overlay_color = Color(0.15274382, 0.120960034, 0.118700154, 0.98039216)
+shader_parameter/outline_color = Color(1, 1, 1, 0.49803922)
+shader_parameter/outline_thickness = 0.005
 shader_parameter/aspect_ratio = 1.777777
 shader_parameter/fade_amount = 0.0
 
@@ -64,7 +68,24 @@ shader_parameter/ellipse_height = 1.20000005630148
 shader_parameter/edge_smoothing = 0.2800000133
 shader_parameter/progress = 0.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4uh7g"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gkvnd"]
+bg_color = Color(0.16078432, 0.1254902, 0.12156863, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
 
 [node name="forest" type="Node2D" unique_id=1697064475 node_paths=PackedStringArray("world_label", "depth_label", "animal_container")]
 script = ExtResource("1_yj5dr")
@@ -280,6 +301,7 @@ layer = 5
 [node name="TutorialLayer" type="CanvasLayer" parent="." unique_id=1662428828]
 process_mode = 3
 script = ExtResource("20_3h1w1")
+tutorial_images = Array[Texture2D]([ExtResource("35_7q4h0"), ExtResource("36_lr7uy"), ExtResource("37_igjew")])
 
 [node name="click_overlay" type="Button" parent="TutorialLayer" unique_id=428097449]
 anchors_preset = 15
@@ -289,46 +311,53 @@ offset_right = 8.0
 offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_4uh7g")
 
-[node name="Container" type="VBoxContainer" parent="TutorialLayer" unique_id=300833923]
+[node name="TutorialPanel" type="PanelContainer" parent="TutorialLayer" unique_id=1210692711]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -300.0
-offset_top = -230.0
-offset_right = 300.0
-offset_bottom = 202.0
+offset_left = -305.0
+offset_top = -239.0
+offset_right = 305.0
+offset_bottom = 239.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-
-[node name="TutorialPanel" type="PanelContainer" parent="TutorialLayer/Container" unique_id=1210692711]
-layout_mode = 2
-mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_gkvnd")
 
-[node name="CenterContainer" type="CenterContainer" parent="TutorialLayer/Container/TutorialPanel" unique_id=971348406]
+[node name="Container" type="VBoxContainer" parent="TutorialLayer/TutorialPanel" unique_id=1744296086]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="TutorialImage" type="TextureRect" parent="TutorialLayer/Container/TutorialPanel/CenterContainer" unique_id=1654274321]
+[node name="TutorialImage" type="TextureRect" parent="TutorialLayer/TutorialPanel/Container" unique_id=1654274321]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(600, 400)
-custom_maximum_size = Vector2(800, 550)
+custom_minimum_size = Vector2(800, 500)
+custom_maximum_size = Vector2(800, 500)
 layout_mode = 2
+size_flags_vertical = 3
 mouse_filter = 2
-texture = ExtResource("34_4uh7g")
+texture = ExtResource("35_7q4h0")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="tutorial_label" type="Label" parent="TutorialLayer/Container" unique_id=1223987816]
+[node name="Control2" type="Control" parent="TutorialLayer/TutorialPanel/Container" unique_id=1476488954]
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
+
+[node name="tutorial_label" type="Label" parent="TutorialLayer/TutorialPanel/Container" unique_id=1223987816]
+layout_mode = 2
+size_flags_vertical = 6
 theme_override_fonts/font = ExtResource("17_bjond")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 28
 text = "Click to continue!"
 horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="TutorialLayer/TutorialPanel/Container" unique_id=260249471]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
 
 [connection signal="timeout" from="time_limit" to="." method="trigger_gameover"]
 [connection signal="dead_by_falling_branch" from="UILayer/sira/FallingBranchComponent" to="." method="_on_falling_branch_component_dead_by_falling_branch"]
