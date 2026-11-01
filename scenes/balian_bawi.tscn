@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://bo8lopwjmina2"]
+
+[ext_resource type="Script" uid="uid://dfddabbxswmny" path="res://scripts/balian_bawi.gd" id="1_m0rub"]
+[ext_resource type="Script" uid="uid://wgutjkja8iq8" path="res://scripts/interactable.gd" id="2_bwcbe"]
+[ext_resource type="Texture2D" uid="uid://sb3dahesf6n5" path="res://asset/rumah lamin.png" id="3_s4t77"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ik31s"]
+radius = 4.026456
+height = 15.993714
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ik31s"]
+radius = 18.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ticvn"]
+atlas = ExtResource("3_s4t77")
+region = Rect2(51, 200, 25, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pa23k"]
+atlas = ExtResource("3_s4t77")
+region = Rect2(83, 215, 25, 25)
+
+[node name="balian_bawi" type="StaticBody2D" unique_id=2017700157]
+y_sort_enabled = true
+script = ExtResource("1_m0rub")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=221559435]
+y_sort_enabled = true
+position = Vector2(-2.9802322e-08, 11)
+rotation = -1.5427655
+shape = SubResource("CapsuleShape2D_ik31s")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2118731334]
+y_sort_enabled = true
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("2_bwcbe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=495081787]
+y_sort_enabled = true
+position = Vector2(0, 8)
+shape = SubResource("CircleShape2D_ik31s")
+
+[node name="shadow" type="Sprite2D" parent="." unique_id=1917381923]
+y_sort_enabled = true
+position = Vector2(0, 10)
+texture = SubResource("AtlasTexture_ticvn")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=656162102]
+y_sort_enabled = true
+position = Vector2(0, 13)
+texture = SubResource("AtlasTexture_pa23k")
+offset = Vector2(0, -13)

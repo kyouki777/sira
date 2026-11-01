@@ -22,6 +22,10 @@ var opening_cutscene_played :bool = false
 var can_go_to_main_forest : bool = false
 var manuk_pansuh_acquired : bool = false
 
+#for triggering last day search
+var last_day : bool = false
+
+var day_transitioning : bool = false
 
 func add_rescued_animal(animal_scene: PackedScene) -> void:
 	if animal_scene:

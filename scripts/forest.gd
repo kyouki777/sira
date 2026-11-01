@@ -13,15 +13,31 @@ var tutorial_shown : bool = false
 @export var depth_label:Label
 @onready var hewan_counter: Label = %HewanCounter
 @export var animal_container: Node2D
+@onready var timer_container: HBoxContainer = $UILayer/TimerContainer
+@onready var hewan_container: HBoxContainer = $UILayer/HewanContainer
+
+
+var label_on :bool = false
 
 func _ready() -> void:
 	GameManager.carrying_animal = false
 	world_label.text = ""
 	target_spawn_step = randi_range(3, 30)
 	
+	if GameManager.last_day == true:
+		timer_container.visible = false #so that the player only relies on oxygen as time inside the forest
+		hewan_container.visible = false
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	if current_progress == 0:
+	if current_progress == 0 and GameManager.last_day == true and label_on == false: #player cant go back
+		label_on = true
+		world_label.text = "I can't go back. I need to find Jitendra."
+		await get_tree().create_timer(3).timeout
+		world_label.text = ""
+		label_on = false
+		
+	if current_progress == 0 and GameManager.last_day == false:
 		get_tree().change_scene_to_file("res://scenes/main.tscn")
 
 func _input(_event: InputEvent) -> void:
@@ -43,6 +59,9 @@ func move_forward():
 	animal_container.move_towards_room(current_progress)
 
 func move_backwards():
+	if GameManager.last_day == true:
+		if current_progress == 0: #prevents going backward too much in the last day
+			return
 	current_progress -= 1
 	if depth_label:
 		depth_label.text = "Forest depth: %d m" % [current_progress * 100]

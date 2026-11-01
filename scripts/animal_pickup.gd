@@ -4,6 +4,7 @@ var animal_scene: PackedScene
 signal saved_animal_texture(texture:Texture2D)
 
 func _on_pressed() -> void:
+	
 	if animal_scene:
 		GameManager.current_carried_scene = animal_scene
 		GameManager.current_carried_texture = texture_normal

@@ -21,6 +21,8 @@ func _process(delta: float) -> void:
 			day_timer_updated.emit(DayManager.day_total_time - current_day_time)
 		else:
 			# Call Gameover here
+			get_tree().change_scene_to_file("res://scenes/game_over.tscn")
+			print("timer ended. game over")
 			stop_day_timer()
 			day_timer_updated.emit(0)
 

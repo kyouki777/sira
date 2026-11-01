@@ -7,6 +7,9 @@
 atlas = ExtResource("1_d7b3y")
 region = Rect2(96, 0, 33, 32)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d7b3y"]
+size = Vector2(26, 30)
+
 [node name="fire_kucing_merah" type="TextureButton" unique_id=605948241]
 custom_minimum_size = Vector2(32, 32)
 offset_right = 32.0
@@ -17,5 +20,12 @@ texture_normal = SubResource("AtlasTexture_ticvn")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("2_rikwn")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=978739830]
+position = Vector2(13, 21)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=968433136]
+position = Vector2(3, -5)
+shape = SubResource("RectangleShape2D_d7b3y")
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

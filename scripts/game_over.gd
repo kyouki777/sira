@@ -9,7 +9,7 @@ func _ready() -> void:
 	audio_stream_player_2.play()
 	await get_tree().create_timer(2).timeout
 	audio_stream_player.play()
-	animation_player.play("fadein") #doesnt play for some reason
+	animation_player.play("fadein")
 
 func _process(delta: float) -> void:
 	pass

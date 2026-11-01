@@ -9,6 +9,8 @@ extends Node2D
 @export var player_node:CharacterBody2D
 var is_player_inside: bool = false
 
+@onready var audio_stream_player: AudioStreamPlayer = $"../AudioStreamPlayer"
+
 func _ready() -> void:
 	display_rescued_animals()
 
@@ -16,6 +18,7 @@ func _process(_delta: float) -> void:
 	# Check input continuously while the player is inside the area
 	if is_player_inside and Input.is_action_just_pressed("interact"):
 		if GameManager.carrying_animal and GameManager.current_carried_scene:
+			audio_stream_player.play()
 			GameManager.add_rescued_animal(GameManager.current_carried_scene)
 			print("Animal deposited into sanctuary!")
 			display_rescued_animals()
@@ -32,7 +35,7 @@ func display_rescued_animals() -> void:
 
 	# Delete existing instances immediately instead of queuing
 	for child in animal_marker.get_children():
-		child.free() # Using free() removes the node instantly from memory
+		child.free()
 
 	for i in range(GameManager.rescued_animals.size()):
 		var animal_scene: PackedScene = GameManager.rescued_animals[i]
@@ -47,9 +50,21 @@ func display_rescued_animals() -> void:
 			# Ensure node and all children are visible
 			instance.visible = true
 			
+			# Disable button interactions for the sanctuary instance
+			_disable_animal_buttons(instance)
+			
 			# Add as child of Marker2D
 			animal_marker.add_child(instance)
-
+			
+func clear_rescued_animals() -> void:
+	print("animals in sanctuary cleared")
+	if animal_marker:
+		for child in animal_marker.get_children():
+			child.free()
+			
+	if "rescued_animals" in GameManager:
+		GameManager.rescued_animals.clear()
+		
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player") or body is CharacterBody2D:
 		print("Player entered sanctuary area")
@@ -62,3 +77,11 @@ func _on_body_exited(body: Node2D) -> void:
 		print("Player exited sanctuary area")
 		is_player_inside = false
 		world_label.text = ""
+		
+func _disable_animal_buttons(node: Node) -> void:
+	# If the root of the animal scene is a Button/Control
+	if node is BaseButton:
+		node.disabled = true
+		node.focus_mode = Control.FOCUS_NONE
+	if node is Control:
+		node.mouse_filter = Control.MOUSE_FILTER_IGNORE

@@ -43,6 +43,9 @@ scene = ExtResource("7_bxgkh")
 [sub_resource type="Resource" id="Resource_5nun2"]
 script = ExtResource("2_64s0f")
 scene = ExtResource("8_aa06h")
+overrides = {
+"font_custom": "\"res://asset/font/PixelCode.ttf\""
+}
 
 [sub_resource type="Resource" id="Resource_e7cni"]
 script = ExtResource("2_64s0f")
@@ -67,4 +70,4 @@ layer_info = {
 "16": SubResource("Resource_e7cni"),
 "17": SubResource("Resource_bnfqm")
 }
-metadata/_latest_layer = "17"
+metadata/_latest_layer = "15"

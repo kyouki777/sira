@@ -3,7 +3,7 @@ class_name Interactable
 
 signal interacted
 
-@export var prompt_message: String = "Talk"
+#@export var prompt_message: String = "Talk"
 
 func interact() -> void:
 	interacted.emit()

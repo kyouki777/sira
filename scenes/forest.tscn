@@ -20,6 +20,7 @@
 [ext_resource type="Script" uid="uid://b16ib0qf27cj2" path="res://scripts/forest_components/animal_container.gd" id="13_g34gq"]
 [ext_resource type="Script" uid="uid://w6kfno1bifv1" path="res://scripts/forest_components/oxygen_meter.gd" id="14_di0nb"]
 [ext_resource type="PackedScene" uid="uid://ddgblpue81b50" path="res://scenes/fire_macandahan.tscn" id="14_qu0hn"]
+[ext_resource type="PackedScene" uid="uid://dt5rcdurlik1v" path="res://scenes/jitendra_lawung.tscn" id="16_lr7uy"]
 [ext_resource type="Script" uid="uid://c73lv581b0mjq" path="res://scripts/forest_components/day_timer_label.gd" id="16_pyn53"]
 [ext_resource type="Script" uid="uid://858mtq1ve4cc" path="res://scripts/forest_components/hewan_counter.gd" id="16_uwbj1"]
 [ext_resource type="Texture2D" uid="uid://dfqxo7qjxxfxh" path="res://asset/ui/OxygenMeter_under.png" id="17_8wf4g"]
@@ -37,6 +38,7 @@
 [ext_resource type="Texture2D" uid="uid://cbamfxd36q8as" path="res://asset/Tutorial/tut_1.png" id="35_7q4h0"]
 [ext_resource type="Texture2D" uid="uid://cjcnwifc12ky7" path="res://asset/Tutorial/tut_2.png" id="36_lr7uy"]
 [ext_resource type="Texture2D" uid="uid://cu46wy2s1mqhe" path="res://asset/Tutorial/tut_3.png" id="37_igjew"]
+[ext_resource type="AudioStream" uid="uid://drm1irk85jlfu" path="res://asset/sound/forest_fire.mp3" id="39_igjew"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ik31s"]
 shader = ExtResource("6_i1yi8")
@@ -107,6 +109,7 @@ autostart = true
 script = ExtResource("13_g34gq")
 animal_scenes = Array[PackedScene]([ExtResource("2_0nboi"), ExtResource("3_ercsu"), ExtResource("4_j3csf"), ExtResource("5_dabdc"), ExtResource("14_qu0hn")])
 screen_margin = 175.0
+special_last_day_jitendra = ExtResource("16_lr7uy")
 
 [node name="UILayer" type="CanvasLayer" parent="." unique_id=1526750841]
 
@@ -358,6 +361,10 @@ horizontal_alignment = 1
 [node name="Control" type="Control" parent="TutorialLayer/TutorialPanel/Container" unique_id=260249471]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1156084431]
+stream = ExtResource("39_igjew")
+autoplay = true
 
 [connection signal="timeout" from="time_limit" to="." method="trigger_gameover"]
 [connection signal="dead_by_falling_branch" from="UILayer/sira/FallingBranchComponent" to="." method="_on_falling_branch_component_dead_by_falling_branch"]

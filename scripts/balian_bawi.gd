@@ -18,6 +18,18 @@ func _on_interacted():
 	elif DayManager.current_day == 3 and GameManager.player_in_village == false:
 		print("balian dialogue day 3")
 		Dialogic.start("balian_day_end_3")
+		#
+	#if DayManager.current_day == 1:
+		#print("balian dialogue day 1")
+		#Dialogic.start("balian_day_end_1")
+		#
+	#elif DayManager.current_day == 2:
+		#print("balian dialogue day 2")
+		#Dialogic.start("balian_day_end_2")
+		#
+	#elif DayManager.current_day == 3:
+		#print("balian dialogue day 3")
+		#Dialogic.start("balian_day_end_3")
 		
 	if GameManager.talked_to_jitendra and GameManager.player_in_village == true:
 		Dialogic.start("balian_village")
