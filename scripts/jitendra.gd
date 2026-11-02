@@ -40,16 +40,16 @@ func _on_interacted() -> void:
 		#
 		#
 		#
+	if GameManager.manuk_pansuh_acquired == true and jitendra_manuk_pansuh_played == false and GameManager.player_in_village == true:
+		Dialogic.start("jitendra_manuk_pansuh")
+		print("jitendra manuk pansuh dialogue playing")
+		jitendra_manuk_pansuh_played = true
 		
 	if GameManager.day_end and GameManager.player_in_village == true:
 		print("player day end")
 		Dialogic.start("jitendra_day_end")
 		return 
 		
-	if GameManager.manuk_pansuh_acquired == true and jitendra_manuk_pansuh_played == false:
-		Dialogic.start("jitendra_manuk_pansuh")
-		print("jitendra manuk pansuh dialogue playing")
-		jitendra_manuk_pansuh_played = true
 		
 	if ordered_timelines.is_empty():
 		return

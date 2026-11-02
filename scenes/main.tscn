@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://luxdmu17ajua" path="res://asset/ui/Timer_over.png" id="10_trceg"]
 [ext_resource type="Texture2D" uid="uid://jim4fhhjfgub" path="res://asset/ui/Timer_progress.png" id="11_a8y0u"]
 [ext_resource type="AudioStream" uid="uid://c55ilivpfimaa" path="res://asset/sound/grass_rustle.mp3" id="14_a8y0u"]
+[ext_resource type="Texture2D" uid="uid://bk2sjrr1e2og6" path="res://asset/fade_out_circle.png" id="14_jkv2x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ik31s"]
 size = Vector2(115, 26)
@@ -298,8 +299,13 @@ color = Color(0, 0, 0, 1)
 libraries/ = SubResource("AnimationLibrary_muem4")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1725946706]
-visible = false
 color = Color(0.29586652, 0.2958665, 0.2958665, 1)
+
+[node name="PointLight2D" type="PointLight2D" parent="CanvasModulate" unique_id=906308363]
+position = Vector2(559.5, 149.99611)
+scale = Vector2(0.16457026, 0.1666751)
+color = Color(1, 0.2770767, 0.1819827, 1)
+texture = ExtResource("14_jkv2x")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1570665105]
 stream = ExtResource("14_a8y0u")

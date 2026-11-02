@@ -29,6 +29,10 @@ var player_camera:Camera2D
 
 func _ready() -> void:
 	#print("opening cutscene off")
+	if not GameManager.has_village_day_end_cutscene:
+		audio_stream_player.play()
+		print("village ambience playing")
+		
 	hewan_fed_counter_container.visible = false
 	world_village_label.text = ""
 	Dialogic.signal_event.connect(_on_dialogic_signal_event)
@@ -85,16 +89,18 @@ func skip_opening_cutscene():
 	
 # Tween helper functions for screen fades
 func fade_out(duration: float = 1.0) -> void:
+	print("tween fade out")
 	cutscene_black.visible = true
 	cutscene_black.modulate.a = 0.0
-	var tween = create_tween()
+	var tween = create_tween().set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 	tween.tween_property(cutscene_black, "modulate:a", 1.0, duration)
 	await tween.finished
 
 func fade_in(duration: float = 1.0) -> void:
+	print("tween fade in")
 	cutscene_black.visible = true
 	cutscene_black.modulate.a = 1.0
-	var tween = create_tween()
+	var tween = create_tween().set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 	tween.tween_property(cutscene_black, "modulate:a", 0.0, duration)
 	await tween.finished
 	cutscene_black.visible = false
@@ -119,6 +125,7 @@ func play_opening_cutscene(): #doing it the hard way yuh pls dont change
 	
 	# Fade Out to black 
 	await fade_out(1.0)
+	print("3. Fade out finished")
 	
 	village_interactable.visible = true
 	world_camera.enabled = false
@@ -163,6 +170,7 @@ func _on_dialogic_signal_event(argument:String) -> void:
 		animation_player.play("cutscene_fadeout")
 		print("cutscene fadeout day end")
 		await animation_player.animation_finished
+		audio_stream_player.stop() #to make sure the audio stops
 		get_tree().change_scene_to_file("res://scenes/village_day_end_cutscene.tscn")
 	
 	if argument == "manuk_pansuh":

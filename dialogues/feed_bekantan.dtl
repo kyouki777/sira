@@ -1,14 +1,15 @@
 Bekantan: *looks at Sira expectingly*
 Sira: (This is Melati. She's a bekantan.)
-if {feeding_animals} == true:
+if {feeding_animals} == true and {bekantan_fed} == false:
 	Sira: (Melati loves to swim with Jitendra.)
 	Sira: (She's a great swimmer and would often pull us from the river to avoid crocodiles despite her shy nature.)
 	Sira: (She sometimes strays into our long house and panics whenever she can't get out again.)
 	Sira: (I wonder if she was trying to find Jitendra in there.)
 	- Feed Bekantan.
+		set {bekantan_fed} = true
 		[signal arg="animal_fed"]
 		*Melati jumps happily*
 		audio "res://asset/sound/crunch.mp3"
-		*She pushes its her nose to the side while eating the unriped food*
+		*She pushes her big nose to the side while eating the unriped fruits*
 	- Later.
 		Sira: I'll feed her later.

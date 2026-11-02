@@ -1,14 +1,15 @@
 "Burung Enggang": *squawk*!
 Sira: (This is Senggang, a burung enggang.)
-if {feeding_animals} == true:
+if {feeding_animals} == true and {burungenggang_fed} == false:
 	Sira: (Burung enggangs usually don't like to interact with humans.)
 	Sira: (Senggang's species is a revered simbol to our tribe.)
 	Sira: (We believe that they're a symbol of protection and a bridge to the spirit realm.)
 	Sira: (However, Senggang here is anything but majestic.)
 	Sira: (Jitendra has a hard time appeasing him and he will annoy the villagers when he's in a bad mood.)
-	Sira: (Nevertheless, Senggang being here means that our forest continues to prosper well because they disperse seed whevere they go.)
+	Sira: (Nevertheless, Senggang being here means that our forest continues to prosper well because they disperse seed wheverer they go.)
 	Sira: (I think, according to Jitendra, Senggang and his mate are also in mating season.)
 	- Feed Burung Enggang.
+		set {burungenggang_fed} = true
 		[signal arg="animal_fed"]
 		audio "res://asset/sound/crunch.mp3"
 		*Senggang seems to enjoy the rambutan*

@@ -7,7 +7,7 @@ Sira: (When I couldn't stand the stares coming from everyone before the Manajah 
 Sira: (When Jitendra encouraged me to talk to everyone, and-)
 Sira: (They didn't really hate me.)
 Sira: (Except, maybe, my father's usual cold demeanor.)
-Sira: (But after talking to each of them, I realised that perhaps I was a bit too harsh of myself.)
+Sira: (But after talking to each of them, I realised that perhaps I was a bit too harsh to myself.)
 Sira: (I was too harsh to this village.)
 Sira: (My dad, Balian Bawi, my friends, and even the wild animals that accidentally became part of our family.)
 Sira: (A warm feeling filled my chest to the brim like it was going to pour out from the glass.)
@@ -30,11 +30,13 @@ Sira: Alright.
 Sira: *yawns*
 *Sira turns her back on him and falls asleep almost immediately*
 *the rest of the village pours into the house one by one to end their day*
+audio "res://asset/sound/night_ambience.mp3"
 *moonlight shines over the quiet village*
 *and critters of the forest start to begin their nocturnal activities*
 *but far in the distance*
 *was something spreading rapidly and consuming everything on its path*
 *the disaster that weighed on Sira's heart throughout the day*
+[clear time="1.0" text="false" portraits="false" background="false" positions="false" style="false"]
 [wait time="5.0"]
 Sira!
 Sira wake up!

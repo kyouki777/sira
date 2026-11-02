@@ -1,6 +1,6 @@
 "Orang Utan": ...
 Sira: (This is Mr. Pisang. He's an orangutan.)
-if {feeding_animals} == true:
+if {feeding_animals} == true and {orangutan_fed} == false:
 	Sira: (Jitendra found him alone in the forest without a mother.)
 	Sira: (Usually, young orang utans depend on their mothers until they reach around 7-8 years of age.)
 	Sira: (He's all grown up now, but Jitendra basically raised him like his own child.)
@@ -8,6 +8,7 @@ if {feeding_animals} == true:
 	Sira: (Sometimes the people here think orang utans can speak and understand human language, but they chose not to.)
 	Sira: (Sometimes I see Mr. Pisang voluntarily bringing injured animals to Jitendra so he could help them.)
 	- Feed Orang Utan.
+		set {orangutan_fed} = true
 		[signal arg="animal_fed"]
 		audio "res://asset/sound/crunch.mp3"
 		*Mr. Pisang grabs Sira's hand while eating the fruit to show his appreciation.*

@@ -39,12 +39,12 @@ func _on_dialogic_signal_event(argument: String) -> void:
 		"balian_last_day":
 			talked_to_balian = true
 		"temenggung_last_day":
-			talked_to_temenggung = true
+			talked_to_temenggung = true #not used yet
 
 
-	if talked_to_balian and talked_to_temenggung and (argument == "balian_last_day" or argument == "temenggung_last_day"):
+	if talked_to_balian and (argument == "balian_last_day"):
 		can_go_to_forest = true
-		#DayManager.go_to_next_day()#go to day 4
+		#DayManager.go_to_next_day()#go to day 4, gajadiii
 		#print("total time:", DayManager.day_total_time) 
 		print("area2d forest on")
 
