@@ -13,7 +13,7 @@ config_version=5
 config/name="Sira"
 run/main_scene="uid://btf2tsk2vaxyh"
 config/features=PackedStringArray("4.7", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://ce0q43evsjtna"
 
 [autoload]
 
