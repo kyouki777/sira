@@ -133,6 +133,7 @@ func play_opening_cutscene(): #doing it the hard way yuh pls dont change
 	
 	player.can_move = true
 	enter_game_area.monitoring = true
+	$CanvasLayer/MoveTutorial.show_up()
 	
 	
 #FIX THE DETECTION

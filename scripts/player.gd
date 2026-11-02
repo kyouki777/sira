@@ -12,6 +12,7 @@ var footstep_timer: float = 0.0
 @onready var saved_animal: Sprite2D = %SavedAnimal
 @onready var camera_2d: Camera2D = $Camera2D
 @onready var footstep_sfx: AudioStreamPlayer2D = $FootstepSFX
+@onready var interact_indicator: Label = %InteractIndicator
 
 var can_move : bool = true
 
@@ -127,9 +128,11 @@ func _on_interaction_area_area_entered(area: Area2D) -> void:
 	print("interaction area entered")
 	if area is Interactable:
 		current_interactable = area
+		interact_indicator.show_up()
 
 func _on_interaction_area_area_exited(area: Area2D) -> void:
 	print("interaction area exited")
 	if area is Interactable:
 		if current_interactable == area:
 			current_interactable = null
+			interact_indicator.hide_down()

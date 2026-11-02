@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dskrjcyi04ium"]
 
 [ext_resource type="Script" uid="uid://cf8ua5h4gyt3y" path="res://scripts/pause_menu.gd" id="1_n87rw"]
+[ext_resource type="Script" uid="uid://boiyxy8hppxg8" path="res://scripts/button_pops.gd" id="2_kukqi"]
 [ext_resource type="FontFile" uid="uid://d15d33cepqxf8" path="res://asset/font/PixelCode.ttf" id="2_myx47"]
 
 [node name="PauseMenu" type="Control" unique_id=1635824782]
@@ -40,6 +41,7 @@ theme_override_constants/separation = 16
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
+script = ExtResource("2_kukqi")
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer/PlayButton" unique_id=1866027333]
 custom_minimum_size = Vector2(200, 40)
@@ -56,6 +58,7 @@ vertical_alignment = 1
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
+script = ExtResource("2_kukqi")
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer/SettingsButton" unique_id=158357033]
 custom_minimum_size = Vector2(200, 40)
@@ -72,6 +75,7 @@ vertical_alignment = 1
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
+script = ExtResource("2_kukqi")
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer/QuitButton" unique_id=2058408054]
 custom_minimum_size = Vector2(200, 40)

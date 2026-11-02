@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bw30mhhyggx2a" path="res://MainMenu.gd" id="1_i26rj"]
 [ext_resource type="Texture2D" uid="uid://behoamlvrlfjc" path="res://asset/sira main menu art.png" id="2_h7a2f"]
 [ext_resource type="FontFile" uid="uid://d15d33cepqxf8" path="res://asset/font/PixelCode.ttf" id="3_qoqlk"]
+[ext_resource type="Script" uid="uid://boiyxy8hppxg8" path="res://scripts/button_pops.gd" id="4_iwfq2"]
 [ext_resource type="AudioStream" uid="uid://ckkjgk8nkg6bu" path="res://asset/sound/main_menu_bgm.mp3" id="4_qoqlk"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qoqlk"]
@@ -75,6 +76,7 @@ focus_mode = 0
 theme_override_colors/font_hover_color = Color(0.4351923, 0.43519226, 0.43519226, 1)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_qoqlk")
 flat = true
+script = ExtResource("4_iwfq2")
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer/PlayButton" unique_id=2106455741]
 custom_minimum_size = Vector2(200, 40)
@@ -93,6 +95,7 @@ layout_mode = 2
 focus_mode = 0
 theme_override_colors/font_hover_color = Color(0.4351923, 0.43519226, 0.43519226, 1)
 flat = true
+script = ExtResource("4_iwfq2")
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer/SettingsButton" unique_id=221136732]
 custom_minimum_size = Vector2(200, 40)
@@ -111,6 +114,7 @@ layout_mode = 2
 focus_mode = 0
 theme_override_colors/font_hover_color = Color(0.4351923, 0.43519226, 0.43519226, 1)
 flat = true
+script = ExtResource("4_iwfq2")
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer/QuitButton" unique_id=1301822589]
 custom_minimum_size = Vector2(200, 40)

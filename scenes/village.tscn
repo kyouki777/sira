@@ -10,6 +10,7 @@
 [ext_resource type="FontFile" uid="uid://d15d33cepqxf8" path="res://asset/font/PixelCode.ttf" id="7_ogrjq"]
 [ext_resource type="PackedScene" uid="uid://cjlaxmg5p28xv" path="res://scenes/jitendra.tscn" id="8_6chju"]
 [ext_resource type="Script" uid="uid://wgutjkja8iq8" path="res://scripts/interactable.gd" id="8_53v4c"]
+[ext_resource type="Script" uid="uid://bif26apvgxb51" path="res://scripts/move_tutorial.gd" id="8_jhek2"]
 [ext_resource type="PackedScene" uid="uid://c74iyb1neqvxg" path="res://scenes/temenggung.tscn" id="10_6chju"]
 [ext_resource type="Script" uid="uid://bl36us8herxp6" path="res://scripts/kumang.gd" id="11_a655f"]
 [ext_resource type="PackedScene" uid="uid://bo8lopwjmina2" path="res://scenes/balian_bawi.tscn" id="11_jhek2"]
@@ -306,6 +307,7 @@ position = Vector2(178, 553)
 [node name="cutscene_black" type="ColorRect" parent="CanvasLayer" unique_id=1655195585]
 visible = false
 modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 0)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -335,6 +337,7 @@ offset_top = 32.0
 offset_right = 244.0
 offset_bottom = 86.0
 mouse_filter = 2
+theme_override_constants/separation = 6
 
 [node name="HewanIcon" type="TextureRect" parent="CanvasLayer/HewanFedCounterContaianer" unique_id=378856110]
 layout_mode = 2
@@ -353,6 +356,22 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("7_ogrjq")
 text = "0/5"
+
+[node name="MoveTutorial" type="Label" parent="CanvasLayer" unique_id=1768338427]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 48.0
+offset_top = -159.0
+offset_right = 454.0
+offset_bottom = -68.0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("7_ogrjq")
+theme_override_font_sizes/font_size = 32
+text = "Use WASD to move
+Press E to interact"
+script = ExtResource("8_jhek2")
+show_up_time = 0.2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1713040327]
 libraries/ = SubResource("AnimationLibrary_efnqa")

@@ -6,6 +6,8 @@
 [ext_resource type="AudioStream" uid="uid://bih7kbk2gvvua" path="res://asset/sound/walk-on-grass-2.mp3" id="4_qlg0r"]
 [ext_resource type="AudioStream" uid="uid://cxttuan218tg6" path="res://asset/sound/walk-on-grass-3.mp3" id="5_tuyoq"]
 [ext_resource type="PackedScene" uid="uid://dskrjcyi04ium" path="res://scenes/pause_menu.tscn" id="6_tuyoq"]
+[ext_resource type="FontFile" uid="uid://d15d33cepqxf8" path="res://asset/font/PixelCode.ttf" id="7_fjrip"]
+[ext_resource type="Script" uid="uid://cmjeu1lp4yl45" path="res://scripts/interact_indicator.gd" id="8_smehm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i3pqv"]
 atlas = ExtResource("2_qhqgy")
@@ -243,6 +245,24 @@ volume_db = -9.975
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1811857065]
 
 [node name="PauseMenu" parent="CanvasLayer" unique_id=1635824782 instance=ExtResource("6_tuyoq")]
+
+[node name="InteractIndicator" type="Label" parent="CanvasLayer" unique_id=853827419]
+unique_name_in_owner = true
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -320.0
+offset_top = -90.0
+offset_right = -42.0
+offset_bottom = -60.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("7_fjrip")
+theme_override_font_sizes/font_size = 22
+text = "Press E to interact"
+script = ExtResource("8_smehm")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_interaction_area_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_interaction_area_area_exited"]

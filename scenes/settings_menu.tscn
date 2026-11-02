@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dyant4n6flh8x" path="res://scripts/settings_menu.gd" id="1_05p07"]
 [ext_resource type="FontFile" uid="uid://d15d33cepqxf8" path="res://asset/font/PixelCode.ttf" id="2_cr101"]
+[ext_resource type="Script" uid="uid://boiyxy8hppxg8" path="res://scripts/button_pops.gd" id="2_wswnh"]
 
 [node name="SettingsMenu" type="Panel" unique_id=390169135]
 process_mode = 3
@@ -51,6 +52,7 @@ theme_override_constants/separation = 20
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
+script = ExtResource("2_wswnh")
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=1866027333]
 custom_minimum_size = Vector2(200, 40)
@@ -87,7 +89,10 @@ offset_bottom = 61.5
 grow_horizontal = 0
 theme_override_fonts/font = ExtResource("2_cr101")
 text = "Back"
+script = ExtResource("2_wswnh")
 
+[connection signal="mouse_entered" from="VBoxContainer/HBoxContainer" to="VBoxContainer/HBoxContainer/MuteButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/HBoxContainer" to="VBoxContainer/HBoxContainer/MuteButton" method="_on_mouse_exited"]
 [connection signal="toggled" from="VBoxContainer/HBoxContainer/MuteButton" to="." method="_on_mute_button_toggled"]
 [connection signal="value_changed" from="VBoxContainer/VBoxContainer/MasterVolSlider" to="." method="_on_master_vol_slider_value_changed"]
 [connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]

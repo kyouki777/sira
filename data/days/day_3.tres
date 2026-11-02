@@ -7,5 +7,5 @@ script = ExtResource("1_qr5ja")
 day_number = 3
 day_target_animal = 10
 day_oxygen_limit = 15.0
-day_branch_fall_time_range = Array[int]([10, 18])
+day_branch_fall_time_range = Array[int]([3, 7])
 metadata/_custom_type_script = "uid://deq3kg7rk7prj"
