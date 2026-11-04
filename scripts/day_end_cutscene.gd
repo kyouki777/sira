@@ -6,6 +6,8 @@ var player_camera: Camera2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var world_label: Label = $CanvasLayer/world_label
 @onready var jitendra: StaticBody2D = $jitendra
+@onready var layer_3: TileMapLayer = $TileMap2/layer3
+@onready var haze: ColorRect = $CanvasLayer/haze
 
 var can_go_to_forest: bool = false
 
@@ -14,12 +16,21 @@ var talked_to_temenggung: bool = false
 var talked_to_jitendra: bool = false
 
 func _ready() -> void:
+	layer_3.visible = false
+	haze.visible = false
+	
 	player_camera = player.camera_2d
 	setup_camera_limits()
 	Dialogic.signal_event.connect(_on_dialogic_signal_event)
+	
+	if DayManager.current_day == 2:
+		haze.visible = true
+		
 	if DayManager.current_day == 3:
 		jitendra.queue_free()
 		print("despawning jitendra")
+		layer_3.visible = true
+		
 	player.can_move = false
 	animation_player.play("fadein")
 	await animation_player.animation_finished

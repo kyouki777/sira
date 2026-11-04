@@ -35,10 +35,16 @@
 [ext_resource type="Shader" uid="uid://cqra6hfc5m0uw" path="res://scripts/branch_fall.gdshader" id="29_soql2"]
 [ext_resource type="Script" uid="uid://c35u1muqb3lsl" path="res://scripts/forest_components/drama_overlay.gd" id="30_u01n2"]
 [ext_resource type="PackedScene" uid="uid://dskrjcyi04ium" path="res://scenes/pause_menu.tscn" id="33_len2l"]
+[ext_resource type="Shader" uid="uid://cw0vhkkke2bgb" path="res://scenes/last_breath.gdshader" id="34_a88r6"]
 [ext_resource type="Texture2D" uid="uid://cbamfxd36q8as" path="res://asset/Tutorial/tut_1.png" id="35_7q4h0"]
+[ext_resource type="Texture2D" uid="uid://0mfni4jenmls" path="res://asset/sira screen red effect.png" id="35_eos0w"]
 [ext_resource type="Texture2D" uid="uid://cjcnwifc12ky7" path="res://asset/Tutorial/tut_2.png" id="36_lr7uy"]
 [ext_resource type="Texture2D" uid="uid://cu46wy2s1mqhe" path="res://asset/Tutorial/tut_3.png" id="37_igjew"]
 [ext_resource type="AudioStream" uid="uid://drm1irk85jlfu" path="res://asset/sound/forest_fire.mp3" id="39_igjew"]
+[ext_resource type="AudioStream" uid="uid://bgx2q8mggbavx" path="res://asset/sound/WARNING.mp3" id="40_o06ba"]
+[ext_resource type="AudioStream" uid="uid://toun5ahujep6" path="res://asset/sound/female_heavy_breathing.mp3" id="41_a8hxt"]
+[ext_resource type="AudioStream" uid="uid://c7i8l8ydu1wxn" path="res://asset/sound/heartbeat.mp3" id="43_okwed"]
+[ext_resource type="AudioStream" uid="uid://738uxqyglqwb" path="res://asset/sound/ghost_noises.mp3" id="44_okwed"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ik31s"]
 shader = ExtResource("6_i1yi8")
@@ -70,6 +76,10 @@ shader_parameter/ellipse_height = 1.20000005630148
 shader_parameter/edge_smoothing = 0.2800000133
 shader_parameter/progress = 0.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ticvn"]
+shader = ExtResource("34_a88r6")
+shader_parameter/blur_amount = 0.0
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4uh7g"]
 content_margin_left = 4.0
 content_margin_top = 4.0
@@ -88,6 +98,163 @@ border_width_left = 5
 border_width_top = 5
 border_width_right = 5
 border_width_bottom = 5
+
+[sub_resource type="Animation" id="Animation_a88r6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UILayer/LastBreathOverlay:material:shader_parameter/blur_amount")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("heavy_breathing_sound:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("heartbeat_sound:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("horror_ambience:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("UILayer/RedEffect:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("UILayer/RedEffect:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_eos0w"]
+resource_name = "last_breath"
+length = 60.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UILayer/LastBreathOverlay:material:shader_parameter/blur_amount")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 3.0666666, 5, 7.0333333, 9.033334, 11, 13, 15, 17.033333, 19, 21.033333, 23, 26.033333, 28.033333, 30.033333, 32, 34, 36.033333, 38.033333, 40.033333, 42, 44.033333, 46.033333, 48.033333, 50, 52, 54, 56, 58.033333, 60),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0000000475, 0.0, 1.0000000475, 0.0, 1.0000000475, 0.0, 1.0000000475, 0.0, 1.0000000475, 0.0, 2.000000095, 0.0, 2.0400000969, 0.0, 2.000000095, 0.0, 2.000000095, 0.0, 2.0400000969, 0.0, 2.000000095, 0.0, 2.0400000969, 2.000000095, 0.0, 2.000000095, 0.0, 2.000000095, 0.0, 2.000000095]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("heavy_breathing_sound:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(30),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("heartbeat_sound:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(20),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("horror_ambience:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(40),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("UILayer/RedEffect:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(40.066666),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("UILayer/RedEffect:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(40.066666, 42.133335, 44.033333, 46.1, 48.011585, 50.078255, 51.978252, 54.044918, 56.007114, 58.073784, 59.97378),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7jawt"]
+_data = {
+&"RESET": SubResource("Animation_a88r6"),
+&"last_breath": SubResource("Animation_eos0w")
+}
 
 [node name="forest" type="Node2D" unique_id=1697064475 node_paths=PackedStringArray("world_label", "depth_label", "animal_container")]
 script = ExtResource("1_yj5dr")
@@ -296,6 +463,27 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("30_u01n2")
 
+[node name="LastBreathOverlay" type="ColorRect" parent="UILayer" unique_id=748974542]
+top_level = true
+material = SubResource("ShaderMaterial_ticvn")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="RedEffect" type="TextureRect" parent="UILayer" unique_id=540598558]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("35_eos0w")
+expand_mode = 3
+
 [node name="PauseLayer" type="CanvasLayer" parent="." unique_id=954676525]
 layer = 5
 
@@ -365,6 +553,23 @@ layout_mode = 2
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1156084431]
 stream = ExtResource("39_igjew")
 autoplay = true
+
+[node name="branch_warning" type="AudioStreamPlayer" parent="." unique_id=683039016]
+stream = ExtResource("40_o06ba")
+
+[node name="heavy_breathing_sound" type="AudioStreamPlayer" parent="." unique_id=662372801]
+stream = ExtResource("41_a8hxt")
+volume_db = 12.078
+
+[node name="heartbeat_sound" type="AudioStreamPlayer" parent="." unique_id=1903775134]
+stream = ExtResource("43_okwed")
+volume_db = 4.622
+
+[node name="horror_ambience" type="AudioStreamPlayer" parent="." unique_id=822713425]
+stream = ExtResource("44_okwed")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=514757184]
+libraries/ = SubResource("AnimationLibrary_7jawt")
 
 [connection signal="timeout" from="time_limit" to="." method="trigger_gameover"]
 [connection signal="dead_by_falling_branch" from="UILayer/sira/FallingBranchComponent" to="." method="_on_falling_branch_component_dead_by_falling_branch"]

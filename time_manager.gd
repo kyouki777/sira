@@ -21,10 +21,11 @@ func _process(delta: float) -> void:
 			day_timer_updated.emit(DayManager.day_total_time - current_day_time)
 		else:
 			# Call Gameover here
-			get_tree().change_scene_to_file("res://scenes/game_over.tscn")
-			print("timer ended. game over")
-			stop_day_timer()
-			day_timer_updated.emit(0)
+			if not GameManager.last_day:
+				get_tree().change_scene_to_file("res://scenes/game_over.tscn")
+				print("timer ended. game over")
+				stop_day_timer()
+				day_timer_updated.emit(0)
 
 func time_penalty(penalty_time:float = 3.0):
 	current_day_time += penalty_time
