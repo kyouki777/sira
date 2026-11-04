@@ -29,12 +29,14 @@ var player_camera:Camera2D
 
 func _ready() -> void:
 	#print("opening cutscene off")
+	world_village_label.text = ""
+
+		
 	if not GameManager.has_village_day_end_cutscene:
 		audio_stream_player.play()
 		print("village ambience playing")
 		
 	hewan_fed_counter_container.visible = false
-	world_village_label.text = ""
 	Dialogic.signal_event.connect(_on_dialogic_signal_event)
 	world_camera.enabled = true
 	
@@ -59,15 +61,38 @@ func _ready() -> void:
 		
 		
 func _process(delta: float) -> void:
+	
+	if GameManager.talked_to_jitendra == false and GameManager.opening_cutscene_played == true and not GameManager.feeding_animals : #yes im doing it the hard way
+		world_village_label.visible = true
+		world_village_label.text = "Talk to Jitendra"
+	
+	if GameManager.feeding_animals: #disables label after talking to jitendra
+		world_village_label.visible = false
+		
 	if animal_fed_count == total_animal_need_food and not day_end_triggered:
 		day_end_triggered = true
 		print("day ending")
+		
 		Dialogic.start("report_to_jitendra")
+		print("dialogic playing report to jitendra")
 		await Dialogic.timeline_ended
 		
 		GameManager.day_end = true
 		GameManager.feeding_animals = false
 		
+	if animal_fed_count == total_animal_need_food:
+		world_village_label.visible = true
+		world_village_label.text = "Report to Jitendra"
+		print("REPORT TO JITENDRA")
+		
+	#if GameManager.has_village_day_end_cutscene == true: #after village day end cutscene
+		#world_village_label.visible = true
+		#world_village_label.text = "Enter the Sacred Forest"
+		
+	if GameManager.player_in_village == false: #disables UI when the player exits the village
+		world_village_label.visible = false
+		
+	#animal feed counter UI
 	if GameManager.feeding_animals and GameManager.talked_to_jitendra == true:
 		hewan_fed_counter_container.visible = true
 
@@ -107,7 +132,7 @@ func fade_in(duration: float = 1.0) -> void:
 
 
 func play_opening_cutscene(): #doing it the hard way yuh pls dont change
-	GameManager.opening_cutscene_played = true
+	
 	enter_game_area.monitoring = false
 	player.can_move = false
 	
@@ -141,7 +166,7 @@ func play_opening_cutscene(): #doing it the hard way yuh pls dont change
 	player.can_move = true
 	enter_game_area.monitoring = true
 	$CanvasLayer/MoveTutorial.show_up()
-	
+	GameManager.opening_cutscene_played = true
 	
 #FIX THE DETECTION
 func _on_enter_game_area_body_entered(body: Node2D) -> void:
@@ -178,6 +203,7 @@ func _on_dialogic_signal_event(argument:String) -> void:
 		print("manuk pansuh acquired")
 	
 func after_village_day_end_cutscene():
+	GameManager.has_village_day_end_cutscene = true
 	await Dialogic.timeline_ended
 	audio_stream_player.stop()
 	skip_opening_cutscene()

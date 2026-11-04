@@ -59,6 +59,7 @@ func _on_interacted() -> void:
 	Dialogic.start(chosen_timeline)
 	
 	if current_dialogue_index == 2:
+		await Dialogic.timeline_ended
 		GameManager.talked_to_jitendra = true
 		print("jitendra all dialogue option finished")
 	
