@@ -15,6 +15,7 @@ var tutorial_shown : bool = false
 @export var animal_container: Node2D
 @onready var timer_container: HBoxContainer = $UILayer/TimerContainer
 @onready var hewan_container: HBoxContainer = $UILayer/HewanContainer
+@onready var movement_label: Label = $UILayer/MovementLabel
 
 
 var label_on :bool = false
@@ -27,6 +28,7 @@ func _ready() -> void:
 	if GameManager.last_day == true:
 		timer_container.visible = false #so that the player only relies on oxygen as time inside the forest
 		hewan_container.visible = false
+		movement_label.visible = false
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
