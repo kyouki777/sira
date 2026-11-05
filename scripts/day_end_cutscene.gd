@@ -8,6 +8,9 @@ var player_camera: Camera2D
 @onready var jitendra: StaticBody2D = $jitendra
 @onready var layer_3: TileMapLayer = $TileMap2/layer3
 @onready var haze: ColorRect = $CanvasLayer/haze
+@onready var fire_sound: AudioStreamPlayer = $fire_sound
+@onready var balian_bawi: StaticBody2D = $balian_bawi
+@onready var temenggung: StaticBody2D = $temenggung
 
 var can_go_to_forest: bool = false
 
@@ -30,6 +33,8 @@ func _ready() -> void:
 		jitendra.queue_free()
 		print("despawning jitendra")
 		layer_3.visible = true
+		haze.visible = true
+		fire_sound.play()
 		
 	player.can_move = false
 	animation_player.play("fadein")
@@ -64,6 +69,7 @@ func _on_dialogic_signal_event(argument: String) -> void:
 
 func _trigger_day_transition() -> void:
 	
+	fire_sound.stop()
 	talked_to_balian = false
 	talked_to_temenggung = false
 	talked_to_jitendra = false
@@ -82,8 +88,8 @@ func _trigger_day_transition() -> void:
 		await Dialogic.timeline_ended
 		player.can_move = false
 		animation_player.play("fadeout_day_3")
-		player.can_move = true
 		await animation_player.animation_finished
+		player.can_move = true
 		DayManager.go_to_next_day()
 		GameManager.day_transitioning = false
 		get_tree().change_scene_to_file("res://scenes/main.tscn")

@@ -81,6 +81,7 @@ func _process(delta: float) -> void:
 		GameManager.feeding_animals = false
 		
 	if animal_fed_count == total_animal_need_food:
+		await Dialogic.timeline_ended
 		world_village_label.visible = true
 		world_village_label.text = "Report to Jitendra"
 		print("REPORT TO JITENDRA")

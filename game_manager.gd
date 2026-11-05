@@ -46,3 +46,5 @@ func reset_game() -> void:
 	current_carried_scene = null
 	current_carried_texture = null
 	player_entered_forest = false
+	last_day = false
+	day_transitioning = false

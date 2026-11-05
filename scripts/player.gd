@@ -121,6 +121,8 @@ func player_camera_off():
 	print("players camera off")
 
 func _unhandled_input(_event: InputEvent) -> void:
+	if not can_move:
+			return
 	if Input.is_action_just_pressed("interact") and current_interactable:
 		current_interactable.interact()
 

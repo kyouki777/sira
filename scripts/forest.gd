@@ -16,6 +16,7 @@ var tutorial_shown : bool = false
 @onready var timer_container: HBoxContainer = $UILayer/TimerContainer
 @onready var hewan_container: HBoxContainer = $UILayer/HewanContainer
 @onready var movement_label: Label = $UILayer/MovementLabel
+@onready var drama_overlay: ColorRect = $UILayer/DramaOverlay
 
 
 var label_on :bool = false

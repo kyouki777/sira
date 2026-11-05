@@ -13,6 +13,7 @@ var player_camera:Camera2D
 @onready var animal_sanctuary: Area2D = $animal_sanctuary
 @onready var haze: ColorRect = $CanvasLayer2/haze
 @onready var layer_3: TileMapLayer = $TileMap/layer3
+@onready var fire_sound: AudioStreamPlayer = $fire_sound
 
 
 func _ready() -> void:
@@ -41,6 +42,8 @@ func _ready() -> void:
 		jitendra.queue_free()
 		orangutan.queue_free()
 		layer_3.visible = true
+		haze.visible = true
+		fire_sound.play()
 	
 func _process(delta: float) -> void:
 	
