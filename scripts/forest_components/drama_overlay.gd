@@ -4,6 +4,9 @@ extends ColorRect
 
 var tween: Tween
 
+func _ready() -> void:
+	material = material.duplicate()
+
 func start_effect() -> void:
 	_animate_progress(1.0)
 

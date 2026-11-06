@@ -39,6 +39,7 @@
 [ext_resource type="Texture2D" uid="uid://cjcnwifc12ky7" path="res://asset/Tutorial/tut_2.png" id="36_lr7uy"]
 [ext_resource type="Texture2D" uid="uid://cu46wy2s1mqhe" path="res://asset/Tutorial/tut_3.png" id="37_igjew"]
 [ext_resource type="AudioStream" uid="uid://drm1irk85jlfu" path="res://asset/sound/forest_fire.mp3" id="39_igjew"]
+[ext_resource type="Texture2D" uid="uid://bkxfs1cddc0a4" path="res://asset/Tutorial/tut_4.png" id="39_o06ba"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ik31s"]
 shader = ExtResource("6_i1yi8")
@@ -304,7 +305,7 @@ layer = 5
 [node name="TutorialLayer" type="CanvasLayer" parent="." unique_id=1662428828]
 process_mode = 3
 script = ExtResource("20_3h1w1")
-tutorial_images = Array[Texture2D]([ExtResource("35_7q4h0"), ExtResource("36_lr7uy"), ExtResource("37_igjew")])
+tutorial_images = Array[Texture2D]([ExtResource("35_7q4h0"), ExtResource("36_lr7uy"), ExtResource("39_o06ba"), ExtResource("37_igjew")])
 
 [node name="click_overlay" type="Button" parent="TutorialLayer" unique_id=428097449]
 anchors_preset = 15
