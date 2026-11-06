@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cimgm5jm1wumd" path="res://scenes/player.tscn" id="4_2y5o2"]
 [ext_resource type="PackedScene" uid="uid://c74iyb1neqvxg" path="res://scenes/temenggung.tscn" id="4_no5jl"]
 [ext_resource type="PackedScene" uid="uid://cjlaxmg5p28xv" path="res://scenes/jitendra.tscn" id="5_l31ao"]
+[ext_resource type="AudioStream" uid="uid://drm1irk85jlfu" path="res://asset/sound/forest_fire.mp3" id="8_no5jl"]
 
 [sub_resource type="Animation" id="Animation_iicsi"]
 length = 0.001
@@ -101,7 +102,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_27f40"]
 resource_name = "fadeout_day_2"
-length = 10.0
+length = 25.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -133,10 +134,10 @@ tracks/2/path = NodePath("../Label:self_modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(3, 6, 9),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(3, 6.0333333, 12.033334, 15, 17.066668, 20.033333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -145,10 +146,11 @@ tracks/3/path = NodePath("../Label:text")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(3),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(3, 16.133333),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": ["DAY 2"]
+"values": ["The village couldn't keep the fire under control.
+More animals fell ill from the dense haze.", "DAY 2"]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -165,7 +167,7 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id="Animation_5yvkd"]
 resource_name = "fadeout_day_3"
-length = 10.0
+length = 25.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -197,10 +199,10 @@ tracks/2/path = NodePath("../Label:self_modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(3, 6, 9),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(3, 6, 12.033334, 15.033334, 17.033333, 20.033333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -209,10 +211,11 @@ tracks/3/path = NodePath("../Label:text")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(3),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(3, 15.933333),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": ["DAY 3"]
+"values": ["Sira continued to save the animals despite the raging flames
+and thick haze.", "DAY 3"]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -275,6 +278,12 @@ use_parent_material = true
 tile_map_data = PackedByteArray("AAAVABkAAAAAAAQAAAAZABwAAAAAAAQAAAAaAB0AAAABAAQAAAAWABkAAAABAAQAAAATABIAAAABAAQAAAAwABwAAAABAAQAAAAwABUAAAABAAQAAAAuAA8AAAABAAQAAAAsABkAAAAGAAAAAAAVAA4AAAABAAQAAAAbABIAAAAGAAAAAAAeAAoAAAAAAAUAAAAbAAoAAAAAAAUAAAAYAAoAAAAAAAUAAAAVAAoAAAAAAAUAAAASAAoAAAAAAAUAAAAPAAoAAAAAAAUAAAAPACIAAAAAAAUAAAASACIAAAAAAAUAAAAVACIAAAAAAAUAAAAYACIAAAAAAAUAAAAbACIAAAAAAAUAAAAeACIAAAAAAAUAAAAhACIAAAAAAAUAAAAkACIAAAAAAAUAAAAnACIAAAAAAAUAAAAqACIAAAAAAAUAAAAtACIAAAAAAAUAAAAwACIAAAAAAAUAAAAzACIAAAAAAAUAAAA2ACIAAAAAAAUAAAA5ACIAAAAAAAUAAAA2AAoAAAAAAAUAAAAzAAoAAAAAAAUAAAAwAAoAAAAAAAUAAAAtAAoAAAAAAAUAAAAqAAoAAAAAAAUAAAAnAAoAAAAAAAUAAAATAB0AAAAGAAAAAAAMABMAAAAAAAUAAAAMACIAAAAAAAUAAAAMAB8AAAADAAUAAAAMABwAAAADAAUAAAAMABkAAAADAAUAAAAMABAAAAADAAUAAAAMAA0AAAADAAUAAAAMAAoAAAADAAUAAAA5AB8AAAADAAUAAAA5ABwAAAADAAUAAAA5ABkAAAADAAUAAAA5ABYAAAADAAUAAAA5ABMAAAADAAUAAAA5ABAAAAADAAUAAAA5AA0AAAADAAUAAAA5AAoAAAADAAUAAAA=")
 tile_set = ExtResource("2_j741i")
 
+[node name="layer3" type="TileMapLayer" parent="TileMap2" unique_id=2046265021]
+y_sort_enabled = true
+use_parent_material = true
+tile_map_data = PackedByteArray("AAAQACIAAgAFAA8AAAApAAwAAgAFAA8AAAAZAAwAAgAFAA8AAAA2AAwAAgAFAA8AAAA2ACEAAgAFAA8AAAAjACEAAgAFAA8AAAAWAAwAAgAKABAAAAAeAAwAAgAKABAAAAAxAA0AAgAKABAAAAAPAA0AAgAKABAAAAATAAwAAgAMABAAAAATAAoAAgAMABAAAAAdAAoAAgAMABAAAAAsAAoAAgAMABAAAAA1AAoAAgAMABAAAAArACIAAgAMABAAAAAXACIAAgAMABAAAAAOABsAAgAMABAAAAA3ABYAAgAKABAAAAA=")
+tile_set = ExtResource("2_j741i")
+
 [node name="balian_bawi" parent="." unique_id=2017700157 instance=ExtResource("3_5yvkd")]
 position = Vector2(468, 389)
 
@@ -288,6 +297,15 @@ position = Vector2(635, 312)
 position = Vector2(545, 329)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=353548673]
+
+[node name="haze" type="ColorRect" parent="CanvasLayer" unique_id=171804806]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.83137256, 0.8235294, 0.8039216, 0.39607844)
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=102903560]
 self_modulate = Color(0, 0, 0, 1)
@@ -312,7 +330,10 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_iicsi")
+theme_override_font_sizes/font_size = 18
 text = "DAY 2"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="world_label" type="Label" parent="CanvasLayer" unique_id=1303484944]
 anchors_preset = 8
@@ -362,6 +383,10 @@ position = Vector2(526, 192)
 y_sort_enabled = true
 position = Vector2(34.5, -3)
 shape = SubResource("RectangleShape2D_5yvkd")
+
+[node name="fire_sound" type="AudioStreamPlayer" parent="." unique_id=962873219]
+stream = ExtResource("8_no5jl")
+volume_db = -11.082
 
 [connection signal="body_entered" from="forest_area" to="." method="_on_forest_area_body_entered"]
 [connection signal="body_exited" from="forest_area" to="." method="_on_forest_area_body_exited"]

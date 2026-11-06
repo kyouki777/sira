@@ -11,9 +11,15 @@ var player_camera:Camera2D
 
 @onready var canvas_modulate: CanvasModulate = $CanvasModulate
 @onready var animal_sanctuary: Area2D = $animal_sanctuary
+@onready var haze: ColorRect = $CanvasLayer2/haze
+@onready var layer_3: TileMapLayer = $TileMap/layer3
+@onready var fire_sound: AudioStreamPlayer = $fire_sound
 
 
 func _ready() -> void:
+	haze.visible = false
+	layer_3.visible = false
+	
 	if not TimeManager.is_day_timer_running:
 			TimeManager.start_day_timer(true)
 	
@@ -29,10 +35,15 @@ func _ready() -> void:
 	if GameManager.player_entered_forest == true:
 		$Player.global_position = Vector2(560, 220)
 
+	if DayManager.current_day == 2:
+		haze.visible = true
 		
 	if DayManager.current_day == 3:
 		jitendra.queue_free()
 		orangutan.queue_free()
+		layer_3.visible = true
+		haze.visible = true
+		fire_sound.play()
 	
 func _process(delta: float) -> void:
 	

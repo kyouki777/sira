@@ -19,7 +19,12 @@ func _ready() -> void:
 	current_day_data = data_days[current_day - 1]
 	await load_variable_from_days()
 	TimeManager.stop_day_timer()
-
+	
+	#debuggggg
+	#go_to_next_day()
+	#go_to_next_day()
+	
+	
 # Panggil pas ganti hari
 func go_to_next_day() -> void:
 	current_day += 1

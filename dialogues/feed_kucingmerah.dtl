@@ -1,6 +1,6 @@
 "Kucing Merah": Meow.
 Sira: (This is... a newcomer. Jitendra likes to call her kucing merah or Kume.)
-if {feeding_animals} == true:
+if {feeding_animals} == true and {kucingmerah_fed} == false:
 	Sira: (Kume came in waltzing into the village one day and stole our fishes.)
 	Sira: (We've never really seen a species like her.)
 	Sira: (She very fiesty, but comes around skittishly for food anyway.)
@@ -10,6 +10,7 @@ if {feeding_animals} == true:
 	"Kucing Merah": *HIIISSSSS*!
 	Sira: (Nevermind.)
 	- Feed Kume.
+		set {kucingmerah_fed} = true
 		[signal arg="animal_fed"]
 		audio "res://asset/sound/crunch.mp3"
 		*Kume chomps on the fish then bolts away*

@@ -12,6 +12,7 @@ signal dead_by_falling_branch
 @onready var warning_timer: Timer = %WarningTimer
 @onready var till_branch_fall_timer: Timer = %TillBranchFallTimer
 @onready var branch: Area2D = %Branch
+@onready var branch_warning: AudioStreamPlayer = $"../../../branch_warning"
 
 func _ready() -> void:
 	warning_sprite.hide()
@@ -28,6 +29,8 @@ func _ready() -> void:
 	warning_timer.timeout.connect(start_branch_fall_sequence)
 
 func start_warning_sequence():
+	branch_warning.play()
+	print("warning")
 	drama_overlay.start_effect()
 	warning_sprite.show()
 	animation_player.play("flashing")

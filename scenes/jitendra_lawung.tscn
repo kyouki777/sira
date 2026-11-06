@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://sb3dahesf6n5" path="res://asset/rumah lamin.png" id="1_pgxti"]
 [ext_resource type="Script" uid="uid://byu6lj6fke0et" path="res://scripts/jitendra_lawung.gd" id="2_pgxti"]
+[ext_resource type="AudioStream" uid="uid://d3xyime1e6odq" path="res://asset/sound/hat_found.mp3" id="3_btldj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ticvn"]
 atlas = ExtResource("1_pgxti")
@@ -16,5 +17,9 @@ texture_normal = SubResource("AtlasTexture_ticvn")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("2_pgxti")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1609436823]
+stream = ExtResource("3_btldj")
+autoplay = true
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

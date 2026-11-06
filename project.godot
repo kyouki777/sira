@@ -13,7 +13,7 @@ config_version=5
 config/name="Sira"
 run/main_scene="uid://btf2tsk2vaxyh"
 config/features=PackedStringArray("4.7", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://ce0q43evsjtna"
 
 [autoload]
 
@@ -85,8 +85,13 @@ layout/style_directory={
 "default": "res://default.tres"
 }
 variables={
+"bekantan_fed": false,
+"burungenggang_fed": false,
 "feeding_animals": false,
-"manuk_pansuh": false
+"kucingmerah_fed": false,
+"macandahan_fed": false,
+"manuk_pansuh": false,
+"orangutan_fed": false
 }
 glossary/default_case_sensitive=true
 layout/style_list=["res://default.tres"]
@@ -129,6 +134,7 @@ glossary/glossary_files=[]
 
 window/size/mode=2
 window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 
 [editor_plugins]
 

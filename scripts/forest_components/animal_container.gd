@@ -5,7 +5,7 @@ extends Node2D
 
 # Special last day settings
 @export var special_last_day_jitendra: PackedScene 
-@export var target_last_day_progress: int = 10
+@export var target_last_day_progress: int = 100
 
 @onready var saved_animal: Sprite2D = %SavedAnimal
 var animal_room_list: Dictionary = {}

@@ -29,8 +29,14 @@ var player_camera:Camera2D
 
 func _ready() -> void:
 	#print("opening cutscene off")
-	hewan_fed_counter_container.visible = false
 	world_village_label.text = ""
+
+		
+	if not GameManager.has_village_day_end_cutscene:
+		audio_stream_player.play()
+		print("village ambience playing")
+		
+	hewan_fed_counter_container.visible = false
 	Dialogic.signal_event.connect(_on_dialogic_signal_event)
 	world_camera.enabled = true
 	
@@ -55,15 +61,39 @@ func _ready() -> void:
 		
 		
 func _process(delta: float) -> void:
+	
+	if GameManager.talked_to_jitendra == false and GameManager.opening_cutscene_played == true and not GameManager.feeding_animals : #yes im doing it the hard way
+		world_village_label.visible = true
+		world_village_label.text = "Talk to Jitendra"
+	
+	if GameManager.feeding_animals: #disables label after talking to jitendra
+		world_village_label.visible = false
+		
 	if animal_fed_count == total_animal_need_food and not day_end_triggered:
 		day_end_triggered = true
 		print("day ending")
+		
 		Dialogic.start("report_to_jitendra")
+		print("dialogic playing report to jitendra")
 		await Dialogic.timeline_ended
 		
 		GameManager.day_end = true
 		GameManager.feeding_animals = false
 		
+	if animal_fed_count == total_animal_need_food:
+		await Dialogic.timeline_ended
+		world_village_label.visible = true
+		world_village_label.text = "Report to Jitendra"
+		print("REPORT TO JITENDRA")
+		
+	#if GameManager.has_village_day_end_cutscene == true: #after village day end cutscene
+		#world_village_label.visible = true
+		#world_village_label.text = "Enter the Sacred Forest"
+		
+	if GameManager.player_in_village == false: #disables UI when the player exits the village
+		world_village_label.visible = false
+		
+	#animal feed counter UI
 	if GameManager.feeding_animals and GameManager.talked_to_jitendra == true:
 		hewan_fed_counter_container.visible = true
 
@@ -85,23 +115,25 @@ func skip_opening_cutscene():
 	
 # Tween helper functions for screen fades
 func fade_out(duration: float = 1.0) -> void:
+	print("tween fade out")
 	cutscene_black.visible = true
 	cutscene_black.modulate.a = 0.0
-	var tween = create_tween()
+	var tween = create_tween().set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 	tween.tween_property(cutscene_black, "modulate:a", 1.0, duration)
 	await tween.finished
 
 func fade_in(duration: float = 1.0) -> void:
+	print("tween fade in")
 	cutscene_black.visible = true
 	cutscene_black.modulate.a = 1.0
-	var tween = create_tween()
+	var tween = create_tween().set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 	tween.tween_property(cutscene_black, "modulate:a", 0.0, duration)
 	await tween.finished
 	cutscene_black.visible = false
 
 
 func play_opening_cutscene(): #doing it the hard way yuh pls dont change
-	GameManager.opening_cutscene_played = true
+	
 	enter_game_area.monitoring = false
 	player.can_move = false
 	
@@ -119,6 +151,7 @@ func play_opening_cutscene(): #doing it the hard way yuh pls dont change
 	
 	# Fade Out to black 
 	await fade_out(1.0)
+	print("3. Fade out finished")
 	
 	village_interactable.visible = true
 	world_camera.enabled = false
@@ -134,7 +167,7 @@ func play_opening_cutscene(): #doing it the hard way yuh pls dont change
 	player.can_move = true
 	enter_game_area.monitoring = true
 	$CanvasLayer/MoveTutorial.show_up()
-	
+	GameManager.opening_cutscene_played = true
 	
 #FIX THE DETECTION
 func _on_enter_game_area_body_entered(body: Node2D) -> void:
@@ -163,6 +196,7 @@ func _on_dialogic_signal_event(argument:String) -> void:
 		animation_player.play("cutscene_fadeout")
 		print("cutscene fadeout day end")
 		await animation_player.animation_finished
+		audio_stream_player.stop() #to make sure the audio stops
 		get_tree().change_scene_to_file("res://scenes/village_day_end_cutscene.tscn")
 	
 	if argument == "manuk_pansuh":
@@ -170,6 +204,7 @@ func _on_dialogic_signal_event(argument:String) -> void:
 		print("manuk pansuh acquired")
 	
 func after_village_day_end_cutscene():
+	GameManager.has_village_day_end_cutscene = true
 	await Dialogic.timeline_ended
 	audio_stream_player.stop()
 	skip_opening_cutscene()

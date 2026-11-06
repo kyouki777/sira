@@ -14,6 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://luxdmu17ajua" path="res://asset/ui/Timer_over.png" id="10_trceg"]
 [ext_resource type="Texture2D" uid="uid://jim4fhhjfgub" path="res://asset/ui/Timer_progress.png" id="11_a8y0u"]
 [ext_resource type="AudioStream" uid="uid://c55ilivpfimaa" path="res://asset/sound/grass_rustle.mp3" id="14_a8y0u"]
+[ext_resource type="Texture2D" uid="uid://bk2sjrr1e2og6" path="res://asset/fade_out_circle.png" id="14_jkv2x"]
+[ext_resource type="AudioStream" uid="uid://drm1irk85jlfu" path="res://asset/sound/forest_fire.mp3" id="16_jbj1t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ik31s"]
 size = Vector2(115, 26)
@@ -122,6 +124,13 @@ use_parent_material = true
 tile_map_data = PackedByteArray("AAAVABkAAAAAAAQAAAAZABwAAAAAAAQAAAAaAB0AAAABAAQAAAAWABkAAAABAAQAAAATABIAAAABAAQAAAAwABwAAAABAAQAAAAwABUAAAABAAQAAAAuAA8AAAABAAQAAAAsABkAAAAGAAAAAAAVAA4AAAABAAQAAAAbABIAAAAGAAAAAAAeAAoAAAAAAAUAAAAbAAoAAAAAAAUAAAAYAAoAAAAAAAUAAAAVAAoAAAAAAAUAAAASAAoAAAAAAAUAAAAPAAoAAAAAAAUAAAAPACIAAAAAAAUAAAASACIAAAAAAAUAAAAVACIAAAAAAAUAAAAYACIAAAAAAAUAAAAbACIAAAAAAAUAAAAeACIAAAAAAAUAAAAhACIAAAAAAAUAAAAkACIAAAAAAAUAAAAnACIAAAAAAAUAAAAqACIAAAAAAAUAAAAtACIAAAAAAAUAAAAwACIAAAAAAAUAAAAzACIAAAAAAAUAAAA2ACIAAAAAAAUAAAA5ACIAAAAAAAUAAAA2AAoAAAAAAAUAAAAzAAoAAAAAAAUAAAAwAAoAAAAAAAUAAAAtAAoAAAAAAAUAAAAqAAoAAAAAAAUAAAAnAAoAAAAAAAUAAAATAB0AAAAGAAAAAAAMABMAAAAAAAUAAAAMACIAAAAAAAUAAAAMAB8AAAADAAUAAAAMABwAAAADAAUAAAAMABkAAAADAAUAAAAMABAAAAADAAUAAAAMAA0AAAADAAUAAAAMAAoAAAADAAUAAAA5AB8AAAADAAUAAAA5ABwAAAADAAUAAAA5ABkAAAADAAUAAAA5ABYAAAADAAUAAAA5ABMAAAADAAUAAAA5ABAAAAADAAUAAAA5AA0AAAADAAUAAAA5AAoAAAADAAUAAAA=")
 tile_set = ExtResource("2_eb6dy")
 
+[node name="layer3" type="TileMapLayer" parent="TileMap" unique_id=632364109]
+visible = false
+y_sort_enabled = true
+use_parent_material = true
+tile_map_data = PackedByteArray("AAAQACIAAgAFAA8AAAApAAwAAgAFAA8AAAAZAAwAAgAFAA8AAAA2AAwAAgAFAA8AAAA2ACEAAgAFAA8AAAAjACEAAgAFAA8AAAAWAAwAAgAKABAAAAAeAAwAAgAKABAAAAAxAA0AAgAKABAAAAAPAA0AAgAKABAAAAATAAwAAgAMABAAAAATAAoAAgAMABAAAAAdAAoAAgAMABAAAAAsAAoAAgAMABAAAAA1AAoAAgAMABAAAAArACIAAgAMABAAAAAXACIAAgAMABAAAAAOABsAAgAMABAAAAA3ABYAAgAKABAAAAA=")
+tile_set = ExtResource("2_eb6dy")
+
 [node name="Player" parent="." unique_id=373575522 instance=ExtResource("1_o5qli")]
 position = Vector2(224, 392)
 
@@ -181,6 +190,26 @@ position = Vector2(941, 179)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBorders/RightBorder" unique_id=812953618]
 shape = SubResource("WorldBoundaryShape2D_jbj1t")
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1352389542]
+
+[node name="haze" type="ColorRect" parent="CanvasLayer2" unique_id=60390737]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.83137256, 0.8235294, 0.8039216, 0.39607844)
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer2" unique_id=936564379]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=40695139]
 
@@ -283,17 +312,6 @@ texture_over = ExtResource("10_trceg")
 texture_progress = ExtResource("11_a8y0u")
 script = ExtResource("9_85g3d")
 
-[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1352389542]
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer2" unique_id=936564379]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1780831746]
 libraries/ = SubResource("AnimationLibrary_muem4")
 
@@ -301,8 +319,18 @@ libraries/ = SubResource("AnimationLibrary_muem4")
 visible = false
 color = Color(0.29586652, 0.2958665, 0.2958665, 1)
 
+[node name="PointLight2D" type="PointLight2D" parent="CanvasModulate" unique_id=906308363]
+position = Vector2(559.5, 149.99611)
+scale = Vector2(0.16457026, 0.1666751)
+color = Color(1, 0.2770767, 0.1819827, 1)
+texture = ExtResource("14_jkv2x")
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1570665105]
 stream = ExtResource("14_a8y0u")
+
+[node name="fire_sound" type="AudioStreamPlayer" parent="." unique_id=1245533260]
+stream = ExtResource("16_jbj1t")
+volume_db = -17.333
 
 [connection signal="body_entered" from="forest_area" to="." method="_on_forest_area_body_entered"]
 [connection signal="body_exited" from="forest_area" to="." method="_on_forest_area_body_exited"]

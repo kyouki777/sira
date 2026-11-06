@@ -6,6 +6,11 @@ var player_camera: Camera2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var world_label: Label = $CanvasLayer/world_label
 @onready var jitendra: StaticBody2D = $jitendra
+@onready var layer_3: TileMapLayer = $TileMap2/layer3
+@onready var haze: ColorRect = $CanvasLayer/haze
+@onready var fire_sound: AudioStreamPlayer = $fire_sound
+@onready var balian_bawi: StaticBody2D = $balian_bawi
+@onready var temenggung: StaticBody2D = $temenggung
 
 var can_go_to_forest: bool = false
 
@@ -14,12 +19,23 @@ var talked_to_temenggung: bool = false
 var talked_to_jitendra: bool = false
 
 func _ready() -> void:
+	layer_3.visible = false
+	haze.visible = false
+	
 	player_camera = player.camera_2d
 	setup_camera_limits()
 	Dialogic.signal_event.connect(_on_dialogic_signal_event)
+	
+	if DayManager.current_day == 2:
+		haze.visible = true
+		
 	if DayManager.current_day == 3:
 		jitendra.queue_free()
 		print("despawning jitendra")
+		layer_3.visible = true
+		haze.visible = true
+		fire_sound.play()
+		
 	player.can_move = false
 	animation_player.play("fadein")
 	await animation_player.animation_finished
@@ -39,12 +55,12 @@ func _on_dialogic_signal_event(argument: String) -> void:
 		"balian_last_day":
 			talked_to_balian = true
 		"temenggung_last_day":
-			talked_to_temenggung = true
+			talked_to_temenggung = true #not used yet
 
 
-	if talked_to_balian and talked_to_temenggung and (argument == "balian_last_day" or argument == "temenggung_last_day"):
+	if talked_to_balian and (argument == "balian_last_day"):
 		can_go_to_forest = true
-		#DayManager.go_to_next_day()#go to day 4
+		#DayManager.go_to_next_day()#go to day 4, gajadiii
 		#print("total time:", DayManager.day_total_time) 
 		print("area2d forest on")
 
@@ -53,6 +69,7 @@ func _on_dialogic_signal_event(argument: String) -> void:
 
 func _trigger_day_transition() -> void:
 	
+	fire_sound.stop()
 	talked_to_balian = false
 	talked_to_temenggung = false
 	talked_to_jitendra = false
@@ -71,8 +88,8 @@ func _trigger_day_transition() -> void:
 		await Dialogic.timeline_ended
 		player.can_move = false
 		animation_player.play("fadeout_day_3")
-		player.can_move = true
 		await animation_player.animation_finished
+		player.can_move = true
 		DayManager.go_to_next_day()
 		GameManager.day_transitioning = false
 		get_tree().change_scene_to_file("res://scenes/main.tscn")

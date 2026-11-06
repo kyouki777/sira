@@ -1,6 +1,6 @@
 "Macan Dahan": Mrrp?
 Sira: (This is Oyen. He's a macan dahan.)
-if {feeding_animals} == true:
+if {feeding_animals} == true and {macandahan_fed} == false:
 	"Macan Dahan": Mrreeow.
 	- Pet Oyen.
 		audio "res://asset/sound/cat_purr.mp3"
@@ -14,6 +14,7 @@ if {feeding_animals} == true:
 		Sira: (Maybe Jitendra fell down the tree because he was trying to learn how to navigate the trees like Oyen.)
 		Sira: (It's easier to get the prey from above after all.)
 		- Feed Oyen.
+			set {macandahan_fed} = true
 			[signal arg="animal_fed"]
 			audio "res://asset/sound/crunch.mp3"
 			*Oyen purrs loudly while eating the meat*

@@ -15,6 +15,8 @@ var tutorial_shown : bool = false
 @export var animal_container: Node2D
 @onready var timer_container: HBoxContainer = $UILayer/TimerContainer
 @onready var hewan_container: HBoxContainer = $UILayer/HewanContainer
+@onready var movement_label: Label = $UILayer/MovementLabel
+@onready var drama_overlay: ColorRect = $UILayer/DramaOverlay
 
 
 var label_on :bool = false
@@ -27,6 +29,7 @@ func _ready() -> void:
 	if GameManager.last_day == true:
 		timer_container.visible = false #so that the player only relies on oxygen as time inside the forest
 		hewan_container.visible = false
+		movement_label.visible = false
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -83,9 +86,11 @@ func pick_up_animal(animal_scene: PackedScene) -> void:
 
 func trigger_gameover():
 	#world_label.text = "GAMEOVER, YOU DIED!"
-	get_tree().paused = true
-	print("GAMEOVER")
-	get_tree().change_scene_to_file("res://scenes/game_over.tscn")
+	if not GameManager.last_day:
+		get_tree().paused = true
+		print("GAMEOVER")
+		get_tree().change_scene_to_file("res://scenes/game_over.tscn")
+	else: pass
 	
 func _on_falling_branch_component_dead_by_falling_branch() -> void:
 	trigger_gameover()
