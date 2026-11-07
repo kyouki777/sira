@@ -1,5 +1,10 @@
 extends TextureButton
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
+func _ready() -> void:
+	if not GameManager.jitendra_lawung_spawned:
+		audio_stream_player.play()
+		GameManager.jitendra_lawung_spawned = true
 
 func _on_pressed() -> void:
 	

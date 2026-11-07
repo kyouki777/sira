@@ -25,7 +25,7 @@ func move_towards_room(progress_number: int) -> void:
 
 	# LAST DAY: ONLY SPAWN THE HAT 
 	if GameManager.last_day:
-		if progress_number == target_last_day_progress and special_last_day_jitendra:
+		if progress_number >= target_last_day_progress and special_last_day_jitendra:
 			spawn_animal(progress_number, special_last_day_jitendra)
 			print("JITENDRA'S LAWUNG SPAWNED")
 		else:
