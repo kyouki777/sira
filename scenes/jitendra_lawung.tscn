@@ -20,6 +20,5 @@ script = ExtResource("2_pgxti")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1609436823]
 stream = ExtResource("3_btldj")
-autoplay = true
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

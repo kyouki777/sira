@@ -24,6 +24,7 @@ var manuk_pansuh_acquired : bool = false
 
 #for triggering last day search
 var last_day : bool = false
+var jitendra_lawung_spawned:bool = false
 
 var day_transitioning : bool = false
 

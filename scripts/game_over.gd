@@ -15,11 +15,11 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_button_pressed() -> void:
-	
-	GameManager.reset_game()
-	DayManager.reset_game()
-	TimeManager.reset_game()
-	
-	get_tree().paused = false
-	
-	get_tree().change_scene_to_file("res://scenes/main.tscn")
+	if not GameManager.last_day:
+		GameManager.reset_game()
+		DayManager.reset_game()
+		TimeManager.reset_game()
+		get_tree().paused = false
+		get_tree().change_scene_to_file("res://scenes/main.tscn")
+	else:
+		get_tree().change_scene_to_file("res://scenes/day_end_transition.tscn")
