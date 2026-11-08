@@ -117,7 +117,6 @@ theme_override_font_sizes/font_size = 40
 text = "GAME OVER"
 
 [node name="black_overlay" type="ColorRect" parent="." unique_id=1407517415]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

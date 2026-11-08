@@ -50,6 +50,7 @@ func branch_fallen_on_player():
 	var sira:Sprite2D = get_parent() as Sprite2D
 	sira.self_modulate = Color.RED
 	dead_by_falling_branch.emit()
+	#get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 	print("Dead by branch fall")
 
 func _on_branch_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
