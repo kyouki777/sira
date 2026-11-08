@@ -3,9 +3,11 @@ extends Control
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var audio_stream_player_2: AudioStreamPlayer = $AudioStreamPlayer2
+@onready var black_overlay: ColorRect = $black_overlay
 
 
 func _ready() -> void:
+	black_overlay.visible = true
 	audio_stream_player_2.play()
 	await get_tree().create_timer(2).timeout
 	audio_stream_player.play()
